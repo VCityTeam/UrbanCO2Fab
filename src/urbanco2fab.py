@@ -30,7 +30,7 @@ scenariogroup.add_argument("-st", '--scenariotype', help="type of scenario",
 
 
 parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
-parser.add_argument("-p", "--path", nargs=1, help="path to directory")
+parser.add_argument("-p", "--path", nargs='+', help="path to directory")
 parser.add_argument("-t", "--title", nargs=1, help="title of scenario")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
 parser.add_argument("-m", "--message", nargs='+', help="message")
@@ -98,12 +98,28 @@ elif (args.operation == "rm"):
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
   workspace.rm(workspacepath, args.path)
+elif (args.operation == "mv"):
+  workspacepath = os.getcwd()
+  if (args.workspace is not None) :
+    workspacepath = args.workspace[0] 
+  workspace.move(workspacepath, args.path)
 elif (args.operation == "commit"):
   workspacepath = os.getcwd()
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
   if (args.message is not None):
     workspace.commit(workspacepath, args.message[0])
+  else:
+    print("Commit message is empty")
+elif (args.operation == "tag"):
+  workspacepath = os.getcwd()
+  if (args.workspace is not None) :
+    workspacepath = args.workspace[0] 
+  if (args.message is not None):
+    if (args.version is not None and args.title is not None):
+      workspace.tag(workspacepath, args.title[0], args.message[0], args.version[0])
+    else:
+      workspace.tag(workspacepath, args.title[0], args.message[0])
   else:
     print("Commit message is empty")
 elif (args.operation == "clone"):

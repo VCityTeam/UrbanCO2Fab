@@ -1,12 +1,11 @@
 import error
 import scenario
+from shutil import copyfile
 from pygit2 import Repository, credentials
-import xmlparser
-from datetime import datetime, timezone, timedelta
-import json
+import os
 import re
 import diff
-from pygit2 import clone_repository, init_repository
+from pygit2 import clone_repository, init_repository, GIT_OBJ_COMMIT, GIT_SORT_REVERSE, GIT_SORT_TOPOLOGICAL
 
 #Reference: https://stackoverflow.com/questions/27749418/implementing-pull-with-pygit2
 def pull(repository):
@@ -66,6 +65,21 @@ def add(workspace, paths=None):
   except Exception as e:
     print("Unable to add to UrbanCo2Fab repository: " + str(e))
 
+def move(workspace, paths=None):
+  try:
+    if (paths is not None):
+      repo = Repository(workspace)
+      if(len(paths) == 2):
+        copyfile(paths[0], paths[1])
+        repo.index.remove(paths[0])
+        os.remove(paths[0])
+        repo.index.add(paths[1])
+        repo.index.write()
+      else:
+        print("Move requires two paths") 
+  except Exception as e:
+    print("Unable to remove from UrbanCo2Fab repository: " + str(e))
+
 def rm(workspace, paths=None):
   try:
     if (paths is not None):
@@ -75,6 +89,16 @@ def rm(workspace, paths=None):
       repo.index.write()
   except Exception as e:
     print("Unable to remove from UrbanCo2Fab repository: " + str(e))
+
+def tag(workspace, name, message, commitid=None):
+  try:
+    repo = Repository(workspace)
+    if (commitid is None):
+      commitid = repo.head.target
+    repo.create_tag(name, commitid, GIT_OBJ_COMMIT, 
+         repo.default_signature, message)
+  except Exception as e:
+    print("Unable to tag a UrbanCo2Fab repository: " + str(e))
 
 def commit(workspace, message):
   try:
