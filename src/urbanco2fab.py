@@ -1,6 +1,9 @@
 import argparse
 import scenario
+import workspace
 import version
+import os
+import os
 import datetime
 import versiontransition
 from dateutil.parser import parse
@@ -26,10 +29,12 @@ scenariogroup.add_argument("-st", '--scenariotype', help="type of scenario",
           type=str, choices=['consensus', 'proposition'])
 
 
-parser.add_argument("-r", "--repository", nargs=1, help="repository")
+parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
+parser.add_argument("-p", "--path", nargs=1, help="path to directory")
 parser.add_argument("-t", "--title", nargs=1, help="title of scenario")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
-parser.add_argument("-m", "--time", nargs='+', help="one or more times")
+parser.add_argument("-m", "--message", nargs='+', help="message")
+parser.add_argument("-i", "--time", nargs='+', help="one or more times")
 parser.add_argument("-d", "--description", nargs=1, help="description of scenario")
 parser.add_argument("-s", "--scenario", nargs='+', help="scenario related operations")
 parser.add_argument("-v", "--version", nargs='+', help="versions (or commit identifiers) version:type:label, where type can be Existing or Imagined and label can be a string of characters using single or double quotes")
@@ -60,13 +65,56 @@ if (args.operation == "show"):
 elif (args.operation == "add"):
   if (args.scenario is not None):
     if (args.version is not None  and args.versiontransition is not None 
-          and args.repository is not None and args.title is not None 
+          and args.workspace is not None and args.title is not None 
           and args.description is not None):
-      scenario.create_scenario(args.repository[0], args.version, 
+      scenario.create_scenario(args.workspace[0], args.version, 
            args.versiontransition, args.title[0], args.description[0])
-    else:
-       print(parser.print_help())
+  elif (args.workspace is None):
+    cwd = os.getcwd()
+    workspace.add(cwd, args.path)
   else:
-    print(parser.print_help())
+    cwd = os.getcwd()
+    workspace.add(cwd)
+elif (args.operation == "pull"):
+  if (args.workspace is not None) :
+    workspace.pull(args.workspace[0])
+  else:
+    cwd = os.getcwd()
+    workspace.pull(cwd)
+elif (args.operation == "push"):
+  if (args.workspace is not None) :
+    workspace.push(args.workspace[0])
+  else:
+    cwd = os.getcwd()
+    workspace.push(cwd)
+elif (args.operation == "init"):
+  if (args.path is not None):
+    workspace.init(args.path[0])
+  else:
+    cwd = os.getcwd()
+    workspace.init(cwd)
+elif (args.operation == "rm"):
+  workspacepath = os.getcwd()
+  if (args.workspace is not None) :
+    workspacepath = args.workspace[0] 
+  workspace.rm(workspacepath, args.path)
+elif (args.operation == "commit"):
+  workspacepath = os.getcwd()
+  if (args.workspace is not None) :
+    workspacepath = args.workspace[0] 
+  if (args.message is not None):
+    workspace.commit(workspacepath, args.message[0])
+  else:
+    print("Commit message is empty")
+elif (args.operation == "clone"):
+  if (args.workspace is not None) :
+    if (args.path is not None):
+      workspace.clone(args.workspace[0], args.path[0])
+    else:
+      cwd = os.getcwd()
+      workspace.clone(args.workspace[0], cwd)
+      
+  else:
+    print("Check the workspace" + str(len(args.workspace)))
 else:
   print(parser.print_help())
