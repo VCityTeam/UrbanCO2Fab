@@ -42,6 +42,8 @@ def clone(repository, path, bare=False):
         repo = clone_repository(repository, path, bare=True)
       else:
         repo = clone_repository(repository, path)
+      if(os.access(path + "/.urbanco2fab", os.F_OK) == False):
+        os.makedirs(path + "/.urbanco2fab") 
   except Exception as e:
     print("Not a valid UrbanCo2Fab repository: " + str(e))
 
@@ -52,6 +54,7 @@ def init(path, bare=False):
         repo = init_repository(path, bare=True)
       else:
         repo = init_repository(path)
+      os.makedirs(path + "/.urbanco2fab") 
     else:
       print("path missing")
   except Exception as e:

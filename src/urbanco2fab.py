@@ -43,6 +43,8 @@ parser.add_argument('operation', help="operation to perform",
           type=str, choices=['add', 'mv', 'rm', 'commit', 'show', 'tag', 'log', 'diff',
                              'clone', 'init', 'fetch', 'pull', 'push',
                              'checkout'])
+parser.add_argument('arguments', metavar='A', type=str, nargs='*',
+                    help='option to arguments')
 args = parser.parse_args()
 
 if (args.operation == "show"):
@@ -90,6 +92,8 @@ elif (args.operation == "push"):
 elif (args.operation == "init"):
   if (args.path is not None):
     workspace.init(args.path[0])
+  if (args.arguments is not None):
+    workspace.init(args.arguments[0])
   else:
     cwd = os.getcwd()
     workspace.init(cwd)
@@ -123,14 +127,18 @@ elif (args.operation == "tag"):
   else:
     print("Commit message is empty")
 elif (args.operation == "clone"):
+  workspace_name = None
+  if (len(args.arguments)>0):
+    workspace_name = args.arguments[0] 
   if (args.workspace is not None) :
+    workspace_name = args.workspace[0]
+  if (workspace_name == None):
+    print("Check the workspace")
+  else:
     if (args.path is not None):
-      workspace.clone(args.workspace[0], args.path[0])
+      workspace.clone(workspace_name, args.path[0])
     else:
       cwd = os.getcwd()
-      workspace.clone(args.workspace[0], cwd)
-      
-  else:
-    print("Check the workspace" + str(len(args.workspace)))
+      workspace.clone(workspace_name, cwd)
 else:
   print(parser.print_help())
