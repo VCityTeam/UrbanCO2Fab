@@ -63,7 +63,9 @@ def init(path, bare=False):
 def add(workspace, paths=None):
   try:
     repo = Repository(workspace)
-    repo.index.add_all(paths)
+    if (paths is not None):
+      for path in paths:
+        repo.index.add(path)
     repo.index.write()
   except Exception as e:
     print("Unable to add to UrbanCo2Fab repository: " + str(e))
@@ -107,7 +109,8 @@ def commit(workspace, message):
   try:
     repo = Repository(workspace)
     user = repo.default_signature
-    tree = repo.TreeBuilder().write()
+    #https://stackoverflow.com/questions/29469649/create-a-commit-using-pygit2
+    tree = repo.index.write_tree()
     if repo.head_is_unborn:
       parents = []
     else:

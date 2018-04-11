@@ -92,7 +92,7 @@ elif (args.operation == "push"):
 elif (args.operation == "init"):
   if (args.path is not None):
     workspace.init(args.path[0])
-  if (args.arguments is not None):
+  elif (len(args.arguments) > 0):
     workspace.init(args.arguments[0])
   else:
     cwd = os.getcwd()
