@@ -76,7 +76,6 @@ def move(workspace, paths=None):
       repo = Repository(workspace)
       if(len(paths) == 2):
         copyfile(paths[0], paths[1])
-        repo.index.remove(paths[0])
         os.remove(paths[0])
         repo.index.add(paths[1])
         repo.index.write()
@@ -107,6 +106,7 @@ def tag(workspace, name, message, commitid=None):
 
 def commit(workspace, message):
   try:
+    message = ' '.join(message)
     repo = Repository(workspace)
     user = repo.default_signature
     #https://stackoverflow.com/questions/29469649/create-a-commit-using-pygit2
