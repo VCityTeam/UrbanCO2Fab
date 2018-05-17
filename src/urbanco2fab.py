@@ -30,7 +30,6 @@ scenariogroup.add_argument("-st", '--scenariotype', help="type of scenario",
 
 
 parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
-parser.add_argument("-p", "--path", nargs='+', help="path to directory")
 parser.add_argument("-t", "--title", nargs=1, help="title of scenario")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
 parser.add_argument("-m", "--message", nargs='+', help="message")
@@ -43,6 +42,7 @@ parser.add_argument('operation', help="operation to perform",
           type=str, choices=['add', 'mv', 'rm', 'commit', 'show', 'tag', 'log', 'diff',
                              'clone', 'init', 'fetch', 'pull', 'push',
                              'checkout'])
+parser.add_argument('path', help="path of files", nargs='*')
 parser.add_argument('arguments', metavar='A', type=str, nargs='*',
                     help='option to arguments')
 args = parser.parse_args()
@@ -112,7 +112,7 @@ elif (args.operation == "commit"):
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
   if (args.message is not None):
-    workspace.commit(workspacepath, args.message[0])
+    workspace.commit(workspacepath, args.message)
   else:
     print("Commit message is empty")
 elif (args.operation == "tag"):
