@@ -1,4 +1,5 @@
 import error
+import json
 import scenario
 from shutil import copyfile
 from pygit2 import Repository, credentials
@@ -54,7 +55,18 @@ def init(path, bare=False):
         repo = init_repository(path, bare=True)
       else:
         repo = init_repository(path)
+
+      #creating urbanco2fab directory and adding it to git metadata mgmt.
       os.makedirs(path + "/.urbanco2fab") 
+      repo = Repository(path)
+      scenario = dict() 
+      with open(path + "/.urbanco2fab/scenarios.json", "w") as jsonfile:
+        json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
+        jsonfile.close()
+      scenariopath = os.path.realpath(path) + "/"+ ".urbanco2fab/scenarios.json"
+      if (os.path.isfile(scenariopath)):
+        repo.index.add(".urbanco2fab/scenarios.json")
+        commit(path, "Initilizing UrbanCo2Fab")
     else:
       print("path missing")
   except Exception as e:
@@ -106,7 +118,6 @@ def tag(workspace, name, message, commitid=None):
 
 def commit(workspace, message):
   try:
-    message = ' '.join(message)
     repo = Repository(workspace)
     user = repo.default_signature
     #https://stackoverflow.com/questions/29469649/create-a-commit-using-pygit2
