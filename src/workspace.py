@@ -59,14 +59,14 @@ def init(path, bare=False):
       #creating urbanco2fab directory and adding it to git metadata mgmt.
       os.makedirs(path + "/.urbanco2fab") 
       repo = Repository(path)
-      scenario = dict() 
-      with open(path + "/.urbanco2fab/scenarios.json", "w") as jsonfile:
-        json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
-        jsonfile.close()
-      scenariopath = os.path.realpath(path) + "/"+ ".urbanco2fab/scenarios.json"
-      if (os.path.isfile(scenariopath)):
-        repo.index.add(".urbanco2fab/scenarios.json")
-        commit(path, "Initilizing UrbanCo2Fab")
+      empty = dict() 
+      for filename in ["scenarios.json", "versions.json",
+           "versiontransitions.json"]:
+        with open(path + "/.urbanco2fab/" + filename, "w") as jsonfile:
+          json.dump(empty, jsonfile,  indent=4, sort_keys=True) 
+          jsonfile.close()
+          repo.index.add(".urbanco2fab/"+filename)
+      commit(path, "Initilizing UrbanCo2Fab")
     else:
       print("path missing")
   except Exception as e:
