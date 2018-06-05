@@ -121,6 +121,8 @@ def tag(workspace, name, message, commitid=None):
 def basic_commit(workspace, message):
   try:
     repo = Repository(workspace)
+    for filename in ["scenarios.json", "versions.json"]:
+      repo.index.add(".urbanco2fab/"+filename)
     user = repo.default_signature
     #https://stackoverflow.com/questions/29469649/create-a-commit-using-pygit2
     tree = repo.index.write_tree()
@@ -128,6 +130,7 @@ def basic_commit(workspace, message):
       parents = []
     else:
       parents = [repo.head.target]
+    repo.index.write()
     repo.create_commit('HEAD', user, user, message, tree, parents)
     repo.index.write()
   except Exception as e:
@@ -151,6 +154,7 @@ def commit(workspace, message, starttime, endtime,
     version.write_version(repo.head.target, starttime, endtime, 
         storetransactionendtime, storetransactionendtime, message, description, 
         tag, document, user)
+    basic_commit(workspace, "saving urbanco2fab metadata");
   except Exception as e:
     print("Unable to commit to UrbanCo2Fab repository: " + str(e))
 
