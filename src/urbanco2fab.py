@@ -31,6 +31,7 @@ scenariogroup.add_argument("-st", '--scenariotype', help="type of scenario",
 
 parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
 parser.add_argument("-t", "--title", nargs=1, help="title of scenario")
+parser.add_argument("-g", "--tag", nargs='+', help="tag")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
 parser.add_argument("-m", "--message", nargs='+', help="message")
 parser.add_argument("-i", "--time", nargs='+', help="one or more times")
@@ -109,10 +110,31 @@ elif (args.operation == "mv"):
   workspace.move(workspacepath, args.path)
 elif (args.operation == "commit"):
   workspacepath = os.getcwd()
+  description = ""
+  tag = []
+  document = []
+  if (args.time is None):
+    print("usage: urbanco2fab commit -m 'message' --time 't1,t2' ")
+    exit(1)
+  if (args.description is not None):
+    description = ' '.join(args.description)
+  if (args.tag is not None):
+    tag = args.tag
+  if (args.document is not None) :
+    document = args.document
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
+  if (args.time is not None):
+    timelist = args.time[0].split(",")
+    if(len(timelist)!=2):
+      print("usage: urbanco2fab commit -m 'message' --time 't1,t2' ")
+      exit(1)
+    starttime = timelist[0]
+    endtime = timelist[1]
+    print(starttime, endtime)
   if (args.message is not None):
-    workspace.commit(workspacepath, args.message)
+    workspace.commit(workspacepath, ' '.join(args.message), starttime, endtime,
+         description, tag, document)
   else:
     print("Commit message is empty")
 elif (args.operation == "tag"):
