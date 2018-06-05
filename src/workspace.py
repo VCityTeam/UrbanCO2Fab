@@ -1,8 +1,10 @@
 import error
+import version
 import json
 import scenario
 from shutil import copyfile
 from pygit2 import Repository, credentials
+from datetime import datetime, timezone, timedelta
 import os
 import re
 import diff
@@ -60,13 +62,13 @@ def init(path, bare=False):
       os.makedirs(path + "/.urbanco2fab") 
       repo = Repository(path)
       empty = dict() 
-      for filename in ["scenarios.json", "versions.json",
-           "versiontransitions.json"]:
+      for filename in ["scenarios.json", "versions.json"]:
         with open(path + "/.urbanco2fab/" + filename, "w") as jsonfile:
           json.dump(empty, jsonfile,  indent=4, sort_keys=True) 
           jsonfile.close()
           repo.index.add(".urbanco2fab/"+filename)
-      commit(path, "Initilizing UrbanCo2Fab")
+      repo.index.write()
+      basic_commit(path, "Initilizing UrbanCo2Fab")
     else:
       print("path missing")
   except Exception as e:
@@ -116,7 +118,7 @@ def tag(workspace, name, message, commitid=None):
   except Exception as e:
     print("Unable to tag a UrbanCo2Fab repository: " + str(e))
 
-def commit(workspace, message):
+def basic_commit(workspace, message):
   try:
     repo = Repository(workspace)
     user = repo.default_signature
@@ -128,6 +130,27 @@ def commit(workspace, message):
       parents = [repo.head.target]
     repo.create_commit('HEAD', user, user, message, tree, parents)
     repo.index.write()
+  except Exception as e:
+    print("Unable to commit to UrbanCo2Fab repository: " + str(e))
+
+def commit(workspace, message, starttime, endtime,
+       description, tag, document):
+  try:
+    repo = Repository(workspace)
+    user = repo.default_signature
+    #https://stackoverflow.com/questions/29469649/create-a-commit-using-pygit2
+    tree = repo.index.write_tree()
+    if repo.head_is_unborn:
+      parents = []
+    else:
+      parents = [repo.head.target]
+    repo.create_commit('HEAD', user, user, message, tree, parents)
+    repo.index.write()
+    tzinfo  = timezone( timedelta(minutes=repo[repo.head.target].author.offset) )
+    storetransactionendtime = datetime.fromtimestamp(repo[repo.head.target].author.time,tzinfo).strftime("%Y-%m-%dT%H:%M:%S%z")
+    version.write_version(repo.head.target, starttime, endtime, 
+        storetransactionendtime, storetransactionendtime, message, description, 
+        tag, document, user)
   except Exception as e:
     print("Unable to commit to UrbanCo2Fab repository: " + str(e))
 
