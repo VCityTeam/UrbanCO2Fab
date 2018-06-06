@@ -2,8 +2,14 @@ from pygit2 import Repository
 from customxmlparser import CustomXMLParser
 import xml.etree.ElementTree as ET
 from xml.etree.ElementTree import XMLParser
+from dateutil.parser import parse
 
-def get_transactions(repository, version1, version2):
+def verify_dates(time1, time2):
+  if(parse(time1) > parse(time2)):
+     print("Check existence times")
+
+def get_transactions(repository, version1, version2, start_time="",
+       end_time="", use_citygml=False):
   transactions = []
   repo = Repository(repository)
   diff = repo.diff(version1, version2, context_lines=0)
@@ -54,16 +60,22 @@ def get_transactions(repository, version1, version2):
             transaction["type"] = "Replace"
             transaction[attribute] = featuresv2[gmlid][feature][attribute]
             for attribute in featuresv2[gmlid][feature]: 
-              if("creationdate" in attribute.lower()):
-                transaction["creationdate"] = featuresv2[gmlid][feature][attribute]
-              elif("terminationdate" in attribute.lower()):
-                transaction["terminationdate"] = featuresv2[gmlid][feature][attribute]
+              if(use_citygml):
+                if("creationdate" in attribute.lower()):
+                  transaction["existencestarttime"] = featuresv2[gmlid][feature][attribute]
+                elif("terminationdate" in attribute.lower()):
+                  transaction["existenceendtime"] = featuresv2[gmlid][feature][attribute]
+              else:
+                transaction["existencestarttime"] = start_time 
+                transaction["existenceendtime"] = end_time 
+            verify_dates(transaction["existencestarttime"],
+                transaction["existenceendtime"])
         if transaction:
           transactions.append(transaction)
       for change in inserts:
+        transaction = {}
         if change in datav2:
           gmlid = next(iter(datav2[change].keys()))
-          transaction = {}
           for feature in datav2[change][gmlid]:
             attribute = next(iter(datav2[change][gmlid][feature].keys()))
             transaction["id"] = gmlid+"#"+attribute
@@ -71,16 +83,22 @@ def get_transactions(repository, version1, version2):
             transaction["type"] = "Insert"
             transaction[attribute] = featuresv2[gmlid][feature][attribute]
             for attribute in featuresv2[gmlid][feature]: 
-              if("creationdate" in attribute.lower()):
-                transaction["creationdate"] = featuresv2[gmlid][feature][attribute]
-              elif("terminationdate" in attribute.lower()):
-                transaction["terminationdate"] = featuresv2[gmlid][feature][attribute]
+              if(use_citygml):
+                if("creationdate" in attribute.lower()):
+                  transaction["existencestarttime"] = featuresv2[gmlid][feature][attribute]
+                elif("terminationdate" in attribute.lower()):
+                  transaction["existenceendtime"] = featuresv2[gmlid][feature][attribute]
+              else:
+                transaction["existencestarttime"] = start_time 
+                transaction["existenceendtime"] = end_time 
+            verify_dates(transaction["existencestarttime"],
+               transaction["existenceendtime"])
         if transaction:
           transactions.append(transaction)
       for change in deletes:
+        transaction = {}
         if change in datav1:
           gmlid = next(iter(datav1[change].keys()))
-          transaction = {}
           for feature in datav1[change][gmlid]:
             attribute = next(iter(datav1[change][gmlid][feature].keys()))
             transaction["id"] = gmlid+"#"+attribute
@@ -88,10 +106,16 @@ def get_transactions(repository, version1, version2):
             transaction["type"] = "Delete"
             transaction[attribute] = featuresv1[gmlid][feature][attribute]
             for attribute in featuresv1[gmlid][feature]: 
-              if("creationdate" in attribute.lower()):
-                transaction["creationdate"] = featuresv1[gmlid][feature][attribute]
-              elif("terminationdate" in attribute.lower()):
-                transaction["terminationdate"] = featuresv1[gmlid][feature][attribute]
+              if(use_citygml):
+                if("creationdate" in attribute.lower()):
+                  transaction["existencestarttime"] = featuresv1[gmlid][feature][attribute]
+                elif("terminationdate" in attribute.lower()):
+                  transaction["existenceendtime"] = featuresv1[gmlid][feature][attribute]
+              else:
+                transaction["existencestarttime"] = start_time 
+                transaction["existenceendtime"] = end_time 
+            verify_dates(transaction["existencestarttime"],
+               transaction["existenceendtime"])
         if transaction:
           transactions.append(transaction)
   return transactions

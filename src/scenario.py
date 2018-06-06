@@ -28,6 +28,7 @@ def get_scenario(scenarioids, display=True):
 def create_scenario(repository, userversions, userversiontransitions, title, description):
   scenario = dict() 
   jsonfile = None
+  versionsmetadata = dict()
   try:
     with open("scenarios.json", "r") as jsonfile:
       scenario = json.load(jsonfile)
@@ -37,6 +38,9 @@ def create_scenario(repository, userversions, userversiontransitions, title, des
     scenario[title] = dict({"title": title, "description": description})
     scenario[title]["versions"] = dict()
     scenario[title]["versiontransitions"] = dict()
+
+  with open(".urbanco2fab/versions.json", "r") as jsonfile:
+    versionsmetadata = json.load(jsonfile)
 
   repo = Repository(repository)
   versions, labels = [], []
@@ -95,7 +99,10 @@ def create_scenario(repository, userversions, userversiontransitions, title, des
 
     if(data[0] in versions and data[1] in versions):
       versiontransitions.append([data[0],data[1]])
-      transactions = diff.get_transactions(repository, data[0], data[1])
+      transactions = None
+      transactions = diff.get_transactions(repository, data[0], data[1],
+             versionsmetadata[data[0]]["existenceendtime"],
+             versionsmetadata[data[1]]["existencestarttime"])
       scenario[title]["versiontransitions"][data[0] + "-" + data[1]] = dict(
            {"from" : data[0], "to": data[1], "type": transitiontype,
             "existencestarttime": scenario[title]["versions"][data[0]]["existenceendtime"],
