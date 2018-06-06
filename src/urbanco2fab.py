@@ -111,6 +111,7 @@ elif (args.operation == "mv"):
 elif (args.operation == "commit"):
   workspacepath = os.getcwd()
   description = ""
+  versiontype = "existing"
   tag = []
   document = []
   if (args.time is None):
@@ -122,6 +123,8 @@ elif (args.operation == "commit"):
     tag = args.tag
   if (args.document is not None) :
     document = args.document
+  if (args.versiontype is not None) :
+    versiontype = args.versiontype
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
   if (args.scenario is not None):
@@ -140,7 +143,7 @@ elif (args.operation == "commit"):
     endtime = timelist[1]
   if (args.message is not None):
     workspace.commit(workspacepath, ' '.join(args.message), starttime, endtime,
-         description, tag, document)
+         description, tag, document, versiontype)
   else:
     print("Commit message is empty")
 elif (args.operation == "tag"):
