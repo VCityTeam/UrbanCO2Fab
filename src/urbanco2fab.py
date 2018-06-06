@@ -114,9 +114,6 @@ elif (args.operation == "commit"):
   versiontype = "existing"
   tag = []
   document = []
-  if (args.time is None):
-    print("usage: urbanco2fab commit -m 'message' --time 't1,t2' ")
-    exit(1)
   if (args.description is not None):
     description = ' '.join(args.description)
   if (args.tag is not None):
@@ -128,13 +125,18 @@ elif (args.operation == "commit"):
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
   if (args.scenario is not None):
-    if (args.version is not None  and args.versiontransition is not None 
-          and args.workspace is not None and args.title is not None 
-          and args.description is not None):
-      scenario.create_scenario(args.workspace[0], args.version, 
-           args.versiontransition, args.title[0], args.description[0])
+    if (args.version is None or args.versiontransition is None):
+      print("usage: urbanco2fab commit -s 'scenario name' --version v1 v2' "+
+             "--versiontransition v1-v2")
       exit(1)
-  if (args.time is not None):
+    if (args.version is not None  and args.versiontransition is not None):
+      scenario.create_scenario(workspacepath, args.version, 
+           args.versiontransition, args.scenario[0], description)
+    exit(1)
+  if (args.time is None):
+    print("usage: urbanco2fab commit -m 'message' --time 't1,t2' ")
+    exit(1)
+  else:
     timelist = args.time[0].split(",")
     if(len(timelist)!=2):
       print("usage: urbanco2fab commit -m 'message' --time 't1,t2' ")
