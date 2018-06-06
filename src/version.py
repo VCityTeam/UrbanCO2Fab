@@ -39,6 +39,9 @@ def write_version(identifier, startime, endtime, storetransactionstarttime,
         storetransactionendtime, 
         title, description=None, tag=None, document=None, userid=None):
   version = dict()
+  if(parse(startime) > parse(endtime)):
+    print("Start of physical existence time greater than end time")
+    exit(1)
   version["identifier"] = str(identifier)
   version["existencestarttime"] = startime
   version["existenceendtime"] = endtime

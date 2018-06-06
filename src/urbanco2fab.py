@@ -124,6 +124,13 @@ elif (args.operation == "commit"):
     document = args.document
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
+  if (args.scenario is not None):
+    if (args.version is not None  and args.versiontransition is not None 
+          and args.workspace is not None and args.title is not None 
+          and args.description is not None):
+      scenario.create_scenario(args.workspace[0], args.version, 
+           args.versiontransition, args.title[0], args.description[0])
+      exit(1)
   if (args.time is not None):
     timelist = args.time[0].split(",")
     if(len(timelist)!=2):
@@ -131,7 +138,6 @@ elif (args.operation == "commit"):
       exit(1)
     starttime = timelist[0]
     endtime = timelist[1]
-    print(starttime, endtime)
   if (args.message is not None):
     workspace.commit(workspacepath, ' '.join(args.message), starttime, endtime,
          description, tag, document)
