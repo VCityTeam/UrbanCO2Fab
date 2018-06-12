@@ -14,6 +14,7 @@ def get_all(display=True):
           print("  type: " + versiondata["type"])
         print("  start: " + versiondata["existencestarttime"])
         print("  end: " + versiondata["existenceendtime"])
+        print("  title: " + versiondata["title"])
   return all_versions 
 
 def get_version(versionids, display=True):

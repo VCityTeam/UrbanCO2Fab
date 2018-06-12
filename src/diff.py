@@ -50,9 +50,9 @@ def get_transactions(repository, version1, version2, start_time="",
         elif(line.origin == "-"): 
             deletes.append(line.old_lineno)
       for change in changes:
+        transaction = {}
         if change in datav2:
           gmlid = next(iter(datav2[change].keys()))
-          transaction = {}
           for feature in datav2[change][gmlid]:
             attribute = next(iter(datav2[change][gmlid][feature].keys()))
             transaction["id"] = gmlid+"#"+attribute

@@ -134,7 +134,7 @@ elif (args.operation == "commit"):
       exit(1)
     if (args.version is not None  and args.versiontransition is not None):
       scenario.create_scenario(workspacepath, args.version, 
-           args.versiontransition, args.scenario[0], description)
+           args.versiontransition, ' '.join(args.scenario), description)
     exit(1)
   if (args.time is None):
     print("usage: urbanco2fab commit -m 'message' --time 't1,t2' ")

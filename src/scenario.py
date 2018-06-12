@@ -25,12 +25,12 @@ def get_scenario(scenarioids, display=True):
             print("    "+versiontransition)
   return all_scenarios
 
-def create_scenario(repository, userversions, userversiontransitions, title, description):
+def create_scenario_using_gml_dates(repository, userversions, userversiontransitions, title, description):
   scenario = dict() 
   jsonfile = None
   versionsmetadata = dict()
   try:
-    with open("scenarios.json", "r") as jsonfile:
+    with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
       scenario = json.load(jsonfile)
       scenario[title]["title"] = title
       scenario[title]["description"] = description
@@ -115,5 +115,64 @@ def create_scenario(repository, userversions, userversiontransitions, title, des
       raise error.VersionError("Version present in verion transitions is not recognized")
     labels.append(label)
 
-  with open("scenarios.json", "w") as jsonfile:
+  with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
+    json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
+
+def create_scenario(repository, userversions, userversiontransitions, title, description):
+  scenario = dict() 
+  jsonfile = None
+  versionsmetadata = dict()
+  try:
+    with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
+      scenario = json.load(jsonfile)
+      scenario[title]["title"] = title
+      scenario[title]["description"] = description
+  except:
+    scenario[title] = dict({"title": title, "description": description})
+    scenario[title]["versions"] = dict()
+    scenario[title]["versiontransitions"] = dict()
+
+  with open(".urbanco2fab/versions.json", "r") as jsonfile:
+    versionsmetadata = json.load(jsonfile)
+
+  scenario[title]["versions"] = userversions
+
+  versiontransitions, labels = [], []
+  startdate = ""
+  enddate = ""
+  for info in userversiontransitions:
+    data = info.split(":")
+    transitiontype = "regular"
+    if(len(data) == 2):
+      label = ""
+    elif(len(data) == 3):
+      transitiontype = data[2].lower()
+    elif(len(data) == 4):
+      label = data[3]
+    else:
+      raise error.InputError("Unrecognized version transition value (version1:version2:[label])")
+
+    if (transitiontype != "regular" and transitiontype != "influence"):
+      raise error.InputError("Unrecognized transition type value: " + transitiontype +
+           ", allowed values: regular or influence") 
+
+    if(data[0] in userversions and data[1] in userversions):
+      versiontransitions.append([data[0],data[1]])
+      transactions = None
+      transactions = diff.get_transactions(repository, data[0], data[1],
+             versionsmetadata[data[0]]["existenceendtime"],
+             versionsmetadata[data[1]]["existencestarttime"])
+      scenario[title]["versiontransitions"][data[0] + "-" + data[1]] = dict(
+           {"from" : data[0], "to": data[1], "type": transitiontype,
+            "existencestarttime": versionsmetadata[data[0]]["existenceendtime"],
+            "existenceendtime": versionsmetadata[data[1]]["existencestarttime"],
+            "label" : label,
+            "transactions" : transactions 
+           }
+         )
+    else:
+      raise error.VersionError("Version present in verion transitions is not recognized")
+    labels.append(label)
+
+  with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
     json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
