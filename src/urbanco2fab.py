@@ -52,7 +52,10 @@ if (args.operation == "show"):
   if (args.scenario is not None):
     scenario.get_scenario(args.scenario)
   elif (args.version is not None):
-    version.get_version(args.version)
+    if(args.version[0] == 'all'):
+      version.get_all()
+    else:
+      version.get_version(args.version)
   elif (args.versiontransition is not None):
     versiontransition.get_versiontransition(args.versiontransition)
   elif (args.historical == "historical"):

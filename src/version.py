@@ -2,22 +2,35 @@ import json
 import datetime
 from dateutil.parser import parse
 
+def get_all(display=True):
+  all_versions = []
+  with open("./.urbanco2fab/versions.json") as jsonfile:
+    versions = json.load(jsonfile)
+    for versionid in versions:
+      versiondata = versions[versionid]
+      if display:
+        print("version: " + versionid)
+        if("type" in versiondata):
+          print("  type: " + versiondata["type"])
+        print("  start: " + versiondata["existencestarttime"])
+        print("  end: " + versiondata["existenceendtime"])
+  return all_versions 
+
 def get_version(versionids, display=True):
   all_versions = []
-  with open("scenarios.json") as jsonfile:
-    scenarios = json.load(jsonfile)
-    for scenarioid in scenarios:
-      for versionid in versionids:
-        for version in scenarios[scenarioid]["versions"]:
-          if (versionid == version):
-            versiondata = scenarios[scenarioid]["versions"][version]
-            all_versions.append(versiondata)
-            if display:
-              print("version: " + version)
-              print("  type: " + versiondata["type"])
-              print("  start: " + versiondata["existencestarttime"])
-              print("  end: " + versiondata["existenceendtime"])
-              print("  label: " + versiondata["label"])
+  with open("./.urbanco2fab/versions.json") as jsonfile:
+    versions = json.load(jsonfile)
+    for versionid in versionids:
+      if (versionid in versions):
+        versiondata = versions[versionid]
+        all_versions.append(versiondata)
+        if display:
+          print("version: " + versionid)
+          if("type" in versiondata):
+            print("  type: " + versiondata["type"])
+          print("  start: " + versiondata["existencestarttime"])
+          print("  end: " + versiondata["existenceendtime"])
+          print("  title: " + versiondata["title"])
   return all_versions 
 
 def get_version_wrt_time(past, time):
