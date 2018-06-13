@@ -2,6 +2,7 @@ import argparse
 import scenario
 import workspace
 import version
+import diff
 import os
 import os
 import datetime
@@ -30,7 +31,6 @@ scenariogroup.add_argument("-st", '--scenariotype', help="type of scenario",
 
 
 parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
-parser.add_argument("-t", "--title", nargs=1, help="title of scenario")
 parser.add_argument("-g", "--tag", nargs='+', help="tag")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
 parser.add_argument("-m", "--message", nargs='+', help="message")
@@ -50,7 +50,7 @@ args = parser.parse_args()
 
 if (args.operation == "show"):
   if (args.scenario is not None):
-    scenario.get_scenario(args.scenario)
+    scenario.get_scenario(' '.join(args.scenario))
   elif (args.version is not None):
     if(args.version[0] == 'all'):
       version.get_all()
@@ -58,7 +58,8 @@ if (args.operation == "show"):
       version.get_version(args.version)
   elif (args.versiontransition is not None):
     versiontransition.get_versiontransition(args.versiontransition)
-  elif (args.historical == "historical"):
+elif (args.operation == "log"):
+  if (args.historical == "historical"):
     if(args.time is None):
       version.get_version_wrt_time(True, datetime.datetime.now(datetime.timezone.utc))
     else:
@@ -71,10 +72,10 @@ if (args.operation == "show"):
 elif (args.operation == "add"):
   if (args.scenario is not None):
     if (args.version is not None  and args.versiontransition is not None 
-          and args.workspace is not None and args.title is not None 
-          and args.description is not None):
+          and args.workspace is not None and 
+          args.description is not None):
       scenario.create_scenario(args.workspace[0], args.version, 
-           args.versiontransition, args.title[0], args.description[0])
+           args.versiontransition, ' '.join(args.scenario), args.description[0])
   elif (args.workspace is None):
     cwd = os.getcwd()
     workspace.add(cwd, args.path)
@@ -155,13 +156,13 @@ elif (args.operation == "tag"):
   workspacepath = os.getcwd()
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
-  if (args.message is not None):
-    if (args.version is not None and args.title is not None):
-      workspace.tag(workspacepath, args.title[0], args.message[0], args.version[0])
+  if (args.message is not None and args.scenario is not None):
+    if (args.version is not None):
+      workspace.tag(workspacepath, ' '.join(args.scenario), args.message, args.version[0])
     else:
-      workspace.tag(workspacepath, args.title[0], args.message[0])
+      scenario.tag(workspacepath, ' '.join(args.scenario), args.message)
   else:
-    print("Commit message is empty")
+    print("Commit message or scenario is empty")
 elif (args.operation == "clone"):
   workspace_name = None
   if (len(args.arguments)>0):
@@ -176,5 +177,12 @@ elif (args.operation == "clone"):
     else:
       cwd = os.getcwd()
       workspace.clone(workspace_name, cwd)
+elif (args.operation == "diff"):
+  if (len(args.path) == 2):
+    workspacepath = os.getcwd()
+    diff.get_transactions(workspacepath, args.path[0], 
+        args.path[1], display=True)
+  else:
+    print("Diff takes two arguments, given "+ str(len(args.path)))
 else:
   print(parser.print_help())

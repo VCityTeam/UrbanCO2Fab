@@ -41,3 +41,18 @@ show all the versions
 $ urbanco2fab show -v 02a2a303390d788f465e33232b5892d73caaa239 eef7413c535c616ec13007f8878a885313bd8bd8 
 
 shows the details of two specified versions
+
+## log
+=========================
+
+$ urbanco2fab log -hs
+shows all the versions whose physical existence time ends before the current date.
+
+$ urbanco2fab log -hs -i 1955-06-05T15:29:54+02:00
+shows all the versions whose physical existence time ends before 1955-06-05T15:29:54+02:00.
+
+$ urbanco2fab log -fu -i 1955-06-05T15:29:54+02:00
+shows all the versions whose physical existence time starts after 1955-06-05T15:29:54+02:00.
+
+$ urbanco2fab log -fu 
+shows all the versions whose physical existence time starts after the current date.

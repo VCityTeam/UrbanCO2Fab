@@ -35,19 +35,19 @@ def get_version(versionids, display=True):
   return all_versions 
 
 def get_version_wrt_time(past, time):
-  with open("scenarios.json") as jsonfile:
-    scenarios = json.load(jsonfile)
-    for scenarioid in scenarios:
-      for version in scenarios[scenarioid]["versions"]:
-        versiondata = scenarios[scenarioid]["versions"][version]
-        versiontime = parse(versiondata["existenceendtime"])
-        if ((versiontime < time and past == True) or
+  with open("./.urbanco2fab/versions.json") as jsonfile:
+    versions = json.load(jsonfile)
+    for versionid in versions:
+      versiondata = versions[versionid]
+      versiontime = parse(versiondata["existenceendtime"])
+      if ((versiontime < time and past == True) or
             (versiontime > time and past == False)):
-          print("version: " + version)
+        print("version: " + versionid)
+        if("type" in versiondata):
           print("  type: " + versiondata["type"])
-          print("  start: " + versiondata["existencestarttime"])
-          print("  end: " + versiondata["existenceendtime"])
-          print("  label: " + versiondata["label"])
+        print("  start: " + versiondata["existencestarttime"])
+        print("  end: " + versiondata["existenceendtime"])
+        print("  label: " + versiondata["title"])
 
 def write_version(identifier, startime, endtime, storetransactionstarttime, 
         storetransactionendtime, 

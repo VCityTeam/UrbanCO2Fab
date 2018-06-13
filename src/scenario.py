@@ -6,24 +6,21 @@ import json
 import workspace
 import diff
 
-def get_scenario(scenarioids, display=True):
+def get_scenario(scenarioid, display=True):
   all_scenarios = []
-  with open("scenarios.json") as jsonfile:
+  with open("./.urbanco2fab/scenarios.json") as jsonfile:
     scenarios = json.load(jsonfile)
-    for scenarioid in scenarioids:
-      if (scenarioid in scenarios):
-        all_scenarios.append(scenarios[scenarioid])
-        if(display):
-          print("scenario: " + scenarioid)
-          print("  versions: ")
+    print(scenarioid)
+    if (scenarioid in scenarios):
+      all_scenarios.append(scenarios[scenarioid])
+      if(display):
+        print("scenario: " + scenarioid)
+        print("  versions: ")
         for version in scenarios[scenarioid]["versions"]:
-          if(display):
             print("    " + version)
-        if(display):
-          print("  version transitions: ")
+        print("  version transitions: ")
         for versiontransition in scenarios[scenarioid]["versiontransitions"]:
-          if(display):
-            print("    "+versiontransition)
+          print("    "+versiontransition)
   return all_scenarios
 
 def create_scenario_using_gml_dates(repository, userversions, userversiontransitions, title, description):
@@ -178,3 +175,16 @@ def create_scenario(repository, userversions, userversiontransitions, title, des
   with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
     json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
   workspace.basic_commit(repository, "saving urbanco2fab metadata");
+
+def tag(repository, scenarioid, tags):
+  try:
+    with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
+      scenarios = json.load(jsonfile)
+      if (scenarioid in scenarios):
+        scenarios[scenarioid]["tags"] = scenarios[scenarioid]["tags"] + tags
+        print(scenarios)
+    with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
+      json.dump(scenarios, jsonfile,  indent=4, sort_keys=True) 
+      workspace.basic_commit(repository, "saving urbanco2fab metadata");
+  except Exception as e:
+     print("Error in tagging: " + e);

@@ -1,6 +1,7 @@
 from pygit2 import Repository
 from customxmlparser import CustomXMLParser
 import xml.etree.ElementTree as ET
+import json
 from xml.etree.ElementTree import XMLParser
 from dateutil.parser import parse
 
@@ -9,10 +10,19 @@ def verify_dates(time1, time2):
      print("Check existence times")
 
 def get_transactions(repository, version1, version2, start_time="",
-       end_time="", use_citygml=False):
+       end_time="", use_citygml=False, display=False):
   transactions = []
   repo = Repository(repository)
   diff = repo.diff(version1, version2, context_lines=0)
+  if(display):
+    with open(".urbanco2fab/versions.json", "r") as jsonfile:
+      versionsmetadata = json.load(jsonfile)
+      if version1 in versionsmetadata and version2 in versionsmetadata:
+        start_time = versionsmetadata[version1]["existenceendtime"]
+        end_time = versionsmetadata[version2]["existencestarttime"]
+      else:
+        print("Warning: No physical existence time available")
+       
   datav1 = dict()
   datav2 = dict()
   featuresv1 = dict()
@@ -68,7 +78,8 @@ def get_transactions(repository, version1, version2, start_time="",
               else:
                 transaction["existencestarttime"] = start_time 
                 transaction["existenceendtime"] = end_time 
-            verify_dates(transaction["existencestarttime"],
+            if(display!= True):
+              verify_dates(transaction["existencestarttime"],
                 transaction["existenceendtime"])
         if transaction:
           transactions.append(transaction)
@@ -118,4 +129,6 @@ def get_transactions(repository, version1, version2, start_time="",
                transaction["existenceendtime"])
         if transaction:
           transactions.append(transaction)
+  if(display):
+     print(transactions)
   return transactions
