@@ -116,14 +116,23 @@ def create_scenario_using_gml_dates(repository, userversions, userversiontransit
   with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
     json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
 
-def create_scenario(repository, userversions, userversiontransitions, title, description):
+def create_scenario(repository, userversions, userversiontransitions, title, description, scenariontype="proposition"):
   scenario = dict() 
   jsonfile = None
   versionsmetadata = dict()
   try:
     with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
       scenario = json.load(jsonfile)
+      if(scenariontype == "consensus"):
+        #verify that there is only one consensus scenario
+        for (scenarioid in scenario):
+          if("type" in scenario[scenarioid]):
+            if(scenario[scenarioid]["type"] == "consensus" and
+              scenarioid != title):
+              print("Consensus scenario already exists." +
+                "Only one consensus scenario can be created")
       scenario[title]["title"] = title
+      scenario[title]["type"] = scenariontype 
       scenario[title]["description"] = description
   except:
     scenario[title] = dict({"title": title, "description": description})

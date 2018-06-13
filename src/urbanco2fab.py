@@ -72,12 +72,16 @@ elif (args.operation == "log"):
     else:
       version.get_version_wrt_time(False, parse(args.time[0]))
 elif (args.operation == "add"):
+  scenariotype = "proposition"
+  if(args.scenariotype is not None):
+    scenariotype = args.scenariotype[0]
   if (args.scenario is not None):
     if (args.version is not None  and args.versiontransition is not None 
           and args.workspace is not None and 
           args.description is not None):
       scenario.create_scenario(args.workspace[0], args.version, 
-           args.versiontransition, ' '.join(args.scenario), args.description[0])
+           args.versiontransition, ' '.join(args.scenario), args.description[0],
+           scenariotype)
   elif (args.workspace is None):
     cwd = os.getcwd()
     workspace.add(cwd, args.path)
