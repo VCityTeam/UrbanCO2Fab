@@ -186,7 +186,6 @@ def tag(repository, scenarioid, tags):
           scenarios[scenarioid]["tag"] = {}
         tagset = set(scenarios[scenarioid]["tag"]).union(tags)
         scenarios[scenarioid]["tag"] = list(tagset)
-        print(scenarios)
     with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
       json.dump(scenarios, jsonfile,  indent=4, sort_keys=True) 
       workspace.basic_commit(repository, "saving urbanco2fab metadata");

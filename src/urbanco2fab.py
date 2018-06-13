@@ -30,6 +30,8 @@ scenariogroup.add_argument("-st", '--scenariotype', help="type of scenario",
           type=str, choices=['consensus', 'proposition'])
 
 
+parser.add_argument("-b", '--bare', help="bare repository", const='bare',
+                     required=False, action='store_const')
 parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
 parser.add_argument("-g", "--tag", nargs='+', help="tag")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
@@ -95,13 +97,16 @@ elif (args.operation == "push"):
     cwd = os.getcwd()
     workspace.push(cwd)
 elif (args.operation == "init"):
+  bare = False
+  if (args.bare is not None):
+    bare = True
   if (args.path is not None):
-    workspace.init(args.path[0])
+    workspace.init(args.path[0], bare)
   elif (len(args.arguments) > 0):
-    workspace.init(args.arguments[0])
+    workspace.init(args.arguments[0], bare)
   else:
     cwd = os.getcwd()
-    workspace.init(cwd)
+    workspace.init(cwd, bare)
 elif (args.operation == "rm"):
   workspacepath = os.getcwd()
   if (args.workspace is not None) :
@@ -168,19 +173,22 @@ elif (args.operation == "tag"):
   else:
     print("Commit message or scenario is empty")
 elif (args.operation == "clone"):
+  bare = False
+  if (args.bare is not None):
+    bare = True
   workspace_name = None
-  if (len(args.arguments)>0):
-    workspace_name = args.arguments[0] 
+  if (len(args.path)>0):
+    workspace_name = args.path[0] 
   if (args.workspace is not None) :
     workspace_name = args.workspace[0]
   if (workspace_name == None):
     print("Check the workspace")
   else:
-    if (args.path is not None):
-      workspace.clone(workspace_name, args.path[0])
+    if (args.path is not None and len(args.path) > 1):
+      workspace.clone(workspace_name, args.path[1], bare)
     else:
       cwd = os.getcwd()
-      workspace.clone(workspace_name, cwd)
+      workspace.clone(workspace_name, cwd, bare)
 elif (args.operation == "diff"):
   if (len(args.path) == 2):
     workspacepath = os.getcwd()

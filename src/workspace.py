@@ -55,6 +55,7 @@ def init(path, bare=False):
     if(path is not None):
       if(bare):
         repo = init_repository(path, bare=True)
+        return
       else:
         repo = init_repository(path)
 
