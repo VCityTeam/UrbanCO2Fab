@@ -156,11 +156,15 @@ elif (args.operation == "tag"):
   workspacepath = os.getcwd()
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
-  if (args.message is not None and args.scenario is not None):
+  if (args.message is not None):
     if (args.version is not None):
-      workspace.tag(workspacepath, ' '.join(args.scenario), args.message, args.version[0])
-    else:
-      scenario.tag(workspacepath, ' '.join(args.scenario), args.message)
+      version.tag(workspacepath, args.version[0], args.message)
+    elif (args.scenario is not None):
+      if (args.versiontransition is not None):
+        versiontransition.tag(workspacepath, ' '.join(args.scenario), 
+           args.versiontransition[0], args.message)
+      else:
+        scenario.tag(workspacepath, ' '.join(args.scenario), args.message)
   else:
     print("Commit message or scenario is empty")
 elif (args.operation == "clone"):

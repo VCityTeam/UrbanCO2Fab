@@ -71,7 +71,7 @@ def create_scenario_using_gml_dates(repository, userversions, userversiontransit
       labels.append(label)
       tzinfo  = timezone( timedelta(minutes=commit.author.offset) )
       commit_time = datetime.fromtimestamp(commit.author.time,tzinfo).strftime("%Y-%m-%dT%H:%M:%S%z")
-      scenario[title]["versions"][data[0]] = dict({"label": label, "existencestarttime": str(startdate), "type": versiontype, "agentidentifier" : commit.author.name,
+      scenario[title]["versions"][data[0]] = dict({"title": label, "existencestarttime": str(startdate), "type": versiontype, "agentidentifier" : commit.author.name,
                        "existenceendtime" : str(enddate), "transactionstarttime" : commit_time, "transactionendtime": commit_time})
     else:
       raise error.InputError("Unrecognized version value (version:[type:label])")
@@ -105,7 +105,7 @@ def create_scenario_using_gml_dates(repository, userversions, userversiontransit
            {"from" : data[0], "to": data[1], "type": transitiontype,
             "existencestarttime": scenario[title]["versions"][data[0]]["existenceendtime"],
             "existenceendtime": scenario[title]["versions"][data[1]]["existencestarttime"],
-            "label" : label,
+            "title" : label,
             "transactions" : transactions 
            }
          )
@@ -164,7 +164,7 @@ def create_scenario(repository, userversions, userversiontransitions, title, des
            {"from" : data[0], "to": data[1], "type": transitiontype,
             "existencestarttime": versionsmetadata[data[0]]["existenceendtime"],
             "existenceendtime": versionsmetadata[data[1]]["existencestarttime"],
-            "label" : label,
+            "title" : label,
             "transactions" : transactions 
            }
          )
@@ -181,7 +181,11 @@ def tag(repository, scenarioid, tags):
     with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
       scenarios = json.load(jsonfile)
       if (scenarioid in scenarios):
-        scenarios[scenarioid]["tags"] = scenarios[scenarioid]["tags"] + tags
+        tagset = {}
+        if ("tag" not in scenarios[scenarioid]):
+          scenarios[scenarioid]["tag"] = {}
+        tagset = set(scenarios[scenarioid]["tag"]).union(tags)
+        scenarios[scenarioid]["tag"] = list(tagset)
         print(scenarios)
     with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
       json.dump(scenarios, jsonfile,  indent=4, sort_keys=True) 

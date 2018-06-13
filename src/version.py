@@ -1,4 +1,5 @@
 import json
+import workspace
 import datetime
 from dateutil.parser import parse
 
@@ -74,3 +75,19 @@ def write_version(identifier, startime, endtime, storetransactionstarttime,
   with open(".urbanco2fab/versions.json", "w") as jsonfile:
     json.dump(versions, jsonfile,  indent=4, sort_keys=True) 
     jsonfile.close()
+
+def tag(repository, versionid, tags):
+  try:
+    with open("./.urbanco2fab/versions.json", "r") as jsonfile:
+      versions = json.load(jsonfile)
+      if (versionid in versions):
+        tagset = {}
+        if ("tag" not in versions[versionid]):
+          versions[versionid]["tag"] = tagset
+        tagset = set(versions[versionid]["tag"]).union(tags)
+        versions[versionid]["tag"] = list(tagset)
+    with open("./.urbanco2fab/versions.json", "w") as jsonfile:
+      json.dump(versions, jsonfile,  indent=4, sort_keys=True) 
+      workspace.basic_commit(repository, "saving urbanco2fab metadata");
+  except Exception as e:
+     print("Error in tagging: " + e);
