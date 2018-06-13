@@ -3,6 +3,7 @@ from pygit2 import Repository
 import xmlparser
 from datetime import datetime, timezone, timedelta
 import json
+import workspace
 import diff
 
 def get_scenario(scenarioids, display=True):
@@ -176,3 +177,4 @@ def create_scenario(repository, userversions, userversiontransitions, title, des
 
   with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
     json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
+  workspace.basic_commit(repository, "saving urbanco2fab metadata");
