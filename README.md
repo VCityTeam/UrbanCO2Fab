@@ -3,14 +3,25 @@
 
 ## init 
 =========================
+$ urbanco2fab init . --bare
+creates a bare repository (especially main repository).
+
 $ urbanco2fab init .
 
-Initialize urbanco2fab directory. A .urbanco2fab directory along with .git will be created for managing the metadata.
+Initialize urbanco2fab directory. 
+
+In both cases, a .urbanco2fab directory along with .git will be created for managing the metadata.
+
+## clone
+=========================
+$ urbanco2fab clone URL
+
+clones a urbanco2fab workspace to the current directory.
 
 ## add
 =========================
 $ urbanco2fab add filename
-Add a file to urbanco2fab (stage)
+Add a (CityGML) file to urbanco2fab (stage)
 
 ## commit
 =========================
@@ -34,6 +45,9 @@ creates a scenario with two versions
 
 ## show
 =========================
+$ urbanco2fab show
+show the details of the current workspace
+
 $ urbanco2fab show -v all
 
 show all the versions
