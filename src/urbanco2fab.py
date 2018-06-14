@@ -63,6 +63,8 @@ if (args.operation == "show"):
       version.get_version(args.version)
   elif (args.versiontransition is not None):
     versiontransition.get_versiontransition(args.versiontransition)
+  else:
+    workspace.get_workspace()
 elif (args.operation == "log"):
   if (args.historical == "historical"):
     if(args.time is None):
@@ -75,17 +77,7 @@ elif (args.operation == "log"):
     else:
       version.get_version_wrt_time(False, parse(args.time[0]))
 elif (args.operation == "add"):
-  scenariotype = "proposition"
-  if(args.scenariotype is not None):
-    scenariotype = args.scenariotype[0]
-  if (args.scenario is not None):
-    if (args.version is not None  and args.versiontransition is not None 
-          and args.workspace is not None and 
-          args.description is not None):
-      scenario.create_scenario(args.workspace[0], args.version, 
-           args.versiontransition, ' '.join(args.scenario), args.description[0],
-           scenariotype)
-  elif (args.workspace is None):
+  if (args.workspace is None):
     cwd = os.getcwd()
     workspace.add(cwd, args.path)
   else:
@@ -140,7 +132,10 @@ elif (args.operation == "commit"):
     versiontype = args.versiontype
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
-  if (args.consensus is not None or args.proposition is not none):
+  scenariotype = "proposition"
+  if(args.scenariotype is not None):
+    scenariotype = args.scenariotype[0]
+  if (args.consensus is not None or args.proposition is not None):
     consensus = []
     propositions = []
     influence = []

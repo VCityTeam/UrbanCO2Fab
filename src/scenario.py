@@ -28,6 +28,7 @@ def get_scenario(scenarioid, display=True):
       all_scenarios.append(scenarios[scenarioid])
       if(display):
         print("scenario: " + scenarioid)
+        print("type: " + scenarios[scenarioid]["type"])
         print("  versions: ")
         for version in scenarios[scenarioid]["versions"]:
             print("    " + version)
