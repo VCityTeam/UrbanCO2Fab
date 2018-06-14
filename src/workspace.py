@@ -163,20 +163,22 @@ def create_workspace(repository, consensusscenario, propositions, influence=[]):
   try:
     with open("./.urbanco2fab/workspace.json", "r") as jsonfile:
       workspace = json.load(jsonfile)
-      if(len(consensusscenario) != 0):
+      if(len(consensusscenario) != 1):
         print("Only one consensus scenario allowed")
         exit(1)
+      scenario.verify_scenario(consensusscenario[0])
+      scenario.verify_scenarios(propositions)
       workspace["consensus"] = consensusscenario[0]
-      propositionset = {}
+      propositionset = set()
       if("propositions" in workspace):
-        propositionset = workspace["propositions"]
-        workspace["propositions"] = list(propositionset.union(set(propositions)))
-      influenceset = {}
+        propositionset = set(workspace["propositions"])
+      workspace["propositions"] = list(propositionset.union(set(propositions)))
+      influenceset = set()
       if("influence" in workspace):
-        influenceset = workspace["influence"]
-        version.verify_influence(influence)
+        influenceset = set(workspace["influence"])
+      version.verify_influence(influence)
         # if here no exceptions are thrown
-        workspace["influence"] = list(influenceset.union(set(influence)))
+      workspace["influence"] = list(influenceset.union(set(influence)))
     with open("./.urbanco2fab/workspace.json", "w") as jsonfile:
       json.dump(workspace, jsonfile,  indent=4, sort_keys=True) 
       basic_commit(repository, "saving urbanco2fab metadata");

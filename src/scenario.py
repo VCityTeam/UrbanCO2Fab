@@ -6,6 +6,19 @@ import json
 import workspace
 import diff
 
+def verify_scenario(scenarioid):
+  with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
+    scenarios = json.load(jsonfile)
+    if(scenarioid not in scenarios):
+      raise ValueError('Unrecognized scenario: ' + scenarioid)
+
+def verify_scenarios(scenarioids):
+  with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
+    scenarios = json.load(jsonfile)
+    for scenarioid in scenarioids:
+      if(scenarioid not in scenarios):
+        raise ValueError('Unrecognized scenario: ' + scenarioid)
+
 def get_scenario(scenarioid, display=True):
   all_scenarios = []
   with open("./.urbanco2fab/scenarios.json") as jsonfile:
@@ -125,7 +138,7 @@ def create_scenario(repository, userversions, userversiontransitions, title, des
       scenario = json.load(jsonfile)
       if(scenariontype == "consensus"):
         #verify that there is only one consensus scenario
-        for (scenarioid in scenario):
+        for scenarioid in scenario:
           if("type" in scenario[scenarioid]):
             if(scenario[scenarioid]["type"] == "consensus" and
               scenarioid != title):

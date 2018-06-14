@@ -12,11 +12,17 @@ def verify_influence(influences):
       if(len(data)!=2):
         raise ValueError('Influence is between two versions')
       if(data[0] not in versions):
-        raise ValueError('Unrecognized version'+ data [0])
+        raise ValueError('Unrecognized version: '+ data [0])
       if(data[1] not in versions):
-        raise ValueError('Unrecognized version'+ data [1])
-      diff.verify_dates(versions[data[0]]["existenceendtime"],)
+        raise ValueError('Unrecognized version: '+ data [1])
+      diff.verify_dates(versions[data[0]]["existenceendtime"],
            versions[data[1]]["existencestarttime"])
+      if ((versions[data[0]]["type"] == "existing"
+          and versions[data[1]]["type"] == "imagined") or
+         (versions[data[0]]["type"] == "imagined"
+          and versions[data[1]]["type"] == "existing")):
+        raise ValueError('Influence can only between two imagined versions'+
+           ' or from imagined to exisitng version')
    #no exception received
 
 def get_all(display=True):
