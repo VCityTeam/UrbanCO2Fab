@@ -7,7 +7,7 @@ from dateutil.parser import parse
 
 def verify_dates(time1, time2):
   if(parse(time1) > parse(time2)):
-     print("Check existence times")
+     raise ValueError('Check existence times of version')
 
 def get_transactions(repository, version1, version2, start_time="",
        end_time="", use_citygml=False, display=False):

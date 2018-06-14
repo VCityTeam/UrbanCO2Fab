@@ -39,6 +39,8 @@ parser.add_argument("-m", "--message", nargs='+', help="message")
 parser.add_argument("-i", "--time", nargs='+', help="one or more times")
 parser.add_argument("-d", "--description", nargs=1, help="description of scenario")
 parser.add_argument("-s", "--scenario", nargs='+', help="scenario related operations")
+parser.add_argument("-c", "--consensus", nargs=1, help="consensus scenario")
+parser.add_argument("-p", "--proposition", nargs='+', help="proposition scenarios")
 parser.add_argument("-v", "--version", nargs='+', help="versions (or commit identifiers) version:type:label, where type can be Existing or Imagined and label can be a string of characters using single or double quotes")
 parser.add_argument("-vt", "--versiontransition", nargs='+', help="list of pairs of versions (or commit identifiers) version1:version2:type:label, where type can be Regular or Influence and label can be a string of characters using single or double quotes")
 parser.add_argument('operation', help="operation to perform",
@@ -145,6 +147,18 @@ elif (args.operation == "commit"):
     if (args.version is not None  and args.versiontransition is not None):
       scenario.create_scenario(workspacepath, args.version, 
            args.versiontransition, ' '.join(args.scenario), description)
+    exit(1)
+  if (args.consensus is not None or args.proposition is not none):
+    consensus = []
+    propositions = []
+    influence = []
+    if (args.consensus is not None):
+      consensus = args.consensus
+    if (args.proposition is not None):
+      proposition = args.proposition
+    if (args.influence is not None):
+      influence = args.influence
+    workspace.create_workspace(workspacepath, consensus, proposition, influence)
     exit(1)
   if (args.time is None):
     print("usage: urbanco2fab commit -m 'message' --time 't1,t2' ")

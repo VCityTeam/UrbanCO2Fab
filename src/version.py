@@ -1,7 +1,23 @@
 import json
+import diff
 import workspace
 import datetime
 from dateutil.parser import parse
+
+def verify_influence(influences):
+  with open("./.urbanco2fab/versions.json") as jsonfile:
+    versions = json.load(jsonfile)
+    for influence in influences:
+      data = influence.split(":")
+      if(len(data)!=2):
+        raise ValueError('Influence is between two versions')
+      if(data[0] not in versions):
+        raise ValueError('Unrecognized version'+ data [0])
+      if(data[1] not in versions):
+        raise ValueError('Unrecognized version'+ data [1])
+      diff.verify_dates(versions[data[0]]["existenceendtime"],)
+           versions[data[1]]["existencestarttime"])
+   #no exception received
 
 def get_all(display=True):
   all_versions = []

@@ -63,7 +63,7 @@ def init(path, bare=False):
       os.makedirs(path + "/.urbanco2fab") 
       repo = Repository(path)
       empty = dict() 
-      for filename in ["scenarios.json", "versions.json"]:
+      for filename in ["scenarios.json", "versions.json", "workspace.json"]:
         with open(path + "/.urbanco2fab/" + filename, "w") as jsonfile:
           json.dump(empty, jsonfile,  indent=4, sort_keys=True) 
           jsonfile.close()
@@ -159,3 +159,26 @@ def commit(workspace, message, starttime, endtime,
   except Exception as e:
     print("Unable to commit to UrbanCo2Fab repository: " + str(e))
 
+def create_workspace(repository, consensusscenario, propositions, influence=[]):
+  try:
+    with open("./.urbanco2fab/workspace.json", "r") as jsonfile:
+      workspace = json.load(jsonfile)
+      if(len(consensusscenario) != 0):
+        print("Only one consensus scenario allowed")
+        exit(1)
+      workspace["consensus"] = consensusscenario[0]
+      propositionset = {}
+      if("propositions" in workspace):
+        propositionset = workspace["propositions"]
+        workspace["propositions"] = list(propositionset.union(set(propositions)))
+      influenceset = {}
+      if("influence" in workspace):
+        influenceset = workspace["influence"]
+        version.verify_influence(influence)
+        # if here no exceptions are thrown
+        workspace["influence"] = list(influenceset.union(set(influence)))
+    with open("./.urbanco2fab/workspace.json", "w") as jsonfile:
+      json.dump(workspace, jsonfile,  indent=4, sort_keys=True) 
+      basic_commit(repository, "saving urbanco2fab metadata");
+  except Exception as e:
+    print("Unable to create UrbanCo2Fab workspace: " + str(e))
