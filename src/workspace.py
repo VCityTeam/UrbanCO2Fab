@@ -184,3 +184,17 @@ def create_workspace(repository, consensusscenario, propositions, influence=[]):
       basic_commit(repository, "saving urbanco2fab metadata");
   except Exception as e:
     print("Unable to create UrbanCo2Fab workspace: " + str(e))
+
+def get_workspace():
+  try:
+    with open("./.urbanco2fab/workspace.json", "r") as jsonfile:
+      workspace = json.load(jsonfile)
+      print("consensus: " + workspace["consensus"])
+      print("propositions: ")
+      for proposition in workspace["propositions"]:
+        print("      " + proposition)
+      print("influences: ")
+      for influence in workspace["influence"]:
+        print("      " + influence)
+  except Exception as e:
+    print("Unable to open UrbanCo2Fab workspace: " + str(e))
