@@ -1,4 +1,5 @@
 import argparse
+import visualization
 import scenario
 import workspace
 import version
@@ -46,7 +47,7 @@ parser.add_argument("-v", "--version", nargs='+', help="versions (or commit iden
 parser.add_argument("-vt", "--versiontransition", nargs='+', help="list of pairs of versions (or commit identifiers) version1:version2:type:label, where type can be Regular or Influence and label can be a string of characters using single or double quotes")
 parser.add_argument('operation', help="operation to perform",
           type=str, choices=['add', 'mv', 'rm', 'commit', 'show', 'tag', 'log', 'diff',
-                             'clone', 'init', 'fetch', 'pull', 'push',
+                             'clone', 'init', 'fetch', 'pull', 'push', 'viz',
                              'checkout'])
 parser.add_argument('path', help="path of files", nargs='*')
 parser.add_argument('arguments', metavar='A', type=str, nargs='*',
@@ -210,5 +211,7 @@ elif (args.operation == "diff"):
         args.path[1], display=True)
   else:
     print("Diff takes two arguments, given "+ str(len(args.path)))
+elif (args.operation == "viz"):
+  visualization.show()
 else:
   print(parser.print_help())
