@@ -6,6 +6,13 @@ import json
 import workspace
 import diff
 
+def get_versions(scenarioid):
+  with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
+    scenarios = json.load(jsonfile)
+    if(scenarioid not in scenarios):
+      raise ValueError('Unrecognized scenario: ' + scenarioid)
+    return set(scenarios[scenarioid]["versions"])
+
 def verify_scenario(scenarioid):
   with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
     scenarios = json.load(jsonfile)

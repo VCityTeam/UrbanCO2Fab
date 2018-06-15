@@ -159,10 +159,13 @@ def commit(workspace, message, starttime, endtime,
   except Exception as e:
     print("Unable to commit to UrbanCo2Fab repository: " + str(e))
 
+
 def create_workspace(repository, consensusscenario, propositions, influence=[]):
   try:
     with open("./.urbanco2fab/workspace.json", "r") as jsonfile:
       workspace = json.load(jsonfile)
+    with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
+      scenarios = json.load(jsonfile)
       if(len(consensusscenario) != 1):
         print("Only one consensus scenario allowed")
         exit(1)
@@ -173,6 +176,16 @@ def create_workspace(repository, consensusscenario, propositions, influence=[]):
       if("propositions" in workspace):
         propositionset = set(workspace["propositions"])
       workspace["propositions"] = list(propositionset.union(set(propositions)))
+
+      consensusversions = scenario.get_versions(consensusscenario[0])
+      common_version_present = False
+      for propositionscenario in propositionset:
+        propositionversions = scenario.get_versions(propositionscenario)
+        if (len(consensusversions.intersection(propositionversions)) > 0):
+          #common version found
+          common_version_present = True
+      if(common_version_present == False):
+        raise ValueError('No common version found between consensus and proposition scenario')
       influenceset = set()
       if("influence" in workspace):
         influenceset = set(workspace["influence"])
@@ -198,3 +211,4 @@ def get_workspace():
         print("      " + influence)
   except Exception as e:
     print("Unable to open UrbanCo2Fab workspace: " + str(e))
+
