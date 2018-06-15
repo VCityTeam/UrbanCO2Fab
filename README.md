@@ -55,6 +55,11 @@ $  urbanco2fab commit  --tag 'Building' --document building.txt --scenariotype c
 
 creates a scenario with two versions
 
+<pre>
+$ urbanco2fab commit -c 'scenario1' -p scenario3
+</pre>
+creates a workspace with two scenarios
+
 ## show
 <pre>
 $ urbanco2fab show
