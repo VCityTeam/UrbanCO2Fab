@@ -62,7 +62,9 @@ def create_viz():
         arrowhead=none;
         label="consensus";
       '''
-      gitgraphcode = gitgraphcode +'"'+ '"->"'.join(scenarios[workspace["consensus"]]["versions"])+ '"'
+      versionshort = [v[:6] for v in scenarios[workspace["consensus"]]["versions"]]
+      #gitgraphcode = gitgraphcode +'"'+ '"->"'.join(scenarios[workspace["consensus"]]["versions"])+ '"'
+      gitgraphcode = gitgraphcode +'"'+ '"->"'.join(versionshort)+'"'
       gitgraphcode = gitgraphcode + ''';
         }
       '''
@@ -76,7 +78,9 @@ def create_viz():
             ];
             label="''' + scenario + '''";
         '''
-        gitgraphcode = gitgraphcode +'"'+ '"->"'.join(scenarios[scenario]["versions"])+'"'
+        versionshort = [v[:6] for v in scenarios[scenario]["versions"]]
+        #gitgraphcode = gitgraphcode +'"'+ '"->"'.join(scenarios[scenario]["versions"])+'"'
+        gitgraphcode = gitgraphcode +'"'+ '"->"'.join(versionshort)+'"'
         gitgraphcode = gitgraphcode + ''';
         }
         '''
