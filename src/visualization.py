@@ -44,13 +44,12 @@ gitgraphcode = ""
 
 def create_viz():
   with open(vizfilename, "w") as vizfile:
-    copyfile("./viz.js", "/tmp/viz.js")
-    copyfile("./full.render.js", "/tmp/full.render.js")
-    with open("workspace.json") as jsonfile:
+    copyfile(".urbanco2fab/viz.js", "/tmp/viz.js")
+    copyfile(".urbanco2fab/full.render.js", "/tmp/full.render.js")
+    with open(".urbanco2fab/workspace.json") as jsonfile:
       workspace = json.load(jsonfile)
-      with open("scenarios.json") as jsonfile:
+      with open(".urbanco2fab/scenarios.json") as jsonfile:
         scenarios = json.load(jsonfile)
-      print(workspace["consensus"])
       gitgraphcode = ""
       gitgraphcode = gitgraphcode + '''
 	subgraph cluster_0 {
@@ -81,7 +80,6 @@ def create_viz():
         gitgraphcode = gitgraphcode + ''';
         }
         '''
-      print(gitgraphcode)
     
     contents = start + gitgraphcode + end
     vizfile.write(contents)      

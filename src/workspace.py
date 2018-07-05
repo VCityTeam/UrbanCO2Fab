@@ -1,4 +1,5 @@
 import error
+import sys
 import version
 import json
 import scenario
@@ -61,6 +62,9 @@ def init(path, bare=False):
 
       #creating urbanco2fab directory and adding it to git metadata mgmt.
       os.makedirs(path + "/.urbanco2fab") 
+      copyfile(os.path.dirname(__file__)+ "/viz.js", ".urbanco2fab/viz.js")
+      copyfile(os.path.dirname(__file__)+ "/full.render.js", ".urbanco2fab/full.render.js")
+       
       repo = Repository(path)
       empty = dict() 
       for filename in ["scenarios.json", "versions.json", "workspace.json"]:
@@ -68,6 +72,8 @@ def init(path, bare=False):
           json.dump(empty, jsonfile,  indent=4, sort_keys=True) 
           jsonfile.close()
           repo.index.add(".urbanco2fab/"+filename)
+      for filename in ["viz.js", "full.render.js"]:
+        repo.index.add(".urbanco2fab/"+filename)
       repo.index.write()
       basic_commit(path, "Initilizing UrbanCo2Fab")
     else:
@@ -172,16 +178,17 @@ def create_workspace(repository, consensusscenario, propositions, influence=[]):
       scenario.verify_scenario(consensusscenario[0])
       scenario.verify_scenarios(propositions)
       workspace["consensus"] = consensusscenario[0]
-      propositionset = set()
+      propositionset = set(propositions)
       if("propositions" in workspace):
         propositionset = set(workspace["propositions"])
       workspace["propositions"] = list(propositionset.union(set(propositions)))
 
       consensusversions = scenario.get_versions(consensusscenario[0])
       common_version_present = False
+      propositionversions = set()
       for propositionscenario in propositionset:
-        propositionversions = scenario.get_versions(propositionscenario)
-        if (len(consensusversions.intersection(propositionversions)) > 0):
+        propositionversions = propositionversions.union(scenario.get_versions(propositionscenario))
+      if (len(consensusversions.intersection(propositionversions)) > 0):
           #common version found
           common_version_present = True
       if(common_version_present == False):
