@@ -50,7 +50,7 @@ $ urbanco2fab commit --message "First commit" --time '1950-06-05T15:29:54+02:00,
 </pre>
 
 <pre>
-$  urbanco2fab commit  --tag 'Building' --document building.txt --scenariotype consensus --scenario "First scenario" --version 70256c32c6f15b233a0ee84b85116df218229df8 dc3872a240d8edd6b07142a2b5dbd4b1c4d12985  --versiontransition 70256c32c6f15b233a0ee84b85116df218229df8:dc3872a240d8edd6b07142a2b5dbd4b1c4d12985
+$  urbanco2fab commit  --tag 'Building' --document building.txt --scenariotype consensus --scenario "scenario1" --version 70256c32c6f15b233a0ee84b85116df218229df8 dc3872a240d8edd6b07142a2b5dbd4b1c4d12985  --versiontransition 70256c32c6f15b233a0ee84b85116df218229df8:dc3872a240d8edd6b07142a2b5dbd4b1c4d12985
 </pre>
 
 creates a scenario with two versions
