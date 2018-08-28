@@ -60,8 +60,7 @@ def create_viz():
          arrowhead="none"
         ];
         arrowhead=none;
-        label="consensus";
-      '''
+        label="consensus:'''+scenarios[workspace["consensus"]]["title"] + '''";'''
       versionshort = [v[:6] for v in scenarios[workspace["consensus"]]["versions"]]
       #gitgraphcode = gitgraphcode +'"'+ '"->"'.join(scenarios[workspace["consensus"]]["versions"])+ '"'
       gitgraphcode = gitgraphcode +'"'+ '"->"'.join(versionshort)+'"'
