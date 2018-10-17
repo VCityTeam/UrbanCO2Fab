@@ -144,7 +144,7 @@ def basic_commit(workspace, message):
     print("Unable to commit to UrbanCo2Fab repository: " + str(e))
 
 def commit(workspace, message, starttime, endtime,
-       description, tag, document, versiontype):
+       description, tag, document, versiontype, source):
   try:
     repo = Repository(workspace)
     user = repo.default_signature
@@ -160,7 +160,7 @@ def commit(workspace, message, starttime, endtime,
     storetransactionendtime = datetime.fromtimestamp(repo[repo.head.target].author.time,tzinfo).strftime("%Y-%m-%dT%H:%M:%S%z")
     version.write_version(repo.head.target, starttime, endtime, 
         storetransactionendtime, storetransactionendtime, message, description, 
-        tag, document, versiontype, user)
+        tag, document, versiontype, user, source)
     basic_commit(workspace, "saving urbanco2fab metadata");
   except Exception as e:
     print("Unable to commit to UrbanCo2Fab repository: " + str(e))

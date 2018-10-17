@@ -36,6 +36,7 @@ parser.add_argument("-b", '--bare', help="bare repository", const='bare',
 parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
 parser.add_argument("-g", "--tag", nargs='+', help="tag")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
+parser.add_argument("-p", "--source", nargs='+', help="source of a given file")
 parser.add_argument("-m", "--message", nargs='+', help="message")
 parser.add_argument("-i", "--time", nargs='+', help="one or more times")
 parser.add_argument("-d", "--description", nargs=1, help="description of scenario")
@@ -120,6 +121,7 @@ elif (args.operation == "mv"):
 elif (args.operation == "commit"):
   workspacepath = os.getcwd()
   description = ""
+  source = []
   versiontype = "existing"
   tag = []
   document = []
@@ -127,6 +129,8 @@ elif (args.operation == "commit"):
     description = ' '.join(args.description)
   if (args.tag is not None):
     tag = args.tag
+  if (args.source is not None) :
+    source = args.source
   if (args.document is not None) :
     document = args.document
   if (args.versiontype is not None) :
@@ -169,7 +173,7 @@ elif (args.operation == "commit"):
     endtime = timelist[1]
   if (args.message is not None):
     workspace.commit(workspacepath, ' '.join(args.message), starttime, endtime,
-         description, tag, document, versiontype)
+         description, tag, document, versiontype, source)
   else:
     print("Commit message is empty")
 elif (args.operation == "tag"):
