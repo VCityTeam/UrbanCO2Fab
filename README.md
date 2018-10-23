@@ -60,6 +60,12 @@ $ urbanco2fab commit -c 'scenario1' -p scenario3
 </pre>
 creates a workspace with two scenarios
 
+<pre>
+$ urbanco2fab commit --message "First commit" --time '1950-06-05T15:29:54+02:00,1954-06-05T15:29:54+02:00' --tag 'Building' --document building.txt --source http://example.com/example.gml 
+</pre>
+
+also specifies the provenance of the files using the --source option.
+
 ## show
 <pre>
 $ urbanco2fab show

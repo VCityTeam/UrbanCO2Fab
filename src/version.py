@@ -74,7 +74,7 @@ def get_version_wrt_time(past, time):
 
 def write_version(identifier, startime, endtime, storetransactionstarttime, 
         storetransactionendtime, 
-        title, description=None, tag=None, document=None, versiontype="existing", userid=None):
+        title, description=None, tag=None, document=None, versiontype="existing", userid=None, source=None):
   version = dict()
   if(parse(startime) > parse(endtime)):
     print("Start of physical existence time greater than end time")
@@ -87,6 +87,7 @@ def write_version(identifier, startime, endtime, storetransactionstarttime,
   version["title"] = title
   version["description"] = description
   version["tag"] = tag
+  version["source"] = source
   version["type"] = versiontype
   version["document"] = document
   version["userid"] = userid.name

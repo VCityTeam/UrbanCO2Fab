@@ -36,7 +36,7 @@ parser.add_argument("-b", '--bare', help="bare repository", const='bare',
 parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
 parser.add_argument("-g", "--tag", nargs='+', help="tag")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
-parser.add_argument("-p", "--source", nargs='+', help="source of a given file")
+parser.add_argument("-r", "--source", nargs='+', help="source of a given file(s)")
 parser.add_argument("-m", "--message", nargs='+', help="message")
 parser.add_argument("-i", "--time", nargs='+', help="one or more times")
 parser.add_argument("-d", "--description", nargs=1, help="description of scenario")
