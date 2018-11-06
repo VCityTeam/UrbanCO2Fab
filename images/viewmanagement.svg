@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="viewmanagement.svg">
+   sodipodi:docname="viewmanagement.svg"
+   inkscape:export-filename="/home/john/UrbanCO2Fab/images/viewmanagement.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,7 +29,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.91974206"
-     inkscape:cx="561.25984"
+     inkscape:cx="301.94801"
      inkscape:cy="396.85039"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -44,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -54,7 +57,7 @@
      id="layer1"
      transform="translate(0,-87)">
     <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#aa0000;stroke-width:1.05833328;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#280b0b;stroke-width:1.05833328;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect815"
        width="122.26028"
        height="23.301369"
@@ -66,9 +69,9 @@
        height="23.301369"
        width="122.26028"
        id="rect817"
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#aa0000;stroke-width:1.05833333;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#280b0b;stroke-width:1.05833333;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#aa0000;stroke-width:1.08972061;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#280b0b;stroke-width:1.08972061;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect842"
        width="129.61963"
        height="23.301369"
@@ -76,7 +79,7 @@
        y="131.17809"
        transform="matrix(0,1,1,0,0,0)" />
     <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#aa0000;stroke-width:1.10931587;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#280b0b;stroke-width:1.10931587;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect846"
        width="106.01344"
        height="23.451788"
@@ -85,23 +88,23 @@
        transform="matrix(0,1,1,0,0,0)" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:#280b0b;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        x="145.15518"
        y="246.92018"
        id="text850"><tspan
          sodipodi:role="line"
          x="145.15518"
          y="246.92018"
-         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
+         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px;stroke:#280b0b;"
          id="tspan852">Data View Management</tspan></text>
     <text
        id="text858"
        y="268.61609"
        x="143.03854"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:#280b0b;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        xml:space="preserve"><tspan
          id="tspan856"
-         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
+         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px;stroke:#280b0b;"
          y="268.61609"
          x="143.03854"
          sodipodi:role="line">UrbanCo2Fab</tspan></text>
@@ -109,17 +112,17 @@
        id="text866"
        y="146.30345"
        x="-167.44736"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:#280b0b;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        xml:space="preserve"
        transform="rotate(-90)"><tspan
          id="tspan864"
-         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
+         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px;stroke:#280b0b;"
          y="146.30345"
          x="-167.44736"
          sodipodi:role="line">Domain-specific view management</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:#280b0b;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        x="-154.7079"
        y="167.95937"
        id="text870"
@@ -127,17 +130,17 @@
          sodipodi:role="line"
          x="-154.7079"
          y="167.95937"
-         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
+         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px;stroke:#280b0b;"
          id="tspan868">Urban view managment</tspan></text>
     <text
        id="text874"
        y="121.96201"
        x="-156.86417"
-       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:#280b0b;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
        xml:space="preserve"
        transform="rotate(-90)"><tspan
          id="tspan872"
-         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px"
+         style="font-size:7.05555534px;line-height:109.00000334%;text-align:center;text-anchor:middle;stroke-width:0.26458332px;stroke:#280b0b;"
          y="121.96201"
          x="-156.86417"
          sodipodi:role="line">Histrorical view managment</tspan></text>
@@ -148,6 +151,6 @@
        height="23.451788"
        width="106.01344"
        id="rect876"
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#aa0000;stroke-width:1.10931587;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#280b0b;stroke-width:1.10931587;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
   </g>
 </svg>
