@@ -144,6 +144,8 @@ def create_scenario(repository, userversions, userversiontransitions, title, des
   try:
     with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
       scenario = json.load(jsonfile)
+      if(title in scenarios):
+        raise ValueError('Existing scenario: ' + title+ ", change title")
       if(scenariontype == "consensus"):
         #verify that there is only one consensus scenario
         for scenarioid in scenario:
