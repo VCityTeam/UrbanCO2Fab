@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+     "propertyNames" : {
+       "pattern" : "^[0-9a-z]*$"
+     },
+     "type" : "object",
+     "properties": {
+         "description": { "type": "string" },
+         "document": { "type": "array",
+                       "items": {"type": "string"}  },
+         "existenceendtime": { "type": "string" },
+         "existencestarttime": { "type": "string" },
+         "identifier": { "type": "string" },
+         "source": { "type": "array",
+                       "items": {"type": "string"}  },
+         "storetransactionendtime": { "type": "string" },
+         "storetransactionstarttime": { "type": "string" },
+         "tag": { "type": "array",
+                       "items": {"type": "string"}  },
+         "title": { "type": "string" },
+         "type": { "type": "string" },
+         "userid": { "type": "string"}
+     },
+     "required": ["existencestarttime", "existenceendtime",
+                  "identifier", "title", "description", "type", "source",
+                  "storetransactionstarttime", "storetransactionendtime"]
+  }
+}
