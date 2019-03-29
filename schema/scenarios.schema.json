@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+     "propertyNames" : {
+       "pattern" : "^[0-9a-z]*$"
+     },
+     "type" : "object",
+     "properties": {
+         "identifier": { "type": "string" },
+         "description": { "type": "string" },
+         "tag": { "type": "array",
+                       "items": {"type": "string"}  },
+         "title": { "type": "string" },
+         "versions": { "type": "array",
+                       "items": {"type": "string"}  },
+         "storetransactionendtime": { "type": "string" },
+         "storetransactionstarttime": { "type": "string" },
+         "versiontransitions": { 
+            "type": "array",
+            "items": {
+               "type": "object",
+               "properties": {
+                  "identifier": { "type": "string" },
+                  "description": { "type": "string" },
+                  "title": { "type": "string" },
+                  "from": { "type": "string" },
+                  "to": { "type": "string" },
+                  "existencestarttime": { "type": "string" },
+                  "existenceendtime": { "type": "string" },
+                  "transactions" : { 
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                         "featureid": { "type": "string" },
+                         "type": { "type": "string" },
+                         "existencestarttime": { "type": "string" },
+                         "existenceendtime": { "type": "string" }
+                      }
+                    }
+                  }
+               }
+            }
+         } 
+      }
+   },
+   "required": ["identifier", "title", "description"]
+}

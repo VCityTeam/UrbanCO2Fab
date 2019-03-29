@@ -24,7 +24,7 @@
          "userid": { "type": "string"}
      },
      "required": ["existencestarttime", "existenceendtime",
-                  "identifier", "storetransactionstarttime",
-                  "storetransactionendtime"]
+                  "identifier", "title", "description", "type", "source",
+                  "storetransactionstarttime", "storetransactionendtime"]
   }
 }
