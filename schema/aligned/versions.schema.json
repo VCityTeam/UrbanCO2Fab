@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type" : "object",
+  "properties": {
+      "id": { "description": "version identifier", "type": "string" },
+      "name": { "type": "string" },
+      "description": { "type": "string" },
+      "startDate": { "type": "string", "format" : "date"},
+      "endDate": { "type": "string", "format" : "date"},
+      "tags": { "type": "array",
+                    "items": {"type": "string"}  },
+      "versionMembers": { "type": "array",
+                    "items": {"type": "string"}  }
+  },
+  "required": ["startDate", "endDate",
+               "id", "name", "description", "tags", "versionMembers"]
+}

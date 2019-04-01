@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+     "propertyNames" : {
+       "pattern" : "^[0-9a-z]*$"
+     },
+     "type" : "object",
+     "properties": {
+         "identifier": { "type": "string" },
+         "description": { "type": "string" },
+         "tag": { "type": "array",
+                       "items": {"type": "string"}  },
+         "title": { "type": "string" },
+         "versions": { "type": "array",
+                       "items": {"$ref": "versions.schema.json"}  },
+         "versiontransitions": { "type": "array",
+                       "items": {"$ref": "versiontransitions.schema.json"}  },
+         "transactions" : { "type": "array",
+                       "items": {"$ref": "transactions.schema.json"}  }
+      }
+   },
+   "required": ["identifier", "title", "description"]
+}

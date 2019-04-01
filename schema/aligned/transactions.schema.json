@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+   "type" : "object",
+   "id" : "transactions.schema.json",
+   "title" : "transactions.schema.json",
+   "properties": {
+      "id": { "type": "string" },
+      "type": { "type": "string", "enum": ["insert", "delete", "replace"] },
+      "startDate": { "type": "string", "format": "date" },
+      "endDate": { "type": "string", "format" : "date" },
+      "oldFeatures": { "type": "array", 
+                       "items" : {"type": "string"} },
+      "newFeatures": { "type": "array", 
+                       "items" : {"type": "string"} },
+      "tags": { "type": "array",
+                "items": {"type": "string"}  }
+   },
+   "required": ["identifier", "title", "description"]
+}
