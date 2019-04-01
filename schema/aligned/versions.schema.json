@@ -9,7 +9,7 @@
       "endDate": { "type": "string", "format" : "date"},
       "tags": { "type": "array",
                     "items": {"type": "string"}  },
-      "versionMembers": { "type": "array",
+      "featureIds": { "type": "array",
                     "items": {"type": "string"}  }
   },
   "required": ["startDate", "endDate",
