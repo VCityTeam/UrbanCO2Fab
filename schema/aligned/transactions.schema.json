@@ -6,8 +6,6 @@
    "properties": {
       "id": { "type": "string" },
       "type": { "type": "string", "enum": ["insert", "delete", "replace"] },
-      "startDate": { "type": "string", "format": "date" },
-      "endDate": { "type": "string", "format" : "date" },
       "oldFeaturesIds": { "type": "array", 
                        "items" : {"type": "string"} },
       "newFeaturesIds": { "type": "array", 
