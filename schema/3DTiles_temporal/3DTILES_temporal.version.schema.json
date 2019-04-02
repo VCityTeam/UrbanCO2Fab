@@ -31,8 +31,7 @@
       "items": {"type": "string"}
     },
     "featureIds": {
-      "description": "Array of Features Ids composing the version (stored in
-      the 3DTILES_temporal extension of the batch table)",
+      "description": "Array of Features Ids composing the version (stored in the 3DTILES_temporal extension of the batch table)",
       "type": "array",
       "items": {"type": "string"}
     },

@@ -3,8 +3,7 @@
   "id": "3DTILES_temporal.tileset.schema.json",
   "title": "3DTILES_temporal_tileset extension",
   "type": "object",
-  "description": "Specifies the Versions, Versions Transitions and Transactions
-  properties of the 3DTILES_temporal extension",
+  "description": "Specifies the Versions, Versions Transitions and Transactions properties of the 3DTILES_temporal extension",
   "properties": {
     "startDate": {
       "description": "Start date of existence of the tileset in the real world",

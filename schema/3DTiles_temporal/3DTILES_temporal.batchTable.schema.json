@@ -3,12 +3,10 @@
   "id": "3DTILES_temporal.batchTable.schema.json",
   "title": "3DTILES_temporal_batch_table extension",
   "type": "object",
-  "description": "Specifies the properties of 3DTILES_temporal
-  extension stored in the batch table",
+  "description": "Specifies the properties of 3DTILES_temporal extension stored in the batch table",
   "properties": {
     "startDates": {
-      "description": "Start dates of existence of the features in the real world.
-      Dates are organized according to the batch id (same as for the batch table)",
+      "description": "Start dates of existence of the features in the real world. Dates are organized according to the batch id (same as for the batch table)",
       "type": "array",
       "items": {
         "type": "string",
@@ -16,8 +14,7 @@
       }
     },
     "endDates": {
-      "description": "End dates of existence of the features in the real world.
-      Dates are organized according to the batch id (same as for the batch table)",
+      "description": "End dates of existence of the features in the real world. Dates are organized according to the batch id (same as for the batch table)",
       "type": "array",
       "items": {
         "type": "string",
@@ -25,8 +22,7 @@
       }
     },
     "featureIds": {
-      "description": "Array of ids of the features. Used in versions and
-      transactions to identify the features.",
+      "description": "Array of ids of the features. Used in versions and transactions to identify the features.",
       "type": "array",
       "items": {"type": "string"}
     }

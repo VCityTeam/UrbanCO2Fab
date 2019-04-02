@@ -13,25 +13,13 @@
       "type": "string",
       "enum": ["insert", "delete", "replace"]
     },
-    "startDate": {
-      "description": "Start date of the transaction",
-      "type": "string",
-      "format": "date"
-    },
-    "endDate": {
-      "description": "End date of the transaction",
-      "type": "string",
-      "format": "date"
-    },
     "oldFeaturesIds": {
-      "description": "Array of Features Ids (stored in the 3DTILES_temporal
-      extension of the batch table) representing a state before the transaction",
+      "description": "Array of Features Ids (stored in the 3DTILES_temporal extension of the batch table) representing a state before the transaction",
       "type": "array",
       "items": {"type": "string"}
     },
     "newFeaturesIds": {
-      "description": "Array of Features Ids (stored in the 3DTILES_temporal
-      extension of the batch table) representing a state after the transaction",
+      "description": "Array of Features Ids (stored in the 3DTILES_temporal extension of the batch table) representing a state after the transaction",
       "type": "array",
       "items": {"type": "string"}
     },
