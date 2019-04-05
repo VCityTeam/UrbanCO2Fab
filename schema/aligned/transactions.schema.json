@@ -6,11 +6,9 @@
    "properties": {
       "id": { "type": "string" },
       "type": { "type": "string", "enum": ["insert", "delete", "replace"] },
-      "startDate": { "type": "string", "format": "date" },
-      "endDate": { "type": "string", "format" : "date" },
-      "oldFeatures": { "type": "array", 
+      "oldFeaturesIds": { "type": "array", 
                        "items" : {"type": "string"} },
-      "newFeatures": { "type": "array", 
+      "newFeaturesIds": { "type": "array", 
                        "items" : {"type": "string"} },
       "tags": { "type": "array",
                 "items": {"type": "string"}  }

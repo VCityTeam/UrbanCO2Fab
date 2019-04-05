@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "3DTILES_temporal.transaction.schema.json",
+  "title": "3DTILES_temporal_transaction extension",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "identifier of the transaction. Used in versionTransition",
+      "type": "string"
+    },
+    "type": {
+      "description": "Type of transaction",
+      "type": "string",
+      "enum": ["insert", "delete", "replace"]
+    },
+    "oldFeaturesIds": {
+      "description": "Array of Features Ids (stored in the 3DTILES_temporal extension of the batch table) representing a state before the transaction",
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "newFeaturesIds": {
+      "description": "Array of Features Ids (stored in the 3DTILES_temporal extension of the batch table) representing a state after the transaction",
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "tags": {
+      "description": "tags of the transaction",
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}
