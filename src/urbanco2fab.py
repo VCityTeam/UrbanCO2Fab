@@ -35,6 +35,7 @@ parser.add_argument("-b", '--bare', help="bare repository", const='bare',
                      required=False, action='store_const')
 parser.add_argument("-w", "--workspace", nargs=1, help="workspace")
 parser.add_argument("-g", "--tag", nargs='+', help="tag")
+parser.add_argument("-f", "--graph", nargs='+', help="difference graph, if available between versions")
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
 parser.add_argument("-r", "--source", nargs='+', help="source of a given file(s)")
 parser.add_argument("-m", "--message", nargs='+', help="message")
@@ -155,10 +156,14 @@ elif (args.operation == "commit"):
   if (args.scenario is not None):
     if (args.version is None or args.versiontransition is None):
       print("usage: urbanco2fab commit -s 'scenario name' --version v1 v2' "+
-             "--versiontransition v1-v2")
+             "--versiontransition v1-v2 [--graph file+]")
       exit(1)
     if (args.version is not None  and args.versiontransition is not None):
-      scenario.create_scenario(workspacepath, args.version, 
+      if (args.graph is not None):
+        scenario.create_scenario(workspacepath, args.version, 
+           args.versiontransition, ' '.join(args.scenario), description, args.graph)
+      else:
+        scenario.create_scenario(workspacepath, args.version, 
            args.versiontransition, ' '.join(args.scenario), description)
     exit(1)
   if (args.time is None):
