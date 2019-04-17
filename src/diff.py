@@ -10,7 +10,7 @@ def verify_dates(time1, time2):
      raise ValueError('Check existence times of version')
 
 def get_transactions(repository, version1, version2, start_time="",
-       end_time="", use_citygml=False, display=False):
+       end_time="", use_citygml=False, display=False, detailed=False):
   transactions = []
   repo = Repository(repository)
   diff = repo.diff(version1, version2, context_lines=0)
@@ -31,7 +31,8 @@ def get_transactions(repository, version1, version2, start_time="",
   if (commit is not None):
    tree = commit.tree
    for entry in tree:
-     if(".xml" in entry.name):
+     print("entry")
+     if(".xml" in entry.name or ".gml" in entry.name):
         blob = repo[entry.id]
         parser = CustomXMLParser(datav1, featuresv1)
         parser.parse(entry.name, blob.read_raw().decode('utf-8'))
@@ -40,13 +41,16 @@ def get_transactions(repository, version1, version2, start_time="",
   if (commit is not None):
    tree = commit.tree
    for entry in tree:
-     if(".xml" in entry.name):
+     if(".xml" in entry.name or ".gml" in entry.name):
         blob = repo[entry.id]
         parser = CustomXMLParser(datav2, featuresv2)
         parser.parse(entry.name, blob.read_raw().decode('utf-8'))
 
+  print(datav1)
+  print(datav2)
   for patch in diff:
     for hunk in patch.hunks:
+      print(hunk)
       changes = []
       deletes = []
       inserts = []
@@ -60,73 +64,94 @@ def get_transactions(repository, version1, version2, start_time="",
         elif(line.origin == "-"): 
             deletes.append(line.old_lineno)
       for change in changes:
+        print("change" + str(change))
         transaction = {}
         if change in datav2:
           gmlid = next(iter(datav2[change].keys()))
+          print("gmlid" + gmlid)
           for feature in datav2[change][gmlid]:
             attribute = next(iter(datav2[change][gmlid][feature].keys()))
             transaction["id"] = gmlid+"#"+attribute
-            transaction["featureid"] = gmlid+"#"+attribute
+            if(detailed == True):
+              transaction["featureid"] = gmlid+"#"+attribute
+              transaction[attribute] = featuresv2[gmlid][feature][attribute]
             transaction["type"] = "Replace"
-            transaction[attribute] = featuresv2[gmlid][feature][attribute]
+            transaction_existencestarttime = None
+            transaction_existenceendtime = None
             for attribute in featuresv2[gmlid][feature]: 
               if(use_citygml):
                 if("creationdate" in attribute.lower()):
-                  transaction["existencestarttime"] = featuresv2[gmlid][feature][attribute]
+                  transaction_existencestarttime = featuresv2[gmlid][feature][attribute]
                 elif("terminationdate" in attribute.lower()):
-                  transaction["existenceendtime"] = featuresv2[gmlid][feature][attribute]
+                  transaction_existenceendtime = featuresv2[gmlid][feature][attribute]
               else:
-                transaction["existencestarttime"] = start_time 
-                transaction["existenceendtime"] = end_time 
+                transaction_existencestarttime = start_time 
+                transaction_existenceendtime = end_time 
             if(display!= True):
-              verify_dates(transaction["existencestarttime"],
-                transaction["existenceendtime"])
+              verify_dates(transaction_existencestarttime,
+                transaction_existenceendtime)
+            if(detailed == True):
+               transaction["existencestarttime"] = transaction_existencestarttime
+               transaction["existenceendtime"] = transaction_existenceendtime
         if transaction:
           transactions.append(transaction)
       for change in inserts:
+        print("insert" + str(change))
         transaction = {}
         if change in datav2:
           gmlid = next(iter(datav2[change].keys()))
+          print("gmlid" + gmlid)
           for feature in datav2[change][gmlid]:
+            print("feature")
             attribute = next(iter(datav2[change][gmlid][feature].keys()))
             transaction["id"] = gmlid+"#"+attribute
-            transaction["featureid"] = gmlid+"#"+attribute
+            if(detailed == True):
+              transaction["featureid"] = gmlid+"#"+attribute
+              transaction[attribute] = featuresv2[gmlid][feature][attribute]
             transaction["type"] = "Insert"
-            transaction[attribute] = featuresv2[gmlid][feature][attribute]
             for attribute in featuresv2[gmlid][feature]: 
               if(use_citygml):
                 if("creationdate" in attribute.lower()):
-                  transaction["existencestarttime"] = featuresv2[gmlid][feature][attribute]
+                  transaction_existencestarttime = featuresv2[gmlid][feature][attribute]
                 elif("terminationdate" in attribute.lower()):
-                  transaction["existenceendtime"] = featuresv2[gmlid][feature][attribute]
+                  transaction_existenceendtime = featuresv2[gmlid][feature][attribute]
               else:
-                transaction["existencestarttime"] = start_time 
-                transaction["existenceendtime"] = end_time 
-            verify_dates(transaction["existencestarttime"],
-               transaction["existenceendtime"])
+                transaction_existencestarttime = start_time 
+                transaction_existenceendtime = end_time 
+            verify_dates(transaction_existencestarttime,
+               transaction_existenceendtime)
+            if(detailed == True):
+               transaction["existencestarttime"] = transaction_existencestarttime
+               transaction["existenceendtime"] = transaction_existenceendtime
         if transaction:
           transactions.append(transaction)
       for change in deletes:
+        print("delete" + str(change))
         transaction = {}
         if change in datav1:
           gmlid = next(iter(datav1[change].keys()))
+          print("gmlid" + gmlid)
           for feature in datav1[change][gmlid]:
             attribute = next(iter(datav1[change][gmlid][feature].keys()))
             transaction["id"] = gmlid+"#"+attribute
-            transaction["featureid"] = gmlid+"#"+attribute
+            if(detailed == True):
+              transaction["featureid"] = gmlid+"#"+attribute
+              transaction[attribute] = featuresv1[gmlid][feature][attribute]
             transaction["type"] = "Delete"
-            transaction[attribute] = featuresv1[gmlid][feature][attribute]
             for attribute in featuresv1[gmlid][feature]: 
               if(use_citygml):
                 if("creationdate" in attribute.lower()):
-                  transaction["existencestarttime"] = featuresv1[gmlid][feature][attribute]
+                  transaction_existencestarttime = featuresv1[gmlid][feature][attribute]
                 elif("terminationdate" in attribute.lower()):
-                  transaction["existenceendtime"] = featuresv1[gmlid][feature][attribute]
+                  transaction_existenceendtime = featuresv1[gmlid][feature][attribute]
               else:
-                transaction["existencestarttime"] = start_time 
-                transaction["existenceendtime"] = end_time 
-            verify_dates(transaction["existencestarttime"],
-               transaction["existenceendtime"])
+                transaction_existencestarttime = start_time 
+                transaction_existenceendtime = end_time 
+            verify_dates(transaction_existencestarttime,
+               transaction_existenceendtime)
+            if(detailed == True):
+               transaction["existencestarttime"] = transaction_existencestarttime
+               transaction["existenceendtime"] = transaction_existenceendtime
         if transaction:
           transactions.append(transaction)
   if(display):

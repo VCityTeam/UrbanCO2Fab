@@ -137,7 +137,7 @@ def create_scenario_using_gml_dates(repository, userversions, userversiontransit
   with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
     json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
 
-def create_scenario(repository, userversions, userversiontransitions, title, description, scenariontype="proposition"):
+def create_scenario(repository, userversions, userversiontransitions, title, description, scenariontype="proposition", differencegraph=[]):
   scenario = dict() 
   jsonfile = None
   versionsmetadata = dict()
