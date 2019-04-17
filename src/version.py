@@ -4,6 +4,87 @@ import workspace
 import datetime
 from dateutil.parser import parse
 
+class Version:
+  def __init__(self, identifier):
+    self.identifier = None
+    self.description = None
+    self.document = list()
+    self.existenceendtime = None
+    self.existencestarttime = None
+    self.source = list()
+    self.storetransactionendtime = None
+    self.storetransactionstarttime = None
+    self.tag = list() 
+    self.title = None
+    self.type = None
+    self.userid = None
+ 
+  def add_description(self, description):  
+    self.description = description
+ 
+  def add_document(self, document):
+    self.document.add(document)
+
+  def add_existencestarttime(self, existencestarttime):
+    self.existencestarttime = existencestarttime
+
+  def add_existenceendtime(self, existenceendtime):
+    self.existenceendtime = existenceendtime
+
+  def add_source(self, source):
+    self.source.add(source)
+
+  def add_storetransactionstarttime(self, storetransactionstarttime):
+    self.storetransactionendtime = None
+
+  def add_storetransactionendtime(self, storetransactionendtime):
+    self.storetransactionstarttime = storetransactionendtime
+
+  def add_tag(self, tag):
+    self.tag.add(tag)
+
+  def add_title(self, title):
+    self.title = title
+
+  def add_type(self, dtype):
+    self.type = dtype
+
+  def add_userid(self, userid):
+    self.userid = userid
+
+  def get_description(self):  
+    return self.description
+ 
+  def get_document(self):
+    return self.document.get(document)
+
+  def get_existencestarttime(self):
+    return self.existencestarttime
+
+  def get_existenceendtime(self):
+    return self.existenceendtime
+
+  def get_source(self):
+    return self.source.get(source)
+
+  def get_storetransactionstarttime(self):
+    return self.storetransactionendtime
+
+  def get_storetransactionendtime(self):
+    return self.storetransactionstarttime
+
+  def get_tag(self):
+    return self.tag.get(tag)
+
+  def get_title(self):
+    return self.title
+
+  def get_type(self):
+    return self.type
+
+  def get_userid(self):
+    return self.userid
+
 def verify_influence(influences):
   with open("./.urbanco2fab/versions.json") as jsonfile:
     versions = json.load(jsonfile)

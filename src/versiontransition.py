@@ -1,6 +1,26 @@
 import json
 import workspace
 
+class Transaction:
+  def __init__(self, identifier):
+    self.identifier = identifier
+    self.feature = None
+    self.feature_value = None
+    self.existenceendtime = None
+    self.existencestarttime = None
+    self.featureid = identifier
+    self.type = None
+
+class VersionTransition:
+  def __init__(self, identifier, title):
+    self.identifier = identifier
+    self.title = title
+    self.existenceendtime = None
+    self.existencestarttime = None
+    self.fromVersion = None
+    self.toVersion = None
+
+
 def get_versiontransition(versiontransitionids, display=True):
   all_verstiontransitions = []
   with open(".urbanco2fab/scenarios.json") as jsonfile:
