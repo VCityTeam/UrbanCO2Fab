@@ -6,6 +6,15 @@ import json
 import workspace
 import diff
 
+class Scenario:
+  def __init(self, identifier):
+    self.identifier = identifier
+    self.description = None
+    self.tag = list()
+    self.title = None
+    self.versions = list()
+    self.versiontransitions = list()
+
 def get_versions(scenarioid):
   with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
     scenarios = json.load(jsonfile)
