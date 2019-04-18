@@ -12,29 +12,34 @@ import diff
 from pygit2 import clone_repository, init_repository, GIT_OBJ_COMMIT, GIT_SORT_REVERSE, GIT_SORT_TOPOLOGICAL
 
 class Workspace:
-  def __init__(self, identifier):
-    self.identifier = identifier
-    self.consensus = None
-    self.influence = list()
-    self.propositions = list()
+  def __init__(self, jsonfilepath):
+    with open(jsonfilepath) as jsonfile:
+      workspace = json.load(jsonfile)
+    self.identifier = workspace["identifier"]
+    self.consensus_scenario = workspace["consensus"]
+    self.influence_transitions = workspace["influence"]
+    self.proposition_scenarios = workspace["propositions"]
 
   def add_consensus_scenario(self, consensus_scenario):
     self.consensus_scenario = consensus_scenario
 
   def add_influence_transition(self, influence_transition):
-    self.influence.add(influence_transition)
+    self.influence_transitions.add(influence_transition)
 
   def add_proposition_scenario(self, proposition_scenario):
-    self.propositions.add(proposition_scenario)
+    self.proposition_scenarios.add(proposition_scenario)
+
+  def get_identifier(self):
+    return self.identifier
 
   def get_consensus_scenario(self):
     return self.consensus_scenario
 
-  def get_influence_transition(self):
-    return self.influence
+  def get_influence_transitions(self):
+    return self.influence_transitions
 
-  def get_proposition_scenario(self):
-    return self.propositions
+  def get_proposition_scenarios(self):
+    return self.proposition_scenarios
 
 #Reference: https://stackoverflow.com/questions/27749418/implementing-pull-with-pygit2
 def pull(repository):
