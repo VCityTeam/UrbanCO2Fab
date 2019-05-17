@@ -13,6 +13,41 @@ from pygit2 import clone_repository, init_repository, GIT_OBJ_COMMIT, GIT_SORT_R
 
 class Workspace:
   def __init__(self, jsonfilepath):
+    """ Initializes a workspace by reading the JSON file containing the 
+        details of a workspace. A workspace contains one consensus scenario
+        and multiple (zero or more)  proposition scenarios. It may also contain
+        influence transitions, that are (imaginary) transitions to show a version 
+        may have influenced another version.
+
+    Attributes
+    -------
+    identifier: str
+      unique identifier of a workspace
+    consensus_scenario: str
+      unique consensus scenario of a workspace
+    influence_transitions: array
+      array of zero or more influence transitions
+    proposition_scenarios: array
+      array of zero or more proposition scenarios 
+
+    Methods
+    -------
+    add_consensus_scenario(self, consensus_scenario)
+       adds a consensus scenario to the workspace
+    add_influence_transition(self, influence_transition)
+       adds a influence transition to the workspace
+    add_proposition_scenario(self, proposition_scenario)
+       adds zero or more proposition scenarios to the workspace
+    get_identifier(self)
+       returns the (unique) identifier of the workspace
+    get_consensus_scenario(self)
+       returns the (unique) consensus scenario of the workspace
+    get_influence_transitions(self)
+       returns identifiers of influence transitions of the workspace
+    get_proposition_scenarios(self)
+       returns identifiers of proposition scenarios of the workspace
+    
+    """
     with open(jsonfilepath) as jsonfile:
       workspace = json.load(jsonfile)
     self.identifier = workspace["identifier"]
@@ -21,24 +56,136 @@ class Workspace:
     self.proposition_scenarios = workspace["propositions"]
 
   def add_consensus_scenario(self, consensus_scenario):
+    """
+       adds a consensus scenario to the workspace. If there is already one,
+       it will be replaced by the new consensus scenario
+
+       Parameters
+       ----------
+       consensus_scenario: str
+         the new consensus scenario to be added or replaced
+
+       Returns
+       -------
+         None
+
+       Raises
+       ------ 
+         None
+    """
     self.consensus_scenario = consensus_scenario
 
   def add_influence_transition(self, influence_transition):
+    """
+       adds an influence transition  to the workspace. 
+
+       Parameters
+       ----------
+       consensus_scenario: str
+         the new influence transition to be added
+
+       Returns
+       -------
+         None
+
+       Raises
+       ------ 
+         None
+    """
     self.influence_transitions.add(influence_transition)
 
   def add_proposition_scenario(self, proposition_scenario):
+    """
+       adds a proposition scenario to the workspace.
+
+       Parameters
+       ----------
+       proposition_scenario: str
+         the new proposition scenario to be added
+
+       Returns
+       -------
+         None
+
+       Raises
+       ------ 
+         None 
+    """
     self.proposition_scenarios.add(proposition_scenario)
 
   def get_identifier(self):
+    """
+       returns the (unique) identifier of the workspace
+
+       Parameters
+       ----------
+         None
+
+       Returns
+       -------
+         str
+          identifier of the workspace
+
+       Raises
+       ------ 
+         None
+    """
     return self.identifier
 
   def get_consensus_scenario(self):
+    """
+       returns the (unique) consensus scenario identifier of the workspace
+
+       Parameters
+       ----------
+         None
+
+       Returns
+       -------
+         str:
+           identifier of the consensus scenario
+
+       Raises
+       ------ 
+         None 
+    """
     return self.consensus_scenario
 
   def get_influence_transitions(self):
+    """
+       returns the identifiers of influence transitions of the workspace
+
+       Parameters
+       ----------
+         None
+
+       Returns
+       -------
+         set of identifiers of influence transitions
+
+       Raises
+       ------ 
+         None 
+    """
     return self.influence_transitions
 
   def get_proposition_scenarios(self):
+    """
+       returns the identifiers of proposition scenarios of the workspace
+
+       Parameters
+       ----------
+         None
+
+       Returns
+       -------
+         set
+           identifiers of proposition scenarios
+
+       Raises
+       ------ 
+         None
+    """
     return self.proposition_scenarios
 
 #Reference: https://stackoverflow.com/questions/27749418/implementing-pull-with-pygit2
