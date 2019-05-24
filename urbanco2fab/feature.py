@@ -6,10 +6,11 @@ class Feature(AbstractFeature):
   def __init__(self, identifier, existencestarttime=None, existenceendtime=None,
           storetransactionstarttime=None, storetransactionendtime=None,
           name=None, value=None):
-    self.__class__ = Feature
     super(Feature, self).__init__(identifier, existencestarttime, 
             existenceendtime, storetransactionstarttime, storetransactionendtime,
-            name, value)
+            name)
+    self.__class__ = Feature
+    self.value=value
     self.validate();
 
   def validate(self):
@@ -22,6 +23,7 @@ class Feature(AbstractFeature):
 class FeatureList(list):
   def __init__(self, *args):
     super(FeatureList, self).__init__()
+    self.__class__ = FeatureList
     for arg in args:
       self.append(arg)
 
