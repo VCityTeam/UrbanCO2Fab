@@ -1,16 +1,23 @@
 from feature import Feature, FeatureList
 from abstractfeature import AbstractFeature
+from enum import Enum
+
+class TransactionType(Enum):
+  INSERT = 1
+  REPLACE = 2
+  DELETE = 3
 
 class Transaction(AbstractFeature):
   def __init__(self, identifier, existencestarttime=None, existenceendtime=None,
           storetransactionstarttime=None, storetransactionendtime=None,
-          featurelist=None):
+          oldfeature=None, newfeature=None, transactiontype=None):
     super(Transaction, self).__init__(identifier, existencestarttime, 
             existenceendtime, storetransactionstarttime, storetransactionendtime,
             identifier+".transactions")
-    if (featurelist.__class__ != FeatureList):
-      raise Exception("Feature list is not of the correct type-" + str(featurelist.__class__) + ": " + str(FeatureList))
-    self.featurelist = featurelist
+    if (transactiontype.__class__ != TransactionType):
+      raise Exception("Old feature not of the correct type-" + str(oldfeature.__class__) + ": " + str(Feature))
+    self.oldfeature = oldfeature
+    self.newfeature = newfeature
     self.validate()
 
   def update(self, existencestarttime=None, existenceendtime=None):
@@ -22,15 +29,42 @@ class Transaction(AbstractFeature):
     return transactions
 
   def validate(self):
-    for feature in self.features:
-      if(parse(self.existencestarttime) == (feature.existencestarttime)):
-        raise Exception("All the features must have the same start time as the transaction start time")
-      if(parse(self.existenceendtime) == (feature.existenceendtime)):
-        raise Exception("All the features must have the same end time as the transaction end time")
+    if (self.transactiontype == TransactionType.DELETE):
+      if (oldfeature.__class__ != Feature):
+        raise Exception("Old feature not of the correct type-" + str(oldfeature.__class__) + ": " + str(Feature))
+        if(self.newfeature != None):
+          raise Exception("New feature must be none, when transaction type is DELETE")
+    if (self.transactiontype == TransactionType.INSERT):
+      if (newfeature.__class__ != Feature):
+        raise Exception("New feature not of the correct type-" + str(newfeature.__class__) + ": " + str(Feature))
+        if(self.oldfeature != None):
+          raise Exception("Old feature must be none, when transaction type is INSERT")
+    if (self.transactiontype == TransactionType.REPLACE):
+      if(self.newfeature.get(filters=
+         ["name"])["name"] !=
+        self.oldfeature.get(filters=
+         ["name"])["name"]):
+       raise Exception("Old feature and new feature name must be the same")
+      if(self.newfeature.get(filters=
+         ["value"])["value"] ==
+        self.oldfeature.get(filters=
+         ["value"])["value"]):
+       raise Exception("Old feature and new feature value must not be the same")
+      if(self.newfeature.get(filters=
+         ["identifier"])["identifier"] !=
+        self.oldfeature.get(filters=
+         ["identifier"])["identifier"]):
+        raise Exception("Old feature and same feature must have the same identifier")
+      if(parse(self.newfeature.get(filters=
+         ["existencestarttime"])["existencestarttime"] >=
+        parse(self.oldfeature.get(filters=
+         ["existenceendtime"])["existenceendtime"]))):
+        raise Exception("End time of old feature must be greater than the start time of the old feature")
 
 class TransactionList(list):
   def __init__(self, *args):
     super(TransactionList, self).__init__()
+    self.__class__ == TransactionList
     for arg in args:
       self.append(arg)
 
