@@ -1,5 +1,4 @@
 from abstractfeature import AbstractFeature
-from dateutil.parser import parse
 
 
 class Feature(AbstractFeature):
@@ -15,6 +14,15 @@ class Feature(AbstractFeature):
 
   def validate(self):
     super(Feature, self).validate()
+
+  def get(self, filters=[], info=dict()):
+    super(Feature, self).get(filters, info)
+    for fter in filters:
+      if (fter == "all"):
+        info["value"] = self.value
+      if (fter == "value"):
+          info["value"] = self.value
+    return(info)
 
   def __str__(self):
     return str(self.identifier)
