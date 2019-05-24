@@ -4,8 +4,9 @@ import workspace
 import datetime
 from dateutil.parser import parse
 
-class Version:
+class Version(object):
   def __init__(self, identifier):
+    self.__class__ = Version
     self.identifier = None
     self.description = None
     self.document = list()
@@ -19,71 +20,87 @@ class Version:
     self.type = None
     self.userid = None
  
-  def add_description(self, description):  
-    self.description = description
- 
-  def add_document(self, document):
-    self.document.add(document)
+  def update(self, description=None, document=None, existencestarttime=None,
+          existenceendtime=None,source=None, storetransactionstarttime=None,
+          storetransactionendtime=None, tag=None, title=None, dtype = None,
+          userid=None
+      ):  
+    if (description is not None):
+      self.description = description
+    if (document is not None):
+      self.document.add(document)
+    if (existencestarttime is not None):
+      self.existencestarttime = existencestarttime
+    if (existenceendtime is not None):
+      self.existenceendtime = existenceendtime
+    if source is not None:
+      self.source.add(source)
+    if (storetransactionstarttime is not None):
+      self.storetransactionstarttime = storetransactionstarttime
+    if (storetransactionendtime is not None):
+      self.storetransactionendtime = storetransactionendtime
+    if tag is not None:
+      self.tag.add(tag)
+    if (title is not None):
+      self.title = title
+    if (dtype is not None):
+      self.type = dtype
+    if (userid is not None):
+      self.userid = userid
 
-  def add_existencestarttime(self, existencestarttime):
-    self.existencestarttime = existencestarttime
+  def get(self, filters=[]):  
+    version_info = dict()
+    for fter in filters:
+      if (fter == "all"):
+        version_info["description"] = self.description
+        version_info["document"] = self.document.get(document)
+        version_info["existencestarttime"] = self.existencestarttime
+        version_info["existenceendtime"] = self.existenceendtime
+        version_info["source"] = self.source.get(source)
+        version_info["storetransactionstarttime"] = self.storetransactionendtime
+        version_info["storetransactionendtime"] = self.storetransactionstarttime
+        version_info["tags"] = self.tag.get(tag)
+        version_info["title"] = self.title
+        version_info["type"] = self.type
+        version_info["userid"] = self.userid
+        break # All required information has been added
+      elif (fter == "description"):
+        version_info["description"] = self.description
+      elif (fter == "document"):
+        version_info["document"] = self.document.get(document)
+      elif (fter == "existencestarttime"):
+        version_info["existencestarttime"] = self.existencestarttime
+      elif (fter == "existenceendtime"):
+        version_info["existenceendtime"] = self.existenceendtime
+      elif (fter == "source"):
+        version_info["source"] = self.source.get(source)
+      elif (fter == "storetransactionstarttime"):
+        version_info["storetransactionstarttime"] = self.storetransactionendtime
+      elif (fter == "storetransactionendtime"):
+        version_info["storetransactionendtime"] = self.storetransactionstarttime
+      elif (fter == "tags"):
+        version_info["tags"] = self.tag.get(tag)
+      elif (fter == "title"):
+        version_info["title"] = self.title
+      elif (fter == "type"):
+        version_info["type"] = self.type
+      elif (fter == "userid"):
+        version_info["userid"] = self.userid
 
-  def add_existenceendtime(self, existenceendtime):
-    self.existenceendtime = existenceendtime
+  def __str__(self):
+    return str(self.identifier)
 
-  def add_source(self, source):
-    self.source.add(source)
+class VersionList(list):
+  def __init__(self, *args):
+    super(MyList, self).__init__()
+    for arg in args:
+      print(arg)
+      self.append(arg)
 
-  def add_storetransactionstarttime(self, storetransactionstarttime):
-    self.storetransactionendtime = None
-
-  def add_storetransactionendtime(self, storetransactionendtime):
-    self.storetransactionstarttime = storetransactionendtime
-
-  def add_tag(self, tag):
-    self.tag.add(tag)
-
-  def add_title(self, title):
-    self.title = title
-
-  def add_type(self, dtype):
-    self.type = dtype
-
-  def add_userid(self, userid):
-    self.userid = userid
-
-  def get_description(self):  
-    return self.description
- 
-  def get_document(self):
-    return self.document.get(document)
-
-  def get_existencestarttime(self):
-    return self.existencestarttime
-
-  def get_existenceendtime(self):
-    return self.existenceendtime
-
-  def get_source(self):
-    return self.source.get(source)
-
-  def get_storetransactionstarttime(self):
-    return self.storetransactionendtime
-
-  def get_storetransactionendtime(self):
-    return self.storetransactionstarttime
-
-  def get_tag(self):
-    return self.tag.get(tag)
-
-  def get_title(self):
-    return self.title
-
-  def get_type(self):
-    return self.type
-
-  def get_userid(self):
-    return self.userid
+  def append(self, version):
+    if not isinstance(version,Version):
+      raise Exception("It's not a version: " + str(version))  
+    super(MyList, self).append(version) 
 
 def verify_influence(influences):
   with open("./.urbanco2fab/versions.json") as jsonfile:
