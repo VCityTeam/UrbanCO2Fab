@@ -1,25 +1,56 @@
 import json
 import workspace
+from abstractfeature import AbstractFeature
+from enum import Enum
+from validate import Validate
+from version import Version
+from dateutil.parser import parse
 
-class Transaction:
-  def __init__(self, identifier):
-    self.identifier = identifier
-    self.feature = None
-    self.feature_value = None
-    self.existenceendtime = None
-    self.existencestarttime = None
-    self.featureid = identifier
-    self.type = None
+class VersionTransitionType(Enum):
+  REGULAR = 1
+  INFLUENCED = 2
 
-class VersionTransition:
-  def __init__(self, identifier, title):
-    self.identifier = identifier
+class VersionTransition(AbstractFeature):
+  def __init__(self, identifier, existencestarttime=None, existenceendtime=None,
+          storetransactionstarttime=None, storetransactionendtime=None,
+          title=None,
+          fromVersion=None, toVersion=None, versiontransitiontype=None):
+    super(VersionTransition, self).__init__(identifier, existencestarttime, 
+            existenceendtime, storetransactionstarttime, storetransactionendtime,
+            identifier+".transition")
+    self.__class__ = VersionTransition
     self.title = title
-    self.existenceendtime = None
-    self.existencestarttime = None
-    self.fromVersion = None
-    self.toVersion = None
+    self.versiontransitiontype = versiontransitiontype
+    self.fromVersion = fromVersion
+    self.toVersion = toVersion
+    self.validate()
 
+  def get(self, filters=[], info=dict()):
+    super(Transaction, self).get(filters, info)
+    for fter in filters:
+      if (fter == "all"):
+        info["toVersion"] = self.toVersion
+        info["fromVersion"] = self.fromVersion
+        break
+      if (fter == "fromVersion"):
+        info["fromVersion"] = self.fromVersion
+      if (fter == "toVersion"):
+        info["toVersion"] = self.toVersion
+    return info
+
+  def validate(self):
+    Validate.validateclass(VersionTransitionType, self.versiontransitiontype)
+    Validate.validateclass(Version, self.fromVersion)
+    Validate.validateclass(Version, self.toVersion)
+    toVersionexistencestarttime = parse(self.toVersion.get(filters=
+       ["existencestarttime"])["existencestarttime"])
+    fromVersionexistenceendtime = parse(self.fromVersion.get(filters=
+       ["existenceendtime"])["existenceendtime"])
+    if(toVersionexistencestarttime < fromVersionexistenceendtime):
+        raise Exception("End time of old version must be less than the start time of the old version")
+    if(toVersionexistencestarttime != parse(self.existenceendtime) and
+       fromVersionexistenceendtime != parse(self.existencestarttime)):
+        raise Exception("Version transition time not continuous with from and to versions")
 
 def get_versiontransition(versiontransitionids, display=True):
   all_verstiontransitions = []

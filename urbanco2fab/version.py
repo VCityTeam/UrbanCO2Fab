@@ -3,22 +3,34 @@ import diff
 import workspace
 import datetime
 from dateutil.parser import parse
+from abstractfeature import AbstractFeature
+from enum import Enum
+from validate import Validate
 
-class Version(object):
-  def __init__(self, identifier):
+class VersionType(Enum):
+  EXISTING = 1
+  IMAGINARY = 2
+
+class Version(AbstractFeature):
+  def __init__(self, identifier, existencestarttime, existenceendtime,
+          storetransactionstarttime, storetransactionendtime,
+          description=None, documents=None, sources=None, 
+          tags=None, title=None, dtype = None, userid=None):
+    super(Version, self).__init__(identifier, existencestarttime, 
+            existenceendtime, storetransactionstarttime, storetransactionendtime,
+            identifier+".transactions")
     self.__class__ = Version
-    self.identifier = None
-    self.description = None
-    self.document = list()
-    self.existenceendtime = None
-    self.existencestarttime = None
-    self.source = list()
-    self.storetransactionendtime = None
-    self.storetransactionstarttime = None
-    self.tag = list() 
-    self.title = None
-    self.type = None
-    self.userid = None
+    self.description = description
+    self.documents = documents
+    self.sources = sources
+    self.tags = tags
+    self.title = title
+    self.type = dtype
+    self.userid = userid
+    self.validate()
+
+  def validate(self):
+    Validate.validateclass(VersionType, self.type)
  
   def update(self, description=None, document=None, existencestarttime=None,
           existenceendtime=None,source=None, storetransactionstarttime=None,
@@ -48,8 +60,7 @@ class Version(object):
     if (userid is not None):
       self.userid = userid
 
-  def get(self, filters=[]):  
-    version_info = dict()
+  def get(self, filters=[], version_info=dict()):  
     for fter in filters:
       if (fter == "all"):
         version_info["description"] = self.description
@@ -86,21 +97,21 @@ class Version(object):
         version_info["type"] = self.type
       elif (fter == "userid"):
         version_info["userid"] = self.userid
+    return version_info
 
   def __str__(self):
     return str(self.identifier)
 
 class VersionList(list):
   def __init__(self, *args):
-    super(MyList, self).__init__()
+    super(VersionList, self).__init__()
     for arg in args:
-      print(arg)
       self.append(arg)
 
   def append(self, version):
     if not isinstance(version,Version):
       raise Exception("It's not a version: " + str(version))  
-    super(MyList, self).append(version) 
+    super(VersionList, self).append(version) 
 
 def verify_influence(influences):
   with open("./.urbanco2fab/versions.json") as jsonfile:
