@@ -1,10 +1,9 @@
 import json
-import workspace
 from abstractfeature import AbstractFeature
 from enum import Enum
 from validate import Validate
-from version import Version
 from dateutil.parser import parse
+from version import VersionType, Version
 
 class VersionTransitionType(Enum):
   REGULAR = 1
@@ -51,6 +50,18 @@ class VersionTransition(AbstractFeature):
     if(toVersionexistencestarttime != parse(self.existenceendtime) and
        fromVersionexistenceendtime != parse(self.existencestarttime)):
         raise Exception("Version transition time not continuous with from and to versions")
+
+class VersionTransitionList(list):
+  def __init__(self, *args):
+    super(VersionTransitionList, self).__init__()
+    self.__class__ = VersionTransitionList
+    for arg in args:
+      self.append(arg)
+
+  def append(self, versiontransition):
+    if not isinstance(versiontransition,VersionTransition):
+      raise Exception("It's not a version transition: " + str(versiontransition))  
+    super(VersionTransitionList, self).append(versiontransition) 
 
 def get_versiontransition(versiontransitionids, display=True):
   all_verstiontransitions = []

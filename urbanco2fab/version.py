@@ -1,6 +1,5 @@
 import json
 import diff
-import workspace
 import datetime
 from dateutil.parser import parse
 from abstractfeature import AbstractFeature
