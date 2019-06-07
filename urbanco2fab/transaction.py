@@ -2,6 +2,7 @@ from feature import Feature, FeatureList
 from abstractfeature import AbstractFeature
 from enum import Enum
 from dateutil.parser import parse
+from validate import Validate
 
 class TransactionType(Enum):
   INSERT = 1
@@ -15,8 +16,11 @@ class Transaction(AbstractFeature):
     super(Transaction, self).__init__(identifier, existencestarttime, 
             existenceendtime, storetransactionstarttime, storetransactionendtime,
             identifier+".transactions")
-    if (transactiontype.__class__ != TransactionType):
-      raise Exception("Old feature not of the correct type-" + str(oldfeature.__class__) + ": " + str(Feature))
+    Validate.validateclass(TransactionType, transactiontype)
+    if (oldfeature is not None):
+      Validate.validateclass(Feature, oldfeature)
+    if (newfeature is not None):
+      Validate.validateclass(Feature, newfeature)
     self.__class__ = Transaction
     self.oldfeature = oldfeature
     self.newfeature = newfeature

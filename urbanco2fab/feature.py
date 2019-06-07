@@ -1,4 +1,5 @@
 from abstractfeature import AbstractFeature
+from validate import Validate
 
 
 class Feature(AbstractFeature):
@@ -36,7 +37,6 @@ class FeatureList(list):
       self.append(arg)
 
   def append(self, feature):
-    if not isinstance(feature,Feature):
-      raise Exception("It's not a feature: " + str(feature))  
+    Validate.validateclass(Feature, feature)
     super(FeatureList, self).append(feature) 
 
