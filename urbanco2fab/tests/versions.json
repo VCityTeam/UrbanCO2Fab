@@ -1,0 +1,108 @@
+[
+  {
+        "identifier" : "008b309df32bfcb97babc18ff5ba7897778a4c11",
+        "description": "",
+        "document": [],
+        "existenceendtime": "2011-07-05T15:29:54+02:00",
+        "existencestarttime": "2010-06-05T15:29:54+02:00",
+        "identifier": "008b309df32bfcb97babc18ff5ba7897778a4c11",
+        "source": [
+            "http://example.com/abc.gml"
+        ],
+        "storetransactionendtime": "2018-10-22T10:39:02+0200",
+        "storetransactionstarttime": "2018-10-22T10:39:02+0200",
+        "tag": [
+            "Building"
+        ],
+        "title": "2010-2011",
+        "type": "existing",
+        "userid": "John Samuel"
+    },
+    {
+        "identifier" : "48eab184172a1d7114449e4d72586645bebf2b10",
+        "description": "",
+        "document": [
+            "building.txt"
+        ],
+        "existenceendtime": "2010-06-05T15:29:54+02:00",
+        "existencestarttime": "2009-06-05T15:29:54+02:00",
+        "identifier": "48eab184172a1d7114449e4d72586645bebf2b10",
+        "source": [
+            "http://example.com/abc.gml"
+        ],
+        "storetransactionendtime": "2018-10-22T09:19:47+0200",
+        "storetransactionstarttime": "2018-10-22T09:19:47+0200",
+        "tag": [
+            "Building"
+        ],
+        "title": "First commit",
+        "type": "existing",
+        "userid": "John Samuel"
+    },
+    {
+        "identifier" : "5d7ad200abb58021ce52821d2154941ab516ed75",
+        "description": "",
+        "document": [
+            "building.txt"
+        ],
+        "existenceendtime": "1954-06-05T15:29:54+02:00",
+        "existencestarttime": "1950-06-05T15:29:54+02:00",
+        "identifier": "5d7ad200abb58021ce52821d2154941ab516ed75",
+        "source": [
+            "http://example.com/abc.gml"
+        ],
+        "storetransactionendtime": "2018-10-22T09:18:48+0200",
+        "storetransactionstarttime": "2018-10-22T09:18:48+0200",
+        "tag": [
+            "Building"
+        ],
+        "title": "First commit",
+        "type": "existing",
+        "userid": "John Samuel"
+    },
+    {
+        "identifier" : "70256c32c6f15b233a0ee84b85116df218229df8",
+        "description": "",
+        "document": [
+            "building.txt"
+        ],
+        "existenceendtime": "1954-06-05T15:29:54+02:00",
+        "existencestarttime": "1950-06-05T15:29:54+02:00",
+        "identifier": "70256c32c6f15b233a0ee84b85116df218229df8",
+        "storetransactionendtime": "2018-06-12T17:28:01+0200",
+        "storetransactionstarttime": "2018-06-12T17:28:01+0200",
+        "source": [
+            "http://example.com/abc.gml"
+        ],
+        "tag": [
+            "check3",
+            "Building",
+            "check2",
+            "building"
+        ],
+        "title": "First commit",
+        "type": "existing",
+        "userid": "John Samuel"
+    },
+    {
+        "identifier" : "88f11efc7aef89095f8ec76f6b6ab936b386a318",
+        "description": "",
+        "source": [
+            "http://example.com/abc.gml"
+        ],
+        "document": [
+            "building.txt"
+        ],
+        "existenceendtime": "1964-06-05T15:29:54+02:00",
+        "existencestarttime": "1960-06-05T15:29:54+02:00",
+        "identifier": "88f11efc7aef89095f8ec76f6b6ab936b386a318",
+        "storetransactionendtime": "2018-06-13T15:08:28+0200",
+        "storetransactionstarttime": "2018-06-13T15:08:28+0200",
+        "tag": [
+            "Building"
+        ],
+        "title": "some more changes",
+        "type": "existing",
+        "userid": "John Samuel"
+    }
+]

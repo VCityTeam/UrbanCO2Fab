@@ -1,0 +1,40 @@
+[
+   { 
+        "identifier": "scenario6",
+        "description": "",
+        "title": "scenario6",
+        "versions": [
+            "dc3872a240d8edd6b07142a2b5dbd4b1c4d12985",
+            "e71b08cc28f206da3071b8331c5804338384a93b"
+        ],
+        "versiontransitions": [
+          {
+            "identifier": "dc3872a240d8edd6b07142a2b5dbd4b1c4d12985-e71b08cc28f206da3071b8331c5804338384a93b",
+            "existenceendtime": "2009-06-05T15:29:54+02:00",
+            "existencestarttime": "1958-06-05T15:29:54+02:00",
+            "from": "dc3872a240d8edd6b07142a2b5dbd4b1c4d12985",
+            "title": "",
+            "to": "e71b08cc28f206da3071b8331c5804338384a93b",
+            "transactions": [
+                    {
+                        "bldg:function": "1073",
+                        "existenceendtime": "2009-06-05T15:29:54+02:00",
+                        "existencestarttime": "1958-06-05T15:29:54+02:00",
+                        "featureid": "PolyID5292_323_223496_343106_0#bldg:function",
+                        "id": "PolyID5292_323_223496_343106_0#bldg:function",
+                        "type": "Replace"
+                    },
+                    {
+                        "existenceendtime": "2009-06-05T15:29:54+02:00",
+                        "existencestarttime": "1958-06-05T15:29:54+02:00",
+                        "featureid": "PolyID5909_195_534319_413692_0#gml:pos",
+                        "gml:pos": "3500002.887551 5400030.35806686 2.34319170824902e-009",
+                        "id": "PolyID5909_195_534319_413692_0#gml:pos",
+                        "type": "Replace"
+                    }
+                ],
+                "type": "regular"
+              }
+          ]
+     }
+]
