@@ -8,3 +8,11 @@
 ### Available commands
 
 * [UrbanCo2Fab commands](./docs/commands.md)
+
+## Running Tests
+To run all the tests, execute the following commands
+
+`
+$ cd urbanco2fab
+$ python3 alltests.py
+`
