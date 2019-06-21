@@ -7,7 +7,7 @@ from feature import Feature, FeatureList
 from versiontransition import VersionTransition, VersionTransitionType
 from version import Version, VersionType
 
-class TransactionTestSuite(unittest.TestCase):
+class VersionTransitionTestSuite(unittest.TestCase):
   def test_basic_transaction_replace(self):
     vdocuments1 = ["photograph1", "photograph2"]
     vsources1 = ["source1", "source2"]
