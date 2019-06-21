@@ -46,10 +46,20 @@ class VersionTransition(AbstractFeature):
     fromVersionexistenceendtime = parse(self.fromVersion.get(filters=
        ["existenceendtime"])["existenceendtime"])
     if(toVersionexistencestarttime < fromVersionexistenceendtime):
-        raise Exception("End time of old version must be less than the start time of the old version")
+        raise VersionTransitionError("End time of old version must be less than the start time of the new version")
     if(toVersionexistencestarttime != parse(self.existenceendtime) and
        fromVersionexistenceendtime != parse(self.existencestarttime)):
-        raise Exception("Version transition time not continuous with from and to versions")
+        raise VersionTransitionError("Version transition time not continuous with from and to versions")
+    
+    # Influence transitions
+    if(self.versiontransitiontype == VersionTransitionType.INFLUENCED):
+      # Note: existence time has already been checked
+      if ((self.fromVersion.get(filters=["type"])["type"] != VersionType.IMAGINARY
+       and self.toVersion.get(filters=["type"])["type"] != VersionType.EXISTING) or
+        (self.fromVersion.get(filters=["type"])["type"] != VersionType.IMAGINARY
+       and self.toVersion.get(filters=["type"])["type"] != VersionType.EXISTING)):
+        raise VersionTransitionError("Influence transition must be from imaginary to existing or imaginary to imaginary")
+  
 
 class VersionTransitionList(list):
   def __init__(self, *args):

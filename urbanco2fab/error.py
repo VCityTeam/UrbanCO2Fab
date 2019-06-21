@@ -6,7 +6,12 @@ class InputError(Exception):
 class VersionError(Exception):
   """Version Error"""
   def __init__(self, message):
-    self.message = "" + message
+    self.message = "Error in creating version: " + message
+
+class VersionTransitionError(Exception):
+  """Version Transition Error"""
+  def __init__(self, message):
+    self.message = "Error in creating version transition: " + message
 
 class DataTypeError(Exception):
   """Data type Error"""
