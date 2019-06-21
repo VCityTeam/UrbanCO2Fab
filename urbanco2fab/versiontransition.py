@@ -25,7 +25,7 @@ class VersionTransition(AbstractFeature):
     self.validate()
 
   def get(self, filters=[], info=dict()):
-    super(Transaction, self).get(filters, info)
+    super(VersionTransition, self).get(filters, info)
     for fter in filters:
       if (fter == "all"):
         info["toVersion"] = self.toVersion

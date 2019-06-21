@@ -41,10 +41,11 @@ class Scenario(AbstractFeature):
     
 
   def get(self, filters=[], info=dict()):
-    super(Transaction, self).get(filters, info)
+    super(Scenario, self).get(filters, info)
     for fter in filters:
       if (fter == "all"):
         info["versiontransitions"] = self.versiontransitions
+        info["versions"] = self.versions
         info["title"] = self.title
         info["description"] = self.description
         info["tags"] = self.tags
@@ -52,6 +53,8 @@ class Scenario(AbstractFeature):
         break
       if (fter == "description"):
         info["description"] = self.description
+      if (fter == "versions"):
+        info["versions"] = self.versions
       if (fter == "userid"):
         info["userid"] = self.userid
       if (fter == "tags"):

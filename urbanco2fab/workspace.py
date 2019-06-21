@@ -1,4 +1,4 @@
-import error
+from error import *
 import sys
 import version
 import json
@@ -32,6 +32,39 @@ class Workspace(AbstractFeature):
     Validate.validateclass(Scenario, self.consensusscenario)
     if(self.propositionscenarios is not None):
       Validate.validateclass(ScenarioList, self.propositionscenarios)
+    """
+      There's at least one common version between consensus
+      and proposition scenarios. We check the identifier of the identifier
+    """
+    if self.propositionscenarios is not None:
+      csversionset = set()
+      for version in self.consensusscenario.get(filters=["versions"])["versions"]:
+        csversionset.add(version.get(filters=["identifier"])["identifier"])
+      
+      commonversion = False
+      for pscenario in self.propositionscenarios:
+        for version in self.consensusscenario.get(filters=["versions"])["versions"]:
+           if(version.get(filters=["identifier"])["identifier"] in csversionset):
+              commonversion = True
+  
+      if (not commonversion):
+        raise(ConsensusScenarioError("There must be at least one common version between consensus and proposition scenarios"))
+
+    """
+      All the version types in a Consensus scenario must be of type 'Existing'.
+    """
+    for version in self.consensusscenario.get(filters=["versions"])["versions"]:
+      if (version.get(filters=["type"])["type"] != VersionType.EXISTING):
+        raise(ConsensusScenarioError("All version types in a consensus scenario must be of type existing"))
+
+    """
+      Consensus scenario and proposition scenarios must be disjoint
+    """
+    if self.propositionscenarios is not None:
+      for pscenario in self.propositionscenarios:
+        if(pscenario.get(filters=["identifier"])["identifier"] ==
+            self.consensusscenario.get(filters=["identifier"])["identifier"]):
+          raise(ConsensusScenarioError("Consensus scenario and proposition scenarios must be disjoint"))
 
   def get(self, filters=[], info=dict()):
     super(Transaction, self).get(filters, info)
