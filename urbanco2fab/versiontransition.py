@@ -70,7 +70,7 @@ class VersionTransitionList(list):
 
   def append(self, versiontransition):
     if not isinstance(versiontransition,VersionTransition):
-      raise Exception("It's not a version transition: " + str(versiontransition))  
+      raise DataTypeError("It's not a version transition: " + str(versiontransition))  
     super(VersionTransitionList, self).append(versiontransition) 
 
 def get_versiontransition(versiontransitionids, display=True):

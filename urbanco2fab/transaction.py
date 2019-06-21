@@ -3,6 +3,7 @@ from abstractfeature import AbstractFeature
 from enum import Enum
 from dateutil.parser import parse
 from validate import Validate
+from error import *
 
 class TransactionType(Enum):
   INSERT = 1
@@ -48,35 +49,35 @@ class Transaction(AbstractFeature):
   def validate(self):
     if (self.transactiontype == TransactionType.DELETE):
       if (self.oldfeature.__class__ != Feature):
-        raise Exception("Old feature not of the correct type-" + str(self.oldfeature.__class__) + ": " + str(Feature))
+        raise TransactionError("Old feature not of the correct type-" + str(self.oldfeature.__class__) + ": " + str(Feature))
         if(self.newfeature != None):
-          raise Exception("New feature must be none, when transaction type is DELETE")
+          raise TransactionError("New feature must be none, when transaction type is DELETE")
     if (self.transactiontype == TransactionType.INSERT):
       if (self.newfeature.__class__ != Feature):
-        raise Exception("New feature not of the correct type-" + str(self.newfeature.__class__) + ": " + str(Feature))
+        raise TransactionError("New feature not of the correct type-" + str(self.newfeature.__class__) + ": " + str(Feature))
         if(self.oldfeature != None):
-          raise Exception("Old feature must be none, when transaction type is INSERT")
+          raise TransactionError("Old feature must be none, when transaction type is INSERT")
     if (self.transactiontype == TransactionType.REPLACE):
       if(self.newfeature.get(filters=
          ["name"])["name"] !=
         self.oldfeature.get(filters=
          ["name"])["name"]):
-       raise Exception("Old feature and new feature name must be the same")
+       raise TransactionError("Old feature and new feature name must be the same")
       if(self.newfeature.get(filters=
          ["value"])["value"] ==
         self.oldfeature.get(filters=
          ["value"])["value"]):
-       raise Exception("Old feature and new feature value must not be the same")
+       raise TransactionError("Old feature and new feature value must not be the same")
       if(self.newfeature.get(filters=
          ["identifier"])["identifier"] !=
         self.oldfeature.get(filters=
          ["identifier"])["identifier"]):
-        raise Exception("Old feature and same feature must have the same identifier")
+        raise TransactionError("Old feature and same feature must have the same identifier")
       if(parse(self.newfeature.get(filters=
          ["existencestarttime"])["existencestarttime"]) <
         parse(self.oldfeature.get(filters=
          ["existenceendtime"])["existenceendtime"])):
-        raise Exception("End time of old feature must be less than the start time of the old feature")
+        raise TransactionError("End time of old feature must be less than the start time of the old feature")
 
 class TransactionList(list):
   def __init__(self, *args):
@@ -87,6 +88,6 @@ class TransactionList(list):
 
   def append(self, transaction):
     if not isinstance(transaction,Transaction):
-      raise Exception("It's not a transaction: " + str(transaction))  
+      raise DataTypeError("It's not a transaction: " + str(transaction))  
     super(TransactionList, self).append(transaction) 
 

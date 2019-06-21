@@ -90,7 +90,7 @@ class ScenarioList(list):
 
   def append(self, scenario):
     if not isinstance(scenario,Scenario):
-      raise Exception("It's not a scenario: " + str(scenario))  
+      raise DataTypeError("It's not a scenario: " + str(scenario))  
     super(ScenarioList, self).append(scenario) 
 
   def get_versions(scenarioid):

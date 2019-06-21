@@ -110,7 +110,7 @@ class VersionList(list):
 
   def append(self, version):
     if not isinstance(version,Version):
-      raise Exception("It's not a version: " + str(version))  
+      raise DataTypeError("It's not a version: " + str(version))  
     super(VersionList, self).append(version) 
 
 def verify_influence(influences):
