@@ -66,7 +66,7 @@ class WorkspaceTestSuite(unittest.TestCase):
 
     transition = VersionTransition("versiontransition1", 
            "2019-05-21 14:09:23.833813840+02:00",
-           "2019-05-23 14:09:23.833813840+02:00", 
+           "2019-05-22 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813845+02:00",
            title="version transition 1",
@@ -114,7 +114,7 @@ class WorkspaceTestSuite(unittest.TestCase):
     vdocuments2 = ["photograph1", "photograph2"]
     vsources2 = ["source1", "source2"]
     vtags2 = ["building1", "administrative"]
-    version2 = Version("version1", "2019-05-22 14:09:23.833813840+02:00",
+    version2 = Version("version2", "2019-05-22 14:09:23.833813840+02:00",
            "2019-05-23 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813845+02:00",
@@ -125,7 +125,7 @@ class WorkspaceTestSuite(unittest.TestCase):
 
     transition = VersionTransition("versiontransition1", 
            "2019-05-21 14:09:23.833813840+02:00",
-           "2019-05-23 14:09:23.833813840+02:00", 
+           "2019-05-22 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813845+02:00",
            title="version transition 1",

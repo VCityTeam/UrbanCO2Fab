@@ -1,4 +1,4 @@
-import error
+from error import * 
 import sys
 from pygit2 import Repository
 import xmlparser
@@ -36,9 +36,26 @@ class Scenario(AbstractFeature):
     if(self.versiontransitions is not None):
       Validate.validateclass(VersionTransitionList, self.versiontransitions)
     """
-      TODO: Verify, there is a continuity of version transitions.
+      Verify, there is a continuity of version transitions.
+      First, we verify, whether size of version list is one more than size
+      of version transition list
     """
-    
+    if(self.versiontransitions is not None):
+      if(len(self.versiontransitions)+1 != len(self.versions)):
+        raise(ScenarioError("Size of version list must be one more than size of version transition list"))
+       # Next, we verify continuity
+      vpos = 0 
+      for versiontransition in self.versiontransitions: 
+        if(parse(self.versions[vpos].get(filters=["existenceendtime"])["existenceendtime"]) !=  
+          parse(versiontransition.get(filters=["existencestarttime"])["existencestarttime"])):
+          raise(ScenarioError("There must be continuity between versions and version transitions"))
+        if(parse(self.versions[vpos+1].get(filters=["existencestarttime"])["existencestarttime"]) !=  
+         parse(versiontransition.get(filters=["existenceendtime"])["existenceendtime"])):
+          raise(ScenarioError("There must be continuity between versions and version transitions"))
+    else:
+      if(1 != len(self.versions)):
+        raise(ScenarioError("Size of version list must be one"))
+     
 
   def get(self, filters=[], info=dict()):
     super(Scenario, self).get(filters, info)

@@ -17,7 +17,7 @@ class Version(AbstractFeature):
           tags=None, title=None, dtype = None, userid=None):
     super(Version, self).__init__(identifier, existencestarttime, 
             existenceendtime, storetransactionstarttime, storetransactionendtime,
-            identifier+".transactions")
+            identifier+".version")
     self.__class__ = Version
     self.description = description
     self.documents = documents
@@ -60,6 +60,7 @@ class Version(AbstractFeature):
       self.userid = userid
 
   def get(self, filters=[], version_info=dict()):  
+    super(Version, self).get(filters, version_info)
     for fter in filters:
       if (fter == "all"):
         version_info["description"] = self.description

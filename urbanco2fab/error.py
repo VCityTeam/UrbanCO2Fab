@@ -4,7 +4,7 @@ class InputError(Exception):
     self.message = " " + message
 
 class VersionError(Exception):
-  """Input Error"""
+  """Version Error"""
   def __init__(self, message):
     self.message = "" + message
 
@@ -13,7 +13,12 @@ class DataTypeError(Exception):
   def __init__(self, message):
     self.message = "Wrong type :"+ message
 
+class ScenarioError(Exception):
+  """Scenario Error"""
+  def __init__(self, message):
+    self.message = "Error in creating scenario: " + message
+
 class ConsensusScenarioError(Exception):
-  """Input Error"""
+  """Consensus scenario Error"""
   def __init__(self, message):
     self.message = "Error in creating consensus scenario: " + message
