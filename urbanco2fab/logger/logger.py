@@ -21,10 +21,12 @@ def set_logger(level=logging.DEBUG):
     # add ch to logger
     logger.addHandler(ch)
 
+    return logger
+
 
 
 if __name__ == "__main__":
-    set_logger()
+    logger = set_logger()
     # 'application' code
     logger.debug('debug message')
     logger.info('info message')
