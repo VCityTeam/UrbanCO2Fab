@@ -2,7 +2,7 @@ import logging
 
 
 def set_logger(level=logging.DEBUG):
-    format = '%(levelname)s - %(asctime)s - name:%(name)s - file:%(module)s.py - %(message)s'
+    format = '%(levelname)s - %(asctime)s - file:%(module)s.py - %(message)s'
 
     # create logger
     logger = logging.getLogger('root')
