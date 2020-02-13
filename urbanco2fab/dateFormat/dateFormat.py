@@ -1,15 +1,18 @@
 import sys
-import dateutil
 import time
 import datetime
 import re
+import argparse
 import logging
 logger = logging.getLogger("root")
+
+from dateutil.parser import parse, ParserError
 
 
 
 class DateFormat:
-    _wanted_format_only_number = r"(\d{4})-?(\d{2})?-?(\d{2})?T?(\d{2})?:?(\d{2})?:?(\d{2})?\+?(\d{2}:\d{2})?" #regex match for 2001-06-05T15:29:54+02:00
+    _wanted_format_only_number = r"^(\d{4})-?(\d{2})?-?(\d{2})?T?(\d{2})?:?(\d{2})?:?(\d{2})?\+?(\d{2}:\d{2})?$" #regex match for 2001-06-05T15:29:54+02:00
+    #_wanted_format_only_number = r"^(\d{4})-?(\d{2})?-?(\d{2})?T?(\d{2})?:?(\d{2})?:?(\d{2})?\+?(\d{2}:\d{2})?"
     _wanted_format_month = r"\d{4}-(\w+)" #regex match for 2001-janvier-05T15:29:54+02:00
     _month_dict = {
                 "janvier":"01",
@@ -52,10 +55,12 @@ class DateFormat:
             return ret
 
         test = re.match(DateFormat._wanted_format_only_number, date)
-        logger.debug("Date mathed : %s", test)
-        if not test:
+        if not test :
             logger.error("Date parser failed : %s", date)
+
         else:
+            logger.debug("Date mathed : %s", test.groups())
+
             list_date = list(test.groups()[:7]) # to be sure of the length
             
             if not list_date[1]: # month was not present at least in a number
@@ -81,8 +86,13 @@ class DateFormat:
                 list_date[4] + ":" + \
                 list_date[5] + "+" + \
                 time_zone
+            try:
+                parse(ret)
+                logger.info("Date parse : From:%s to:%s",date, ret)
+            except ParserError as e:
+                logger.error("%s, date has the format YYYY-MM-DDThh-mm-ss+tt:tt", e)
+                ret = None                
 
-            logger.info("Date parse : From:%s to:%s",date, ret)
             return ret
 
 
@@ -101,6 +111,21 @@ class DateFormat:
         
         return ret
 
+class DateFormatAction(argparse.Action):
+    def __init__(self, option_strings, dest, nargs=None, **kwargs):
+        #if nargs is not None:
+        #    raise ValueError("nargs not allowed")
+        super(DateFormatAction, self).__init__(option_strings, dest, nargs=nargs, **kwargs)
+    
+    def __call__(self, parser, namespace, values, option_string=None):
+        logger.debug("Time input for argparse - namespace:%s, values:%s, option_string:%s", namespace, values, option_string)
+        list_complet_date = []
+        for date in values:
+            logger.debug("Trying to parse : %s", date)
+            complet_date = DateFormat.parser(date)
+            list_complet_date.append(complet_date)
+
+        setattr(namespace, self.dest, list_complet_date)
 
 
 
