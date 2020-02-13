@@ -8,7 +8,8 @@ import os
 import os
 import datetime
 import versiontransition
-from dateutil.parser import parse
+from dateutil.parser import parser
+from dateFormat.dateFormat import DateFormatAction
 
 parser = argparse.ArgumentParser(description="management of city data")
 versiongroup = parser.add_argument_group('version', "management of versions")
@@ -39,7 +40,7 @@ parser.add_argument("-f", "--graph", nargs='+', help="difference graph, if avail
 parser.add_argument("-e", "--document", nargs='+', help="one or more document evidences")
 parser.add_argument("-r", "--source", nargs='+', help="source of a given file(s)")
 parser.add_argument("-m", "--message", nargs='+', help="message")
-parser.add_argument("-i", "--time", nargs='+', help="one or more times")
+parser.add_argument("-i", "--time", nargs='+', help="one or more times", action=DateFormatAction)
 parser.add_argument("-d", "--description", nargs=1, help="description of scenario")
 parser.add_argument("-s", "--scenario", nargs='+', help="scenario related operations")
 parser.add_argument("-c", "--consensus", nargs=1, help="consensus scenario")
