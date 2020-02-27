@@ -1,7 +1,7 @@
 from error import * 
 import sys
 from pygit2 import Repository
-import xmlparser
+import parser.citygml.xmlparser
 from datetime import datetime, timezone, timedelta
 import json
 import diff

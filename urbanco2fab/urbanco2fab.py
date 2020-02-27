@@ -1,15 +1,15 @@
 import argparse
 import visualization
 import scenario
-import workspace
+from workspace import Workspace
 import version
 import diff
 import os
 import os
 import datetime
 import versiontransition
-from dateutil.parser import parser
-from dateFormat.dateFormat import DateFormatAction
+import datetime
+from dateformat.dateformat import DateFormatAction
 
 parser = argparse.ArgumentParser(description="management of city data")
 versiongroup = parser.add_argument_group('version', "management of versions")
@@ -68,7 +68,7 @@ if (args.operation == "show"):
   elif (args.versiontransition is not None):
     versiontransition.get_versiontransition(args.versiontransition)
   else:
-    workspace.get_workspace()
+    Workspace.get_workspace()
 elif (args.operation == "log"):
   if (args.historical == "historical"):
     if(args.time is None):
@@ -83,43 +83,43 @@ elif (args.operation == "log"):
 elif (args.operation == "add"):
   if (args.workspace is None):
     cwd = os.getcwd()
-    workspace.add(cwd, args.path)
+    Workspace.add(cwd, args.path)
   else:
     cwd = os.getcwd()
-    workspace.add(cwd)
+    Workspace.add(cwd)
 elif (args.operation == "pull"):
   if (args.workspace is not None) :
-    workspace.pull(args.workspace[0])
+    Workspace.pull(args.workspace[0])
   else:
     cwd = os.getcwd()
-    workspace.pull(cwd)
+    Workspace.pull(cwd)
 elif (args.operation == "push"):
   if (args.workspace is not None) :
-    workspace.push(args.workspace[0])
+    Workspace.push(args.workspace[0])
   else:
     cwd = os.getcwd()
-    workspace.push(cwd)
+    Workspace.push(cwd)
 elif (args.operation == "init"):
   bare = False
   if (args.bare is not None):
     bare = True
   if (args.path is not None):
-    workspace.init(args.path[0], bare)
+    Workspace(args.path[0], bare, datetime.datetime.now(datetime.timezone.utc))
   elif (len(args.arguments) > 0):
-    workspace.init(args.arguments[0], bare)
+    Workspace(args.arguments[0], bare)
   else:
     cwd = os.getcwd()
-    workspace.init(cwd, bare)
+    Workspace(cwd, bare)
 elif (args.operation == "rm"):
   workspacepath = os.getcwd()
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
-  workspace.rm(workspacepath, args.path)
+  Workspace.rm(workspacepath, args.path)
 elif (args.operation == "mv"):
   workspacepath = os.getcwd()
   if (args.workspace is not None) :
     workspacepath = args.workspace[0] 
-  workspace.move(workspacepath, args.path)
+  Workspace.move(workspacepath, args.path)
 elif (args.operation == "commit"):
   workspacepath = os.getcwd()
   description = ""
@@ -152,7 +152,7 @@ elif (args.operation == "commit"):
       proposition = args.proposition
     if (args.influence is not None):
       influence = args.influence
-    workspace.create_workspace(workspacepath, consensus, proposition, influence)
+    Workspace.create_workspace(workspacepath, consensus, proposition, influence)
     exit(1)
   if (args.scenario is not None):
     if (args.version is None or args.versiontransition is None):

@@ -1,5 +1,5 @@
 from pygit2 import Repository
-from customxmlparser import CustomXMLParser
+from parser.citygml.customxmlparser import CustomXMLParser
 import xml.etree.ElementTree as ET
 import json
 from xml.etree.ElementTree import XMLParser

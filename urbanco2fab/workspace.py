@@ -12,13 +12,9 @@ from validate import Validate
 from enum import Enum
 
 class Workspace(AbstractFeature):
-  def __init__(self, identifier, existencestarttime=None, existenceendtime=None,
-          storetransactionstarttime=None, storetransactionendtime=None,
-          title=None, description=None,tags=None,
+  def __init__(self, identifier, bare, storetransactionstarttime,
+          storetransactionendtime=None, title=None, description=None,tags=None,
           consensusscenario=None, propositionscenarios=None, userid=None):
-    super(Workspace, self).__init__(identifier, existencestarttime, 
-            existenceendtime, storetransactionstarttime, storetransactionendtime,
-            identifier+".workspace")
     self.__class__ = Workspace
     self.description = description
     self.tags = tags
@@ -29,7 +25,8 @@ class Workspace(AbstractFeature):
     self.validate()
 
   def validate(self):
-    Validate.validateclass(Scenario, self.consensusscenario)
+    if(self.consensusscenario is not None):
+      Validate.validateclass(Scenario, self.consensusscenario)
     if(self.propositionscenarios is not None):
       Validate.validateclass(ScenarioList, self.propositionscenarios)
     """
@@ -53,9 +50,10 @@ class Workspace(AbstractFeature):
     """
       All the version types in a Consensus scenario must be of type 'Existing'.
     """
-    for version in self.consensusscenario.get(filters=["versions"])["versions"]:
-      if (version.get(filters=["type"])["type"] != VersionType.EXISTING):
-        raise(ConsensusScenarioError("All version types in a consensus scenario must be of type existing"))
+    if (self.consensusscenario is not None): 
+      for version in self.consensusscenario.get(filters=["versions"])["versions"]:
+        if (version.get(filters=["type"])["type"] != VersionType.EXISTING):
+          raise(ConsensusScenarioError("All version types in a consensus scenario must be of type existing"))
 
     """
       Consensus scenario and proposition scenarios must be disjoint
