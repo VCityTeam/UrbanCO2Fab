@@ -1,13 +1,11 @@
 import unittest
-import sys
-sys.path.append("../")
 
-from feature import Feature, FeatureList
-from version import *
-from versiontransition import * 
-from scenario import *
-from error import *
-from workspace import Workspace
+from exception.error import *
+from objects.feature import Feature, FeatureList
+from objects.version import *
+from objects.versiontransition import * 
+from objects.scenario import *
+from objects.workspace import Workspace
 
 class WorkspaceTestSuite(unittest.TestCase):
   def test_basic_workpace(self):
@@ -31,8 +29,7 @@ class WorkspaceTestSuite(unittest.TestCase):
           versions = [version1], versiontransitions=None,
           scenariotype = ScenarioType.CONSENSUS, userid="user1")
 
-    workspace = Workspace("workspace1", "2019-05-20 14:09:23.833813840+02:00",
-           "2019-05-21 14:09:23.833813840+02:00", 
+    workspace = Workspace("workspace1", 
            "2019-05-24 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813845+02:00",
           description="Workspace", 
@@ -86,8 +83,7 @@ class WorkspaceTestSuite(unittest.TestCase):
           scenariotype = ScenarioType.CONSENSUS, userid="user1")
 
     try:
-      workspace = Workspace("workspace1", "2019-05-20 14:09:23.833813840+02:00",
-           "2019-05-21 14:09:23.833813840+02:00", 
+      workspace = Workspace("workspace1", 
            "2019-05-24 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813845+02:00",
           description="Workspace", 
@@ -154,8 +150,6 @@ class WorkspaceTestSuite(unittest.TestCase):
           scenariotype = ScenarioType.CONSENSUS, userid="user1")
 
     workspace = Workspace("workspace1", "2019-05-20 14:09:23.833813840+02:00",
-           "2019-05-21 14:09:23.833813840+02:00", 
-           "2019-05-24 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813845+02:00",
           description="Workspace", 
           tags=vtags1, title="workspace1", 
@@ -186,8 +180,6 @@ class WorkspaceTestSuite(unittest.TestCase):
     
     try:
       workspace = Workspace("workspace1", "2019-05-20 14:09:23.833813840+02:00",
-           "2019-05-21 14:09:23.833813840+02:00", 
-           "2019-05-24 14:09:23.833813840+02:00", 
            "2019-05-24 14:09:23.833813845+02:00",
           description="Workspace", 
           tags=vtags1, title="workspace1", 

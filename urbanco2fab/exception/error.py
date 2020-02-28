@@ -8,6 +8,11 @@ class VersionError(Exception):
   def __init__(self, message):
     self.message = "Error in creating version: " + message
 
+class TransactionError(Exception):
+  """Transaction Error"""
+  def __init__(self, message):
+    self.message = "Error in creating transaction: " + message
+
 class VersionTransitionError(Exception):
   """Version Transition Error"""
   def __init__(self, message):

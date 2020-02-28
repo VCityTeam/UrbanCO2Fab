@@ -11,109 +11,28 @@ from versiontransition import *
 from validate import Validate
 from enum import Enum
 
-class ScenarioType(Enum):
-  CONSENSUS = 1
-  PROPOSITION = 2
 
-class Scenario(AbstractFeature):
-  def __init__(self, identifier, existencestarttime=None, existenceendtime=None,
-          storetransactionstarttime=None, storetransactionendtime=None,
-          title=None, description=None,scenariotype=None,tags=None,
-          versions=None, versiontransitions=None, userid=None):
-    super(Scenario, self).__init__(identifier, existencestarttime, 
-            existenceendtime, storetransactionstarttime, storetransactionendtime,
-            identifier+".scenario")
-    self.__class__ = Scenario
-    self.description = description
-    self.tags = tags
-    self.title = title
-    self.versiontransitions = versiontransitions
-    self.versions = versions
-    self.userid = userid
-    self.validate()
-
-  def validate(self):
-    if(self.versiontransitions is not None):
-      Validate.validateclass(VersionTransitionList, self.versiontransitions)
-    """
-      Verify, there is a continuity of version transitions.
-      First, we verify, whether size of version list is one more than size
-      of version transition list
-    """
-    if(self.versiontransitions is not None):
-      if(len(self.versiontransitions)+1 != len(self.versions)):
-        raise(ScenarioError("Size of version list must be one more than size of version transition list"))
-       # Next, we verify continuity
-      vpos = 0 
-      for versiontransition in self.versiontransitions: 
-        if(parse(self.versions[vpos].get(filters=["existenceendtime"])["existenceendtime"]) !=  
-          parse(versiontransition.get(filters=["existencestarttime"])["existencestarttime"])):
-          raise(ScenarioError("There must be continuity between versions and version transitions"))
-        if(parse(self.versions[vpos+1].get(filters=["existencestarttime"])["existencestarttime"]) !=  
-         parse(versiontransition.get(filters=["existenceendtime"])["existenceendtime"])):
-          raise(ScenarioError("There must be continuity between versions and version transitions"))
-    else:
-      if(1 != len(self.versions)):
-        raise(ScenarioError("Size of version list must be one"))
-     
-
-  def get(self, filters=[], info=dict()):
-    super(Scenario, self).get(filters, info)
-    for fter in filters:
-      if (fter == "all"):
-        info["versiontransitions"] = self.versiontransitions
-        info["versions"] = self.versions
-        info["title"] = self.title
-        info["description"] = self.description
-        info["tags"] = self.tags
-        info["userid"] = self.userid
-        break
-      if (fter == "description"):
-        info["description"] = self.description
-      if (fter == "versions"):
-        info["versions"] = self.versions
-      if (fter == "userid"):
-        info["userid"] = self.userid
-      if (fter == "tags"):
-        info["tags"] = self.tags
-      if (fter == "title"):
-        info["title"] = self.title
-      if (fter == "versiontransitions"):
-        info["versiontransitions"] = self.versiontransitions
-    return info
-
-class ScenarioList(list):
-  def __init__(self, *args):
-    super(ScenarioList, self).__init__()
-    for arg in args:
-      self.append(arg)
-
-  def append(self, scenario):
-    if not isinstance(scenario,Scenario):
-      raise DataTypeError("It's not a scenario: " + str(scenario))  
-    super(ScenarioList, self).append(scenario) 
-
-  def get_versions(scenarioid):
+def get_versions(scenarioid):
     with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
       scenarios = json.load(jsonfile)
       if(scenarioid not in scenarios):
         raise ValueError('Unrecognized scenario: ' + scenarioid)
       return set(scenarios[scenarioid]["versions"])
   
-  def verify_scenario(scenarioid):
+def verify_scenario(scenarioid):
     with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
       scenarios = json.load(jsonfile)
       if(scenarioid not in scenarios):
         raise ValueError('Unrecognized scenario: ' + scenarioid)
   
-  def verify_scenarios(scenarioids):
+def verify_scenarios(scenarioids):
     with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
       scenarios = json.load(jsonfile)
       for scenarioid in scenarioids:
         if(scenarioid not in scenarios):
           raise ValueError('Unrecognized scenario: ' + scenarioid)
   
-  def get_scenario(scenarioid, display=True):
+def get_scenario(scenarioid, display=True):
     all_scenarios = []
     with open("./.urbanco2fab/scenarios.json") as jsonfile:
       scenarios = json.load(jsonfile)
@@ -131,7 +50,7 @@ class ScenarioList(list):
             print("    "+versiontransition)
     return all_scenarios
   
-  def create_scenario_using_gml_dates(repository, userversions, 
+def create_scenario_using_gml_dates(repository, userversions, 
       userversiontransitions, title, description, differencegraph=[]):
     scenario = dict() 
     jsonfile = None
@@ -225,7 +144,7 @@ class ScenarioList(list):
     with open("./.urbanco2fab/scenarios.json", "w") as jsonfile:
       json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
   
-  def create_scenario(repository, userversions, userversiontransitions, 
+def create_scenario(repository, userversions, userversiontransitions, 
       title, description, scenariontype="proposition", differencegraph=[]):
     scenario = dict() 
     jsonfile = None
@@ -299,7 +218,7 @@ class ScenarioList(list):
       json.dump(scenario, jsonfile,  indent=4, sort_keys=True) 
     Workspace.basic_commit(repository, "saving urbanco2fab metadata");
   
-  def tag(repository, scenarioid, tags):
+def tag(repository, scenarioid, tags):
     try:
       with open("./.urbanco2fab/scenarios.json", "r") as jsonfile:
         scenarios = json.load(jsonfile)

@@ -1,12 +1,10 @@
 import unittest
-import sys
-sys.path.append("../")
 
-from feature import Feature, FeatureList
-from version import *
-from error import *
-from versiontransition import * 
-from scenario import Scenario, ScenarioType
+from exception.error import ScenarioError
+from objects.feature import Feature, FeatureList
+from objects.version import *
+from objects.versiontransition import * 
+from objects.scenario import Scenario, ScenarioType
 
 class ScenarioTestSuite(unittest.TestCase):
   def test_basic_scenario(self):

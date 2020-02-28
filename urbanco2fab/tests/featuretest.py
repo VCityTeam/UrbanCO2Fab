@@ -2,7 +2,7 @@ import unittest
 import sys
 sys.path.append("../")
 
-from feature import Feature, FeatureList
+from objects.feature import Feature, FeatureList
 
 class FeatureTestSuite(unittest.TestCase):
   def test_basic_feature(self):

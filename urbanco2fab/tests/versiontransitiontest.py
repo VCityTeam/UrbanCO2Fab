@@ -2,10 +2,10 @@ import unittest
 import sys
 sys.path.append("../")
 
-from error import *
-from feature import Feature, FeatureList
-from versiontransition import VersionTransition, VersionTransitionType
-from version import Version, VersionType
+from exception.error import *
+from objects.feature import Feature, FeatureList
+from objects.versiontransition import VersionTransition, VersionTransitionType
+from objects.version import Version, VersionType
 
 class VersionTransitionTestSuite(unittest.TestCase):
   def test_basic_transaction_replace(self):

@@ -2,8 +2,8 @@ import unittest
 import sys
 sys.path.append("../")
 
-from feature import Feature, FeatureList
-from transaction import Transaction, TransactionType
+from objects.feature import Feature, FeatureList
+from objects.transaction import Transaction, TransactionType
 
 class TransactionTestSuite(unittest.TestCase):
   def test_basic_transaction_replace(self):

@@ -2,7 +2,7 @@ import unittest
 import sys
 sys.path.append("../")
 
-from version  import Version, VersionList, VersionType
+from objects.version  import Version, VersionList, VersionType
 
 class VersionTestSuite(unittest.TestCase):
   def test_basic_version(self):

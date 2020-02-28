@@ -1,5 +1,6 @@
+from urbanco2fab.store.abstractstore import AbstractStore
 
-class GitStore(ABC):
+class GitStore(AbstractStore):
   @abstractmethod
   def __init__(self, store):
     self.__class__ = AbstractStore

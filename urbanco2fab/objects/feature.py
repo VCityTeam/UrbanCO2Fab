@@ -1,6 +1,5 @@
-from abstractfeature import AbstractFeature
+from objects.abstractfeature import AbstractFeature
 from validate import Validate
-
 
 class Feature(AbstractFeature):
   def __init__(self, identifier, existencestarttime=None, existenceendtime=None,
