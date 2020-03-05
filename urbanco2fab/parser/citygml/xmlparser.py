@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 import dateutil.parser as dateparse
-from error import VersionError
+from exception.error import *
 
 def parse(xml):
   root = ET.fromstring(xml)

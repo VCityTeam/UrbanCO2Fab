@@ -1,6 +1,6 @@
 import json
 from enum import Enum
-from abstractfeature import AbstractFeature
+from objects.abstractfeature import AbstractFeature
 from validate import Validate
 from dateutil.parser import parse
 

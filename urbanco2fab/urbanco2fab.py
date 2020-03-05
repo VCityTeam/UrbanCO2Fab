@@ -1,7 +1,6 @@
 import argparse
 import visualization
 import scenario
-from workspace import Workspace
 import version
 import diff
 import os
@@ -9,7 +8,9 @@ import os
 import datetime
 import versiontransition
 import datetime
+from objects.workspace import Workspace
 from dateformat.dateformat import DateFormatAction
+from store.storefactory import StoreFactory
 
 parser = argparse.ArgumentParser(description="management of city data")
 versiongroup = parser.add_argument_group('version', "management of versions")

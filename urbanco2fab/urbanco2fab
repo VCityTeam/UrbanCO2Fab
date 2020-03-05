@@ -1,3 +1,3 @@
 #!/bin/sh
-
-python3 $HOME/contributions/UrbanCO2Fab/urbanco2fab/urbanco2fab.py $@
+export PYTHONPATH="$PYTHONPATH:$HOME/contributions/UrbanCo2Fab/urbanco2fab/"
+python3 -m interface.commandline.urbanco2fabcl $@

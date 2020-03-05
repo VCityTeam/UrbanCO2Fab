@@ -2,9 +2,9 @@ import json
 import diff
 import datetime
 from dateutil.parser import parse
-from abstractfeature import AbstractFeature
 from enum import Enum
 from validate import Validate
+from objects.abstractfeature import AbstractFeature
 
 class VersionType(Enum):
   EXISTING = 1

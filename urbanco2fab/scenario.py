@@ -1,15 +1,15 @@
-from error import * 
 import sys
 from pygit2 import Repository
 import parser.citygml.xmlparser
 from datetime import datetime, timezone, timedelta
 import json
 import diff
-from abstractfeature import AbstractFeature
 import version
-from versiontransition import *
 from validate import Validate
 from enum import Enum
+from exception.error import *
+from objects.abstractfeature import AbstractFeature
+from objects.versiontransition import *
 
 
 def get_versions(scenarioid):

@@ -1,8 +1,8 @@
-import error
+import exception.error
 import sys
-import version
 import json
-import scenario
+import objects.version
+import objects.scenario
 from shutil import copyfile
 from pygit2 import Repository, credentials
 from datetime import datetime, timezone, timedelta
@@ -12,7 +12,28 @@ import diff
 from pygit2 import clone_repository, init_repository, GIT_OBJ_COMMIT, GIT_SORT_REVERSE, GIT_SORT_TOPOLOGICAL
 
 class Workspace(object):
-  def __init__(self, jsonfilepath):
+  def __init__(self):
+    pass
+
+  def basic_commit(self, workspace, message):
+    try:
+      repo = Repository(workspace)
+      for filename in ["scenarios.json", "versions.json"]:
+        repo.index.add(".urbanco2fab/"+filename)
+      user = repo.default_signature
+      #https://stackoverflow.com/questions/29469649/create-a-commit-using-pygit2
+      tree = repo.index.write_tree()
+      if repo.head_is_unborn:
+        parents = []
+      else:
+        parents = [repo.head.target]
+      repo.index.write()
+      repo.create_commit('HEAD', user, user, message, tree, parents)
+      repo.index.write()
+    except Exception as e:
+      print("Unable to commit to UrbanCo2Fab repository: " + str(e))
+
+  def __init1__(self, jsonfilepath):
     """ Initializes a workspace by reading the JSON file containing the 
         details of a workspace. A workspace contains one consensus scenario
         and multiple (zero or more)  proposition scenarios. It may also contain
@@ -229,7 +250,7 @@ class Workspace(object):
     except Exception as e:
       print("Not a valid UrbanCo2Fab repository: " + str(e))
   
-  def init(path, bare=False):
+  def init(self, path, bare=False):
     try:
       if(path is not None):
         if(bare):
@@ -240,8 +261,8 @@ class Workspace(object):
   
         #creating urbanco2fab directory and adding it to git metadata mgmt.
         os.makedirs(path + "/.urbanco2fab") 
-        copyfile(os.path.dirname(__file__)+ "/viz.js", ".urbanco2fab/viz.js")
-        copyfile(os.path.dirname(__file__)+ "/full.render.js", ".urbanco2fab/full.render.js")
+        copyfile(os.path.dirname(__file__)+ "/../../viz.js", ".urbanco2fab/viz.js")
+        copyfile(os.path.dirname(__file__)+ "/../../full.render.js", ".urbanco2fab/full.render.js")
          
         repo = Repository(path)
         empty = dict() 
@@ -253,11 +274,11 @@ class Workspace(object):
         for filename in ["viz.js", "full.render.js"]:
           repo.index.add(".urbanco2fab/"+filename)
         repo.index.write()
-        basic_commit(path, "Initilizing UrbanCo2Fab")
+        self.basic_commit(path, "Initilizing UrbanCo2Fab")
       else:
         print("path missing")
     except Exception as e:
-      print("Not a valid UrbanCo2Fab repository: " + str(e))
+      print("Error in initializing UrbanCo2Fab repository: " + str(e))
   
   def add(workspace, paths=None):
     try:
@@ -303,23 +324,6 @@ class Workspace(object):
     except Exception as e:
       print("Unable to tag a UrbanCo2Fab repository: " + str(e))
   
-  def basic_commit(workspace, message):
-    try:
-      repo = Repository(workspace)
-      for filename in ["scenarios.json", "versions.json"]:
-        repo.index.add(".urbanco2fab/"+filename)
-      user = repo.default_signature
-      #https://stackoverflow.com/questions/29469649/create-a-commit-using-pygit2
-      tree = repo.index.write_tree()
-      if repo.head_is_unborn:
-        parents = []
-      else:
-        parents = [repo.head.target]
-      repo.index.write()
-      repo.create_commit('HEAD', user, user, message, tree, parents)
-      repo.index.write()
-    except Exception as e:
-      print("Unable to commit to UrbanCo2Fab repository: " + str(e))
   
   def commit(workspace, message, starttime, endtime,
          description, tag, document, versiontype, source):
