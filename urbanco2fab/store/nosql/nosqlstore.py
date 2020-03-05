@@ -1,6 +1,6 @@
 from store.abstractstore import AbstractStore
 
-class GitStore(AbstractStore):
+class NosqlStore(AbstractStore):
   def __init__(self, store):
     self.__class__ = AbstractStore
 
