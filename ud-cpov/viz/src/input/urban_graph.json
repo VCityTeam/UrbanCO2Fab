@@ -1,0 +1,224 @@
+{
+	"nodes": [
+	  	{
+			"id": 0,
+			"label": "2000",
+			"level": 0,
+			"group_id": 0
+		},
+		{
+			"id": 1,
+			"label": "2001",
+			"level": 1,
+			"group_id": 0
+		},
+		{
+			"id": 2,
+			"label": "2002",
+			"level": 2,
+			"group_id": 0
+		},
+		{
+			"id": 3,
+			"label": "2003",
+			"level": 3,
+			"group_id": 0
+		},
+		{
+			"id": 4,
+			"label": "2004",
+			"level": 4,
+			"group_id": 0
+		},
+		{
+			"id": 5,
+			"label": "2005",
+			"level": 5,
+			"group_id": 0
+		},
+		{
+			"id": 6,
+			"label": "C_2000",
+			"level": 0,
+			"group_id": 1
+		},
+		{
+			"id": 7,
+			"label": "C_2002",
+			"level": 2,
+			"group_id": 1
+		},
+		{
+			"id": 8,
+			"label": "C_2004",
+			"level": 4,
+			"group_id": 1
+		},
+		{
+			"id": 9,
+			"label": "P_2001",
+			"level": 1,
+			"group_id": 2
+		},
+		{
+			"id": 10,
+			"label": "P_2001",
+			"level": 1,
+			"group_id": 2
+		},
+		{
+			"id": 11,
+			"label": "P_2004",
+			"level": 4,
+			"group_id": 2
+		},
+		{
+			"id": 12,
+			"label": "C_2004",
+			"level": 4,
+			"group_id": 1
+		}
+	],
+	"edges": [
+	  	{
+			"form": 0,
+			"to": 1
+		},
+		{
+			"form": 1,
+			"to": 2
+		},
+		{
+			"form": 2,
+			"to": 3
+		},
+		{
+			"form": 3,
+			"to": 4
+		},
+		{
+			"form": 4,
+			"to": 5
+		},
+		{
+			"form": 6,
+            "to": 7,
+            "color": "red",
+            "label": "modification"
+		},
+		{
+			"form": 7,
+            "to": 8,
+            "color": "blue",
+            "label": "split"
+		},
+		{
+			"form": 8,
+            "to": 12,
+            "color": "blue",
+            "label": "split"
+		},
+		{
+			"form": 9,
+            "to": 7,
+            "color": "green",
+            "label": "merge"
+		},
+		{
+			"form": 10,
+            "to": 7,
+            "color": "green",
+            "label": "merge"
+		},
+		{
+			"form": 7,
+            "to": 11,
+            "color": "black",
+            "label": "destruction"
+		}
+
+    ],
+    "options":
+    [
+        {
+            "edges": 
+            {
+                "smooth": 
+                {
+                  "type": "cubicBezier"
+                },
+                "arrows": { "to": true },
+                "font":{ "align": "middle"},
+                "length":170
+            },
+            "groups":
+            [
+                {
+                    "id": 0,
+                    "color": "white",
+					"hidden": "true",
+					"label": "Time legend"
+                },
+                {
+                    "id": 1,
+                    "color": "green",
+                    "label": "Consensus scenario"
+                },
+                {
+                    "id": 2,
+                    "color": "yellow",
+                    "label": "Proposition scenario"
+                }
+            ],
+            "physics":
+            {
+                "enabled": true
+            }
+        },
+        {
+            "mode":"hierarchy",
+            "edges": 
+            {
+                "smooth": 
+                {
+                  "type": "cubicBezier"
+                },
+                "arrows": { "to": true },
+                "font":{ "align": "middle"},
+                "length":170
+            },
+            "groups":
+            [
+                {
+                    "id": 0,
+                    "mode": "hierarchy",
+                    "label": "Time legend"
+                },
+                {
+                    "id": 1,
+                    "color": "green",
+                    "label": "Consensus scenario"
+                },
+                {
+                    "id": 2,
+                    "color": "yellow",
+                    "label": "Proposition scenario"
+                }
+            ],
+            "layout": 
+            {
+              "hierarchical": 
+              {
+                "direction": "LR",
+                "sortMethod": "directed",
+                "treeSpacing": 50
+              }
+            },
+            "interaction": { "dragNodes": false },
+            "physics": 
+            {
+              "enabled": false
+            }
+        }
+    ]
+}
