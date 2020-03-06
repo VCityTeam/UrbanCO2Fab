@@ -1,4 +1,6 @@
-const json_manager = require("./json_parser");
+import * as vis from 'vis-network';
+
+import * as json_manager from "json_parser";
 
 
 var network = null;

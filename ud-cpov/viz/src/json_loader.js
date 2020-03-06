@@ -1,4 +1,4 @@
-var fs = require("fs");
+import * as fs from 'fs';
 
 function get_graph_from_json_file(json_path) {
 /**
@@ -6,16 +6,7 @@ function get_graph_from_json_file(json_path) {
  * @returns json parsed object 
  * */    
     var ret = null
-    // Asynchronous read
-    // fs.readFile(json_path, function (err, data) {
-    //     if (err) {
-    //     return console.error(err);
-    //     }
-    //     console.log("JSON read at : %s", json_path);
-    //     ret = JSON.parse(data);
-    //     console.log("JSON parsed : %s", JSON.stringify(ret));
 
-    // });
     var data = fs.readFileSync(json_path);
     console.log("JSON read at : %s", json_path);
     ret = JSON.parse(data);

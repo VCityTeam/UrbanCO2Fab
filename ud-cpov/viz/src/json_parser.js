@@ -1,4 +1,4 @@
-const json_loader = require("./json_loader");
+import * as json_loader from "json_loader";
 
 
 function get_data(json_object) {
