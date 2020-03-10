@@ -1,4 +1,4 @@
-import * as json_loader from "json_loader";
+import { get_graph_from_json_file } from "./json_loader";
 
 
 function get_data(json_object) {
@@ -123,8 +123,8 @@ function get_list_options(json_object) {
     
 }
 
-function get_data_options(json_path){
-    const json_obj = json_loader.get_graph_from_json_file(json_path);
+export function get_data_and_options(json_path){
+    const json_obj = get_graph_from_json_file(json_path);
     const ret = {
         "data": get_data(json_obj),
         "list_options": get_list_options(json_obj)
@@ -132,19 +132,8 @@ function get_data_options(json_path){
     return ret;
 }
 
-module.exports = {
-    get_data: function(json_path){
-        const data = get_data_options(json_path).data;
-        return data;
-    },
-    get_list_options: function(json_path){
-        const list_options = get_data_options(json_path).list_options;
-        return list_options;
-    }
-};
-
 // test
 
-var json_obj = json_loader.get_graph_from_json_file('input/urban_graph.json');
+var json_obj = get_graph_from_json_file('input/urban_graph.json');
 get_data(json_obj);
 get_list_options(json_obj);
