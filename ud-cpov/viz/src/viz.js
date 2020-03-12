@@ -1,18 +1,20 @@
-import * as vis from 'vis-network';
+//import * as vis from 'vis-network';
 
 import { get_data_and_options } from "./json_parser";
 
 class NetworkManagerSingleton {
-
     constructor(start_mode="default", id_network="mynetwork", id_button_location="mybuttons"){
     /**
      * Constructor for singleton
      */
+        console.log(1);
         const instance = this.constructor.instance;
+        console.log(1);
         if(instance){
             return instance;
         }
         else{
+            console.log(1);
             this.network = null;
             this.data = null;
             this.list_option = null;
@@ -36,6 +38,7 @@ class NetworkManagerSingleton {
     }
 
     init_from_json_path(json_data_path, json_options_path){
+        console.log("NetworkManager init from json data: %s || options: %s", json_data_path, json_options_path);
         this.data = get_data_and_options(json_data_path).data;
         this.list_option = get_data_and_options(json_options_path).list_options;
         this.add_button_to_view();
@@ -87,9 +90,7 @@ class NetworkManagerSingleton {
 
                 button.onclick = function (param) {
                     console.log("Button %s clicked : %o", param.target.innerText, param);
-                    var n = new NetworkManagerSingleton();
-                    n.current_mode = param.target.innerText;
-                    n.draw();
+                    n.draw(param.target.innerText);
                 };
 
                 var element = document.getElementById(this.id_button_location);
@@ -100,10 +101,11 @@ class NetworkManagerSingleton {
         }
     }
 
-    draw() {
+    draw(mode="default") {
     /**
      * Draw the network inside the client page
      */
+        this.current_mode = mode;
         this.destroy();  
     
         if (this.data === null){
@@ -125,10 +127,11 @@ class NetworkManagerSingleton {
 
 // test
 const json_data_path = __dirname + "/input/urban_data.json";
-const json_options_path = __dirname + "/input/urban_option.json"
+const json_options_path = __dirname + "/input/urban_option.json";
+console.log("path");
 window.addEventListener("load", () => {
     console.log(__dirname);
     var n = new NetworkManagerSingleton();
-    n.init_from_json_path(json_data_path, json_options_path)
-    n.draw();
+    n.init_from_json_path(json_data_path, json_options_path);
+    //n.draw();
     });

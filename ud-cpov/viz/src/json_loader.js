@@ -1,11 +1,19 @@
-//import * as fs from 'fs';
+//import { readFileSync } from 'fs';
+import * as fs from 'fs';
+/**
+ * For fs import with webpack we need to add 
+ *   node: {
+    fs: "empty"
+  }
+ * In the webpack config file 
+ */
 
 export function get_graph_from_json_file(json_path) {
 /**
  * Read and parse a json file
  * @returns json parsed object 
  * */    
-/*
+
     var ret = null
 
     var data = fs.readFileSync(json_path);
@@ -13,7 +21,7 @@ export function get_graph_from_json_file(json_path) {
     ret = JSON.parse(data);
     console.log("JSON parsed : %s", JSON.stringify(ret));
     return ret;
-*/
+/*
     var ret = {
         nodes: [
               {
@@ -258,10 +266,10 @@ export function get_graph_from_json_file(json_path) {
             }
         ]
     }
-
+*/
     return ret;
 
 }
 
 // test
-get_graph_from_json_file('input/urban_graph.json');
+get_graph_from_json_file(__dirname + '/input/urban_data.json');
