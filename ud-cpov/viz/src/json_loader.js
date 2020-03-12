@@ -1,5 +1,5 @@
 //import { readFileSync } from 'fs';
-import * as fs from 'fs';
+var fs = require('fs');
 /**
  * For fs import with webpack we need to add 
  *   node: {
@@ -8,7 +8,7 @@ import * as fs from 'fs';
  * In the webpack config file 
  */
 
-export function get_graph_from_json_file(json_path) {
+function get_graph_from_json_file(json_path) {
 /**
  * Read and parse a json file
  * @returns json parsed object 
@@ -270,6 +270,6 @@ export function get_graph_from_json_file(json_path) {
     return ret;
 
 }
-
+module.exports = get_graph_from_json_file;
 // test
-get_graph_from_json_file(__dirname + '/input/urban_data.json');
+//get_graph_from_json_file(__dirname + '/input/urban_data.json');

@@ -1,7 +1,7 @@
-import { get_graph_from_json_file } from "./json_loader";
+//import { get_graph_from_json_file } from "./json_loader";
 
 
-function get_data(json_object) {
+export function get_data(json_object) {
 /**
  * Get the data for vis.Network
  * @param: json object that contains nodes and edges
@@ -11,7 +11,7 @@ function get_data(json_object) {
         nodes: get_nodes(json_object),
         edges: get_edges(json_object)
       };
-    console.log("Data for vis.Network : %s", JSON.stringify(data));
+    console.log("Data parsed for vis.Network : %o", data);
     return data;
 }
 
@@ -97,7 +97,7 @@ function get_option_by_mode(json_object, mode){
 
 }
 
-function get_list_options(json_object) {
+export function get_list_options(json_object) {
 /**
  * Get all options for all view
  * @param json_object json object for vis.Network
@@ -122,7 +122,7 @@ function get_list_options(json_object) {
     return ret;
     
 }
-
+/*
 export function get_data_and_options(json_path){
     const json_obj = get_graph_from_json_file(json_path);
     const ret = {
@@ -131,9 +131,9 @@ export function get_data_and_options(json_path){
     };
     return ret;
 }
-
+*/
 // test
 
-var json_obj = get_graph_from_json_file('input/urban_graph.json');
-get_data(json_obj);
-get_list_options(json_obj);
+//var json_obj = get_graph_from_json_file('input/urban_graph.json');
+//get_data(json_obj);
+//get_list_options(json_obj);

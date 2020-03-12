@@ -1,6 +1,6 @@
 //import * as vis from 'vis-network';
 
-import { get_data_and_options } from "./json_parser";
+import { get_data, get_list_options } from "./json_parser";
 
 class NetworkManagerSingleton {
     constructor(start_mode="default", id_network="mynetwork", id_button_location="mybuttons"){
@@ -37,10 +37,9 @@ class NetworkManagerSingleton {
         }
     }
 
-    init_from_json_path(json_data_path, json_options_path){
-        console.log("NetworkManager init from json data: %s || options: %s", json_data_path, json_options_path);
-        this.data = get_data_and_options(json_data_path).data;
-        this.list_option = get_data_and_options(json_options_path).list_options;
+    init(url_data="http://localhost:5000/urban_data1.json", url_option="http://localhost:5000/urban_option1.json"){
+        console.log("NetworkManager init from url data: %s || options: %s", url_data, url_option);
+        this.prepare_html_pages(url_data, url_option);
         this.add_button_to_view();
     }
 
@@ -90,6 +89,7 @@ class NetworkManagerSingleton {
 
                 button.onclick = function (param) {
                     console.log("Button %s clicked : %o", param.target.innerText, param);
+                    var n = new NetworkManagerSingleton ();
                     n.draw(param.target.innerText);
                 };
 
@@ -108,30 +108,55 @@ class NetworkManagerSingleton {
         this.current_mode = mode;
         this.destroy();  
     
-        if (this.data === null){
-            this.data = get_data_and_options(json_path).data;
-        }
-        if (this.list_option === null){
-            this.list_option = get_data_and_options(json_path).list_options;
-            this.add_button_to_view();
-        }
-    
         const options = this.get_option(this.current_mode);
         const container = document.getElementById(this.id_network);
         console.log("Drawing Container : %o Data : %o Options : %o", container, this.data, options);
         var network = new vis.Network(container, this.data, options);
         console.info("Network drawn");
         console.log(network);
+    }
+
+    prepare_html_pages(data_url, data_option) {
+        var button_load = document.getElementById("getData");
+        button_load.onclick = function(param) {
+            var n = new NetworkManagerSingleton();
+
+            var request_d = new XMLHttpRequest();
+            var result_d = null;
+            request_d.open("GET", data_url);
+            console.log("GET Request to %s", data_url.toString());
+            request_d.onreadystatechange = function() {
+                if(this.readyState === 4 && this.status === 200) {
+                    result_d = JSON.parse(this.responseText);
+                    console.log("result data: %o", result_d);
+                    n.data = get_data(result_d);
+                }
+            };
+            request_d.send();
+
+            var request_o = new XMLHttpRequest();
+            var result_o = null;
+            request_o.open("GET", data_option);
+            console.log("GET Request to %s", data_option.toString());
+            request_o.onreadystatechange = function() {
+                if(this.readyState === 4 && this.status === 200) {
+                    result_o = JSON.parse(this.responseText);
+                    console.log("result option: %o", result_o);
+                    n.list_option = get_list_options(result_o);
+                }
+            };
+            request_o.send();
+
+
         }
+    }
 }
 
 // test
-const json_data_path = __dirname + "/input/urban_data.json";
-const json_options_path = __dirname + "/input/urban_option.json";
 console.log("path");
 window.addEventListener("load", () => {
     console.log(__dirname);
     var n = new NetworkManagerSingleton();
-    n.init_from_json_path(json_data_path, json_options_path);
+    n.init();
     //n.draw();
     });
