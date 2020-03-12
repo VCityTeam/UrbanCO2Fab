@@ -1,0 +1,83 @@
+{
+    "options":
+    [
+        {
+            "viz":
+            {
+                "edges": 
+                        {
+                            "smooth": 
+                            {
+                                "type": "cubicBezier"
+                            },
+                            "arrows": { "to": true },
+                            "font":{ "align": "middle"},
+                            "length":170
+                        },
+                "groups":
+                        {
+                            "useDefaultGroups": true,
+                            "timeFrame":{
+                                "color": "white",
+                                "hidden": "true"
+                            },
+                            "consensusScenario":{
+                                "color": "green"
+                            },
+                            "propositionScenario":{
+                                "color": "yellow"
+                            }
+                        },
+                "physics":
+                        {
+                            "stabilization": false,
+                            "wind": { "x": 0, "y": 0 }
+                        }
+            }
+            
+        },
+        {
+            "mode":"hierarchy",
+            "viz":{
+                "edges": 
+                {
+                    "smooth": 
+                    {
+                    "type": "cubicBezier"
+                    },
+                    "arrows": { "to": true },
+                    "font":{ "align": "middle"},
+                    "length":170
+                },
+                "groups":
+                {
+                    "useDefaultGroups": true,
+                    "timeFrame":{
+                        "color":"white",
+                        "hidden": false
+                    },
+                    "consensusScenario":{
+                        "color": "green"
+                    },
+                    "propositionScenario":{
+                        "color": "yellow"
+                    }
+                },
+                "layout": 
+                {
+                    "hierarchical": 
+                    {
+                        "direction": "LR",
+                        "sortMethod": "directed",
+                        "treeSpacing": 50
+                    }
+                },
+                "interaction": { "dragNodes": false },
+                "physics": 
+                {
+                "enabled": false
+                }
+            }
+        }
+    ]
+}

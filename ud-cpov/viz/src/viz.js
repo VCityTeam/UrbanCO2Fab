@@ -35,6 +35,12 @@ class NetworkManagerSingleton {
         }
     }
 
+    init_from_json_path(json_data_path, json_options_path){
+        this.data = get_data_and_options(json_data_path).data;
+        this.list_option = get_data_and_options(json_options_path).list_options;
+        this.add_button_to_view();
+    }
+
     get_option(mode){
     /**
      * Extract the matching options to a specific mode from the list_option
@@ -118,10 +124,11 @@ class NetworkManagerSingleton {
 }
 
 // test
-const json_path = __dirname + "/input/urban2.json";
-
+const json_data_path = __dirname + "/input/urban_data.json";
+const json_options_path = __dirname + "/input/urban_option.json"
 window.addEventListener("load", () => {
     console.log(__dirname);
     var n = new NetworkManagerSingleton();
+    n.init_from_json_path(json_data_path, json_options_path)
     n.draw();
     });
