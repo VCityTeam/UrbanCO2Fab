@@ -1,6 +1,3 @@
-//import { get_graph_from_json_file } from "./json_loader";
-
-
 export function get_data(json_object) {
 /**
  * Get the data for vis.Network

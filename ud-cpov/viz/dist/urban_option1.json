@@ -2,7 +2,7 @@
     "options":
     [
         {
-            "vis-network":
+            "visNetwork":
             {
                 "edges": 
                         {
@@ -38,7 +38,7 @@
         },
         {
             "mode":"hierarchy",
-            "vis-network":{
+            "visNetwork":{
                 "edges": 
                 {
                     "smooth": 

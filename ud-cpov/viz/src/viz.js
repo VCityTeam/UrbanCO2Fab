@@ -1,26 +1,27 @@
-//import * as vis from 'vis-network';
+import * as vis from 'vis-network';
 
 import { get_data, get_list_options } from "./json_parser";
 
 class NetworkManagerSingleton {
-    constructor(start_mode="default", id_network="mynetwork", id_button_location="mybuttons"){
+    constructor(start_mode="default", id_network="mynetwork", id_button_location="mybuttons", hidden_button="mode"){
     /**
      * Constructor for singleton
      */
-        console.log(1);
         const instance = this.constructor.instance;
-        console.log(1);
         if(instance){
             return instance;
         }
         else{
-            console.log(1);
             this.network = null;
             this.data = null;
+            this.data_ok = false;
+            this.list_options_ok = false;
             this.list_option = null;
             this.current_mode = start_mode;
             this.id_network = id_network;
             this.id_button_location = id_button_location;
+            this.hidden_button = hidden_button
+
             this.constructor.instance = this;
         }
 
@@ -40,7 +41,6 @@ class NetworkManagerSingleton {
     init(url_data="http://localhost:5000/urban_data1.json", url_option="http://localhost:5000/urban_option1.json"){
         console.log("NetworkManager init from url data: %s || options: %s", url_data, url_option);
         this.prepare_html_pages(url_data, url_option);
-        this.add_button_to_view();
     }
 
     get_option(mode){
@@ -55,19 +55,17 @@ class NetworkManagerSingleton {
         if (mode === "default"){
             test = undefined
         }
-        console.log(1);
         for (const key in this.list_option) {
-            console.log(1);
             if (this.list_option.hasOwnProperty(key)) {
-                console.log(1);
                 const element = this.list_option[key];
+                console.log("olala %o %o", test, element);
                 if (test === element.label){
-                    console.log(2);
-                    return element.option.viz
+                    console.log("match");
+                    return element.option.visNetwork;
                 }
             }
         }
-        return this.list_option[0].option.viz;
+        return this.list_option[0].option.visNetwork;
     }
 
     add_button_to_view(){
@@ -85,7 +83,9 @@ class NetworkManagerSingleton {
                 const new_label = option.label === undefined ? "default" : option.label;
                 console.log("Creating button with label : %s", new_label.toString());
                 var label = document.createTextNode(new_label.toString());
+                console.log(1);
                 button.appendChild(label);
+                console.log(1);
 
                 button.onclick = function (param) {
                     console.log("Button %s clicked : %o", param.target.innerText, param);
@@ -93,10 +93,13 @@ class NetworkManagerSingleton {
                     n.draw(param.target.innerText);
                 };
 
+                console.log(1);
                 var element = document.getElementById(this.id_button_location);
-                element.insertBefore(button, mode);
+                const hidden_button = document.getElementById(this.hidden_button);
+                console.log(1);
+                element.insertBefore(button, hidden_button);
 
-                console.info("Button added : %s", mode.value);
+                console.info("Button added : %o", button.innerText);
             }
         }
     }
@@ -110,7 +113,7 @@ class NetworkManagerSingleton {
     
         const options = this.get_option(this.current_mode);
         const container = document.getElementById(this.id_network);
-        console.log("Drawing Container : %o Data : %o Options : %o", container, this.data, options);
+        console.log("Drawing [ Mode : %s | Container : %o | Data : %o | Options : %o", this.current_mode, container, this.data, options);
         var network = new vis.Network(container, this.data, options);
         console.info("Network drawn");
         console.log(network);
@@ -130,6 +133,13 @@ class NetworkManagerSingleton {
                     result_d = JSON.parse(this.responseText);
                     console.log("result data: %o", result_d);
                     n.data = get_data(result_d);
+                    if(n.data !== null){
+                        n.data_ok = true;
+                        if (n.list_options_ok){
+                            n.add_button_to_view();
+                            n.draw();
+                        }
+                    }
                 }
             };
             request_d.send();
@@ -143,6 +153,13 @@ class NetworkManagerSingleton {
                     result_o = JSON.parse(this.responseText);
                     console.log("result option: %o", result_o);
                     n.list_option = get_list_options(result_o);
+                    if(n.list_option !== null){
+                        n.list_options_ok = true;
+                        if (n.data_ok){
+                            n.add_button_to_view();
+                            n.draw();
+                        }
+                    }
                 }
             };
             request_o.send();
@@ -153,10 +170,8 @@ class NetworkManagerSingleton {
 }
 
 // test
-console.log("path");
 window.addEventListener("load", () => {
-    console.log(__dirname);
+    console.log("Start");
     var n = new NetworkManagerSingleton();
     n.init();
-    //n.draw();
     });
