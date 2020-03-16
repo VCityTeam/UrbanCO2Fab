@@ -39,7 +39,7 @@ class NetworkManagerSingleton {
         }
     }
 
-    init(url_data="http://localhost:5000/urban_data1.json", url_option="http://localhost:5000/urban_option1.json"){
+    init(url_data="http://localhost:5000/data.json", url_option="http://localhost:5000/options.json"){
         console.log("NetworkManager init from url data: %s || options: %s", url_data, url_option);
         this.prepare_html_pages(url_data, url_option);
     }
