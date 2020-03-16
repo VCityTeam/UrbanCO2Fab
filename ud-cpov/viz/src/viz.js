@@ -17,6 +17,7 @@ class NetworkManagerSingleton {
             this.data_ok = false;
             this.list_options_ok = false;
             this.list_option = null;
+            this.has_changed = true;
             this.current_mode = start_mode;
             this.id_network = id_network;
             this.id_button_location = id_button_location;
@@ -74,32 +75,35 @@ class NetworkManagerSingleton {
      * onClick will be a draw()
      */
         console.log("Try to add %s button(s)", this.list_option.length.toString());
-        for (const key in this.list_option) {
-            if (this.list_option.hasOwnProperty(key)) {
-                const option = this.list_option[key];
+        if (this.has_changed){
+            for (const key in this.list_option) {
+                if (this.list_option.hasOwnProperty(key)) {
+                    const option = this.list_option[key];
 
-                var button = document.createElement("button");
+                    
 
-                const new_label = option.label === undefined ? "default" : option.label;
-                console.log("Creating button with label : %s", new_label.toString());
-                var label = document.createTextNode(new_label.toString());
-                console.log(1);
-                button.appendChild(label);
-                console.log(1);
+                    var button = document.createElement("button");
 
-                button.onclick = function (param) {
-                    console.log("Button %s clicked : %o", param.target.innerText, param);
-                    var n = new NetworkManagerSingleton ();
-                    n.draw(param.target.innerText);
-                };
+                    const new_label = option.label === undefined ? "default" : option.label;
+                    console.log("Creating button with label : %s", new_label.toString());
+                    var label = document.createTextNode(new_label.toString());
+                    button.setAttribute("id", label);
+                    button.setAttribute("class", "viewButton");
 
-                console.log(1);
-                var element = document.getElementById(this.id_button_location);
-                const hidden_button = document.getElementById(this.hidden_button);
-                console.log(1);
-                element.insertBefore(button, hidden_button);
+                    button.appendChild(label);
 
-                console.info("Button added : %o", button.innerText);
+                    button.onclick = function (param) {
+                        console.log("Button %s clicked : %o", param.target.innerText, param);
+                        var n = new NetworkManagerSingleton ();
+                        n.draw(param.target.innerText);
+                    };
+
+                    var element = document.getElementById(this.id_button_location);
+                    const hidden_button = document.getElementById(this.hidden_button);
+                    element.insertBefore(button, hidden_button);
+
+                    console.info("Button added : %o", button.innerText);
+                }
             }
         }
     }
@@ -117,6 +121,7 @@ class NetworkManagerSingleton {
         var network = new vis.Network(container, this.data, options);
         console.info("Network drawn");
         console.log(network);
+        this.has_changed = false;
     }
 
     prepare_html_pages(data_url, data_option) {

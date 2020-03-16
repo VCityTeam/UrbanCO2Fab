@@ -30,8 +30,8 @@
                         },
                 "physics":
                         {
-                            "stabilization": false,
-                            "wind": { "x": 0, "y": 0 }
+                            "enabled": true
+
                         }
             }
             
