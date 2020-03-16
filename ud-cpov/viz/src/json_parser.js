@@ -4,6 +4,24 @@ export function get_data(json_object) {
  * @param: json object that contains nodes and edges
  * @returns: data, a dictionnary ready for vis.Netowrk
  */
+    var nodes  = get_nodes(json_object);
+    const dict_group = json_object.groups;
+    for (const key in nodes) {
+        if (nodes.hasOwnProperty(key)) {
+            const node = nodes[key];
+
+            for (const key1 in dict_group) {
+                if (dict_group.hasOwnProperty(key1)) {
+                    const group = dict_group[key1];
+
+                    if (node.group === group.id){
+                        node.group = group.label;
+                    }
+                    
+                }
+            }
+        }
+    }
     const data = {
         nodes: get_nodes(json_object),
         edges: get_edges(json_object)
