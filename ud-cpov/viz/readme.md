@@ -8,7 +8,7 @@ This is a tool to visualize graphs in a web browser. Serving by an Express (Node
 * Install the dependency with `npm install` in UrbanCO2Fab\ud-cpov\viz
 * Start the server with `npm start`
 
-You can now go on rou web browser in localhost:5000/graph.html to see an exemple.
+You can now go on your web browser in localhost:5000/graph.html to see an exemple.
 
 ### Try with your own data :
 #### data.json :
