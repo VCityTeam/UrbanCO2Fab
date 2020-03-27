@@ -1,8 +1,38 @@
-# UrbanCo2Fab API
+# UrbanCo2Fab REST API
+UrbanCo2Fab API runs on the following port and the first version can be accessed in the following manner
+
+* port: 8890
+* API: /urbanco2fab/v1.0/ 
+
+## Running UrbanCo2Fab API
+Following are the commands to run urbanco2fab API
+<pre> 
+$ cd interface/api
+$ python3 api.py
+</pre> 
+
+On a test environment, you will get the following information
+<pre> 
+ * Running on http://127.0.0.1:8890/ (Press CTRL+C to quit)
+</pre> 
+
+Check the above link on the browser with any of the operations given below
+
+## operations
+* **API Operation** : '/urbanco2fab/v1.0/'
+* **Goal** : gives a list of all resources exposed by urbanco2fab API
+### Response
+<pre>
+- operations
+  * operation:
+     * methods: GET, OPTIONS,...
+     * resource:
+</pre>
 
 ## workspace
-### JSON response
-
+* **API Operation** : '/urbanco2fab/v1.0/workspace'
+* **Goal**: responds with all the information required to visualize a workspace.
+### response
 <pre>
 - node
 	* id (mandatory)
@@ -23,8 +53,8 @@
 	* label (optional) 
 </pre>
 
-#### title vs label (for node only)
+**Note**
+
 * title (mandatory): Information that will be shown on overlay (Viznetwork documentation)
 * label (mandatory): Information that will be shown inside the node (Viznetwork documentation)
-
 
