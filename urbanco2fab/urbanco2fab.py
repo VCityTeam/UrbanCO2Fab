@@ -11,6 +11,7 @@ import datetime
 from objects.workspace import Workspace
 from dateformat.dateformat import DateFormatAction
 from store.storefactory import StoreFactory
+from interface.api.api import API
 
 parser = argparse.ArgumentParser(description="management of city data")
 versiongroup = parser.add_argument_group('version', "management of versions")
@@ -52,7 +53,7 @@ parser.add_argument("-vt", "--versiontransition", nargs='+', help="list of pairs
 parser.add_argument('operation', help="operation to perform",
           type=str, choices=['add', 'mv', 'rm', 'commit', 'show', 'tag', 'log', 'diff',
                              'clone', 'init', 'fetch', 'pull', 'push', 'viz',
-                             'checkout'])
+                             'checkout', 'run'])
 parser.add_argument('path', help="path of files", nargs='*')
 parser.add_argument('arguments', metavar='A', type=str, nargs='*',
                     help='option to arguments')
@@ -224,5 +225,7 @@ elif (args.operation == "diff"):
     print("Diff takes two arguments, given "+ str(len(args.path)))
 elif (args.operation == "viz"):
   visualization.show()
+elif (args.operation == "run"):
+  API.run()
 else:
   print(parser.print_help())

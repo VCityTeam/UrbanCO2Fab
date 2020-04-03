@@ -7,8 +7,8 @@ UrbanCo2Fab API runs on the following port and the first version can be accessed
 ## Running UrbanCo2Fab API
 Following are the commands to run urbanco2fab API
 <pre> 
-$ cd interface/api
-$ python3 api.py
+$ cd urbanco2fab
+$ ./urbanco2fab run
 </pre> 
 
 On a test environment, you will get the following information
