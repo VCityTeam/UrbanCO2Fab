@@ -1,6 +1,6 @@
 from enum import Enum
 from dateutil.parser import parse
-from validate import Validate
+from formats.json.validate import Validate
 from exception.error import TransactionError
 from exception.error import *
 from objects.feature import Feature, FeatureList

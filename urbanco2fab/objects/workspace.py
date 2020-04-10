@@ -3,7 +3,7 @@ from objects.scenario import Scenario, ScenarioList
 from objects.version import VersionType
 from enum import Enum
 from exception.error import ConsensusScenarioError
-from validate import Validate
+from formats.json.validate import Validate
 
 class Workspace(AbstractFeature):
   def __init__(self, identifier, storetransactionstarttime,

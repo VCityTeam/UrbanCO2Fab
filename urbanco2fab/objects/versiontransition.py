@@ -2,7 +2,7 @@ from objects.abstractfeature import AbstractFeature
 from objects.version import VersionType, Version
 from exception.error import DataTypeError, VersionTransitionError
 from enum import Enum
-from validate import Validate
+from formats.json.validate import Validate
 from dateutil.parser import parse
 
 class VersionTransitionType(Enum):
