@@ -1,5 +1,4 @@
 import json
-from jsonschema import validate
 
 class Validate:
   """

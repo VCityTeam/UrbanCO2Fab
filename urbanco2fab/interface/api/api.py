@@ -16,14 +16,16 @@ def workspace():
     return jsonify(workspace)
 
 """
-returns information required to visualize a scenario
+returns information required to visualize all scenarios
 """
-@app.route('/urbanco2fab/v1.0/scenario', methods=['GET'])
-def scenario():
+@app.route('/urbanco2fab/v1.0/scenarios', methods=['GET'])
+def scenarios():
+   jsonstring = "{}"
+   return jsonify(jsonstring)
    pass
 
 """
-returns information required to visualize a version
+returns information required to visualize all versions
 """
 @app.route('/urbanco2fab/v1.0/versions', methods=['GET'])
 def versions():
@@ -31,7 +33,7 @@ def versions():
    return jsonify(jsonstring)
 
 """
-returns information required to visualize a version transition
+returns information required to visualize all version transitions
 """
 @app.route('/urbanco2fab/v1.0/versiontransitions', methods=['GET'])
 def versiontransitions():
@@ -39,7 +41,7 @@ def versiontransitions():
    return jsonify(jsonstring)
 
 """
-returns information required to visualize transactions
+returns information required to visualize all transactions
 """
 @app.route('/urbanco2fab/v1.0/transactions', methods=['GET'])
 def transactions():
