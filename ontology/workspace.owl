@@ -13,6 +13,236 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasAbstractCityObject -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasAbstractCityObject">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasConsensusSpace -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasConsensusSpace">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#ConsensusSpace"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasCreator -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasCreator">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasEndingPoint -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasEndingPoint">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TemporalPoint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasEvidence -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasEvidence">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#DocumentObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasExistenceTime -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasExistenceTime">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasIdentifier -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasIdentifier">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Identifier"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasName -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasName">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Name"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasNewVersion -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasNewVersion">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasNewVersionableAbstractFeature -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasNewVersionableAbstractFeature">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasOldVersionableAbstractFeature -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasOldVersionableAbstractFeature">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasParent -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasParent">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasPreviousVersion -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasPreviousVersion">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasPropositionSpace -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasPropositionSpace">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#PropositionSpace"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasReference -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasReference">
+        <owl:equivalentProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasReferenceTime"/>
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasReferenceTime -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasReferenceTime">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasScenario -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasScenario">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasStartingPoint -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasStartingPoint">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TemporalPoint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTag -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTag">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Tag"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTransaction -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTransaction">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTransactionTime -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTransactionTime">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTransactionValue -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTransactionValue">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TransactionValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTranscation -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTranscation">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTransitionType -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTransitionType">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TransitionType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasVersion -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasVersion">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasVersionTransition -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasVersionTransition">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#hasVersionType -->
+
+    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasVersionType">
+        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -21,128 +251,161 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#AbstractCityObject -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#AbstractCityObject">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#VersionableAbstractFeature"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#AbstractFeature -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#AbstractFeature -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#AbstractFeature"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#AbstractFeature"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#CityObjectGroup -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Agent -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#CityObjectGroup">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#AbstractCityObject"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#CityObjectGroup -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#CityObjectGroup">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#ConsensusSpace -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#ConsensusSpace -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#ConsensusSpace">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#Space"/>
-        <owl:disjointWith rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#PropositionSpace"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#ConsensusSpace">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Space"/>
+        <owl:disjointWith rdf:resource="http://liris.cnrs.fr/citymodel/workspace#PropositionSpace"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#DocumentObject -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#DocumentObject -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#DocumentObject">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#AbstractCityObject"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#DocumentObject">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#PropositionSpace -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Identifier -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#PropositionSpace">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#Space"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Identifier"/>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Name -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Name"/>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#PropositionSpace -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#PropositionSpace">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Space"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#Scenario -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Scenario -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#Scenario"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#Space -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Space -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#Space"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Space"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#TemporalPoint -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Tag -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#TemporalPoint">
-        <owl:disjointWith rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#TimeInterval"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Tag"/>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#TemporalPoint -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#TemporalPoint">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+        <owl:disjointWith rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TimeInterval"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#TimeInterval -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Time -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#TimeInterval"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Time"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#Transaction -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#TimeInterval -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#Transaction"/>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#TransactionValue -->
-
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#TransactionValue"/>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#TransitionType -->
-
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#TransitionType"/>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#Version -->
-
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#Version"/>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#VersionTransition -->
-
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#VersionTransition">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#VersionableAbstractFeature"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#TimeInterval">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#VersionType -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Transaction -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#VersionType"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#VersionableAbstractFeature -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#TransactionValue -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#VersionableAbstractFeature">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/wokspace#AbstractFeature"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#TransactionValue"/>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#TransitionType -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#TransitionType"/>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Version -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#VersionTransition -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#VersionTransition">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/wokspace#Workspace -->
+    <!-- http://liris.cnrs.fr/citymodel/workspace#VersionType -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/wokspace#Workspace"/>
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#VersionType"/>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature">
+        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://liris.cnrs.fr/citymodel/workspace#Workspace -->
+
+    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Workspace"/>
 </rdf:RDF>
 
 
