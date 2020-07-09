@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://unpkg.com/viz.js@1.8.1/viz.js" type="javascript/worker"></script>
+<script src="https://unpkg.com/d3-graphviz@2.6.1/build/d3-graphviz.js"></script>
+<div id="graph" style="text-align: center;"></div>
+<script>
+
+var digraph = 'digraph G { \
+            rankdir="LR"; \
+            subgraph c1 { \
+                style=filled; \
+                color=grey; \
+                node [shape=plaintext, fontsize=15]; \
+                1978 -> 1979 -> 1980 -> \
+                1981 -> 1982 -> 1983 -> \
+                1984 -> 1985 -> 1986 -> \
+                1987 -> 1988 -> 1989; \
+            } \
+            subgraph cluster_0 { \
+                style=filled; \
+                color=grey; \
+                node [style=filled,color=yellow]; \
+                v0; v1; v2; v3; \
+                label="consensus scenario" \
+            } \
+            subgraph cluster_1 { \
+                style=filled; \
+                color=lightgrey; \
+                node [style=filled,color=green]; \
+                label="proposition scenarios"; \
+                v5 \
+                v6 \
+                v7 \
+                v8 \
+                v9 \
+                v10 \
+                v4 \
+                v13 \
+            } \
+            {rank=same; 1979; v4} \
+            {rank=same; 1980; v5} \
+            {rank=same; 1981; v7} \
+            {rank=same; 1982; v6} \
+            {rank=same; 1983; v8} \
+            {rank=same; 1984; v1} \
+            {rank=same; 1985; v13} \
+            {rank=same; 1986; v9} \
+            {rank=same; 1987; v2} \
+            {rank=same; 1988; v10} \
+            {rank=same; 1989; v3} \
+            newrank=true; \
+            v2 -> v3; \
+            v0 -> {v5 v4} \
+            v5 -> v6; \
+            v4 -> v7 -> v8; \
+            v9 -> v10; \
+            v1 -> {v13  v9 v2} \
+            {v0 v6 v8} -> v1; \
+            }';
+
+var graphviz = d3.select("#graph").graphviz();
+
+function render(dotSrc) {
+    console.log('DOT source =', dotSrc);
+    var dotSrcLines = dotSrc.split('\n');
+
+    transition1 = d3.transition()
+        .delay(100)
+        .duration(1000);
+
+    graphviz
+        .transition(transition1)
+        .renderDot(dotSrc);
+
+    nodes = d3.selectAll('.node,.edge');
+    console.log(nodes);
+    nodes
+        .on("click", function () {
+            var title = d3.select(this).selectAll('title').text().trim();
+            var text = d3.select(this).selectAll('text').text();
+            var id = d3.select(this).attr('id');
+            var class1 = d3.select(this).attr('class');
+            dotElement = title.replace('->',' -> ');
+            console.log('Element id="%s" class="%s" title="%s" text="%s" dotElement="%s"', id, class1, title, text, dotElement);
+            console.log('Finding and deleting references to %s "%s" from the DOT source', class1, dotElement);
+            for (i = 0; i < dotSrcLines.length;) {
+                if (dotSrcLines[i].indexOf(dotElement) >= 0) {
+                    console.log('Deleting line %d: %s', i, dotSrcLines[i]);
+                    dotSrcLines.splice(i, 1);
+                } else {
+                    i++;
+                }
+            }
+            dotSrc = dotSrcLines.join('\n');
+            render(dotSrc);
+        });
+}
+
+render(digraph);
+
+</script>

@@ -1,0 +1,174 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+    <style type="text/css">
+        #mynetwork {
+          width: 1000px;
+          height: 400px;
+          border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+  <div id="mynetwork"></div>
+</body>
+    <script type="text/javascript">
+      var nodes = [
+          { id: 6, label: "2000", level: 0 , group:'Consensus'},
+          { id: 7, label: "2001", level: 1 , group:'Proposition'},
+          { id: 8, label: "2001", level: 1 , group:'Proposition'},
+          { id: 9, label: "2002", level: 2 , group:'Consensus'},
+          { id: 10, label: "2004", level: 4 , group:'Proposition'},
+          { id: 11, label: "2004", level: 4 , group:'Consensus'},
+        ];
+        var edges = [
+          { from: 6, to: 7, color: "black", label:"split"},
+          { from: 6, to: 8, color: "blue", label:"merge" },
+          { from: 6, to: 9, color: "red", label:"modification" },
+          { from: 7, to: 9, color: "black", label:"split"},
+          { from: 9, to: 10, color: "blue", label:"merge" },
+          { from: 9, to: 11, color: "blue", label:"merge" },
+        ];
+
+
+     var data = {
+				"nodes": [
+					{
+						"id": 3,
+						"label": "Limonest 2009",
+						"level": 0,
+						"group": "consensusScenario",
+						"title": "2009"
+					},
+					{
+						"id": 4,
+						"label": "Limonest 2012",
+						"level": 2,
+						"group": "consensusScenario",
+						"title": "2012"
+					},
+					{
+						"id": 5,
+						"label": "Limonest 2015",
+						"level": 4,
+						"group": "consensusScenario",
+						"title": "2015"
+					},
+					{
+						"id": 6,
+						"label": "Limonest 2011",
+						"level": 1,
+						"group": "consensusScenario",
+						"title": "2011"
+					},
+					{
+						"id": 7,
+						"label": "Limonest 2013",
+						"level": 3,
+						"group": "consensusScenario",
+						"title": "2013"
+					}
+				],
+				"edges": [
+					{
+						"from": 3,
+						"to": 4
+					},
+					{
+						"from": 4,
+						"to": 5
+					},
+					{
+						"from": 3,
+						"to": 6
+					},
+					{
+						"from": 6,
+						"to": 7
+					}
+				],
+				
+				};
+      // create a network
+      var container = document.getElementById("mynetwork");
+      var options = {
+						"edges": {
+							"smooth": {
+								"type": "continuous"
+							},
+							"arrows": {
+								"to": true
+							},
+							"color": {
+							  "color":'black',
+							  "highlight":'grey',
+							  "hover": 'black',
+							  "inherit": 'from',
+							  "opacity":1.0
+							},
+						
+						},
+						"nodes": {
+							"font": {
+								"size": 25
+							}
+
+						},
+						"groups": {
+							"useDefaultGroups": true,
+							"timeFrame": {
+								"color": "white",
+								"hidden": false
+							},
+							"consensusScenario": {
+								"color": {
+									"background":"#90EE90",
+									"border": '#00FF7F',
+									"highlight": {
+										"border": 'black',
+										"background":"#90EE90"
+									},
+									"hover": {
+										"border": '#00FF7F',
+										"background": '#90EE90'
+									  }
+								},
+								"borderWidthSelected": 200,
+								
+							}
+						},
+						"layout": {
+							"hierarchical": {
+								"direction": "LR",
+								"sortMethod": "directed",
+								"treeSpacing": 100,
+								"levelSeparation": 200,
+								"nodeSpacing": 100,
+								"edgeMinimization": false
+							}
+						},
+						"interaction": {
+							"dragNodes": false,
+							"hover": true,
+							"hoverConnectedEdges": false,
+							"selectConnectedEdges": false
+
+						},
+						"physics": {
+							"enabled": true
+						},
+						"configure": {
+						  "enabled": true,
+						  "filter": 'physics, layout, edges',
+						  "showButton": true
+						  }
+					};
+      var network = new vis.Network(container, data, options);
+
+        
+        </script>
+</html>

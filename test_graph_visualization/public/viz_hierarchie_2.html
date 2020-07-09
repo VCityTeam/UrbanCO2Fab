@@ -1,0 +1,154 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+    <style type="text/css">
+        #mynetwork {
+          width: 80%;
+          height: 600px;
+          border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+  <p>
+    <input type="checkbox" id="timeFrame" name="timeFrame" checked/>
+    <label for="timeFrame"> Time frame</label><br>
+  </p>
+  <div id="mynetwork"></div>
+</body>
+    <script type="text/javascript">
+
+      var network = null;
+      function destroy() {
+          if (network !== null) {
+            network.destroy();
+            network = null;
+          }
+        }
+
+      function draw() {
+          destroy();
+      var nodes = [
+          { id: 0, label: "2000", level: 0, group:'timeFrame'},
+          { id: 1, label: "2001", level: 1, group:'timeFrame'},
+          { id: 2, label: "2002", level: 2, group:'timeFrame'},
+          { id: 3, label: "2003", level: 3, group:'timeFrame'},
+          { id: 4, label: "2004", level: 4, group:'timeFrame'},
+          { id: 5, label: "2005", level: 5, group:'timeFrame'},
+          { id: 6, label: "C_2000", level: 0 , group:'Consensus'},
+          { id: 7, label: "P_2001", level: 1 , group:'Proposition'},
+          { id: 8, label: "P_2001", level: 1 , group:'Proposition'},
+          { id: 9, label: "C_2002", level: 2 , group:'Consensus'},
+          { id: 10, label: "P_2004", level: 4 , group:'Proposition'},
+          { id: 11, label: "C_2004", level: 4 , group:'Consensus'},
+        ];
+      var edges = [
+        { from: 0, to: 1},
+        { from: 1, to: 2},
+        { from: 2, to: 3},
+        { from: 3, to: 4},
+        { from: 4, to: 5},
+        { from: 6, to: 7, color: "black", label:"split"},
+        { from: 6, to: 8, color: "blue", label:"merge" },
+        { from: 6, to: 9, color: "red", label:"modification" },
+        { from: 7, to: 9, color: "black", label:"split"},
+        { from: 9, to: 10, color: "blue", label:"merge" },
+        { from: 9, to: 11, color: "blue", label:"merge" },
+      ];
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      // create a network
+      var container = document.getElementById("mynetwork");
+      var options_hierarchie = {
+        edges: {
+          smooth: {
+            type: "cubicBezier"
+          },
+          arrows: { to: true },
+          font:{ align: "middle"}
+        },
+        groups: {
+          useDefaultGroups: true,
+          timeFrame: {
+            color:"white",
+            hidden: false,
+          },
+          Consensus: {
+            color:"green",
+            borderWidth:1
+          },
+          Proposition: {
+            color:"yellow",
+            borderWidth:1
+          }
+        },
+        layout: {
+          hierarchical: {
+            direction: "LR",
+            sortMethod: "directed",
+            treeSpacing: 50,
+          }
+        },
+        interaction: { dragNodes: false },
+        physics: {
+          enabled: false
+        },
+      };
+      
+      var options_wild = {
+        edges: {
+          smooth: {
+            type: "cubicBezier"
+          },
+          arrows: { to: true },
+          font:{ align: "middle"},
+          length:170,
+        },
+        groups: {
+          useDefaultGroups: true,
+          timeFrame: {
+            color:"white",
+            hidden: true,
+          },
+          Consensus: {
+            color:"green",
+            borderWidth:1
+          },
+          Proposition: {
+            color:"yellow",
+            borderWidth:1
+          }
+        },
+        physics: {
+          stabilization: false,
+          wind: { x: 0, y: 0 }
+        }
+      };
+
+      var option = options_hierarchie;
+      if (view.checked) {
+        options = options_hierarchie;
+      } else {
+        options = options_wild;
+      }
+      var network = new vis.Network(container, data, options);
+      }
+
+      var view = document.getElementById("timeFrame");
+      view.onclick = function(){
+        console.log(view.value);
+        draw();
+      }
+
+        window.addEventListener("load", () => {
+          draw();
+        });
+        
+        </script>
+</html>

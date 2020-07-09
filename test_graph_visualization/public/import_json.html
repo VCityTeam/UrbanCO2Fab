@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <h1>toto</h1>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script>
+    fetch("diagraph.json").then(async (resp) => {
+        const asObject = await resp.json();
+        console.log(asObject);
+        })
+
+    </script>
+</html>
