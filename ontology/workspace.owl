@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://liris.cnrs.fr/citymodel/workspace#"
-     xml:base="http://liris.cnrs.fr/citymodel/workspace"
+<rdf:RDF xmlns="citymodel/workspace#"
+     xml:base="citymodel/workspace"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:www="http://www.w3.org/2001/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://liris.cnrs.fr/citymodel/workspace"/>
+    <owl:Ontology/>
     
 
 
@@ -21,236 +22,210 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasAbstractCityObject -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasAbstractCityObject -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasAbstractCityObject">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#CityObjectGroup"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasAbstractCityObject">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#CityObjectGroup"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasConsensusSpace -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasConsensusSpace -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasConsensusSpace">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Workspace"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#ConsensusSpace"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasConsensusSpace">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Workspace"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#ConsensusSpace"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasCreator -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasCreator -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasCreator">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Space"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Workspace"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasCreator"/>
+    
+
+
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasEndingPoint -->
+
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasEndingPoint">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TimeInterval"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TemporalPoint"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasEndingPoint -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasEvidence -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasEndingPoint">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TimeInterval"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TemporalPoint"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasEvidence"/>
+    
+
+
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasExistenceTime -->
+
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasExistenceTime">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Time"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasEvidence -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasNewVersion -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasEvidence">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#DocumentObject"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasNewVersion">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasExistenceTime -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasNewVersionableAbstractFeature -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasExistenceTime">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasNewVersionableAbstractFeature">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Transaction"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasNewVersion -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasOldVersionableAbstractFeature -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasNewVersion">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasOldVersionableAbstractFeature">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Transaction"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasNewVersionableAbstractFeature -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasParent -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasNewVersionableAbstractFeature">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasParent">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#CityObjectGroup"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasOldVersionableAbstractFeature -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasPreviousVersion -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasOldVersionableAbstractFeature">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasPreviousVersion">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasParent -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasPropositionSpace -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasParent">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#CityObjectGroup"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasPropositionSpace">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Workspace"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#PropositionSpace"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasPreviousVersion -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasReference -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasPreviousVersion">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasReference"/>
+    
+
+
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasReferenceTime -->
+
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasReferenceTime"/>
+    
+
+
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasScenario -->
+
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasScenario"/>
+    
+
+
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasStartingPoint -->
+
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasStartingPoint">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TimeInterval"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TemporalPoint"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasPropositionSpace -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransaction -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasPropositionSpace">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Workspace"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#PropositionSpace"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransaction">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Transaction"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasReference -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransactionTime -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasReference">
-        <owl:equivalentProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasReferenceTime"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#DocumentObject"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransactionTime"/>
+    
+
+
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransactionValue -->
+
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransactionValue">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Transaction"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TransactionValue"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasReferenceTime -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTranscation -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasReferenceTime">
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTranscation">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Scenario"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Transaction"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasScenario -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransitionType -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasScenario">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#ConsensusSpace"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#PropositionSpace"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransitionType">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TransitionType"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasStartingPoint -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersion -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasStartingPoint">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TimeInterval"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TemporalPoint"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersion">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Scenario"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTransaction -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionTransition -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTransaction">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTransactionTime -->
-
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTransactionTime">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Workspace"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTransactionValue -->
-
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTransactionValue">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TransactionValue"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTranscation -->
-
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTranscation">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTransitionType -->
-
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTransitionType">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TransitionType"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasVersion -->
-
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasVersion">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasVersionTransition -->
-
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasVersionTransition">
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionTransition">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Scenario"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasVersionType -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionType -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasVersionType">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionType"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionType">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionType"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasVersionableAbstractFeature -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionableAbstractFeature -->
 
-    <owl:ObjectProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasVersionableAbstractFeature">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
-        <rdfs:range rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+    <owl:ObjectProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionableAbstractFeature">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
+        <rdfs:range rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
     </owl:ObjectProperty>
     
 
@@ -266,31 +241,31 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasIdentifier -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasIdentifier -->
 
-    <owl:DatatypeProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasIdentifier">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractFeature"/>
+    <owl:DatatypeProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasIdentifier">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractFeature"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasName -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasName -->
 
-    <owl:DatatypeProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasName">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractFeature"/>
+    <owl:DatatypeProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasName">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractFeature"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#hasTag -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTag -->
 
-    <owl:DatatypeProperty rdf:about="http://liris.cnrs.fr/citymodel/workspace#hasTag">
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
-        <rdfs:domain rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Workspace"/>
+    <owl:DatatypeProperty rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTag">
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Scenario"/>
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition"/>
+        <rdfs:domain rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Workspace"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -307,120 +282,120 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject">
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#AbstractFeature -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractFeature -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#AbstractFeature"/>
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractFeature"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Agent -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Agent -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Agent"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#CityObjectGroup -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#CityObjectGroup -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#CityObjectGroup">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#CityObjectGroup">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasAbstractCityObject"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasAbstractCityObject"/>
                         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasParent"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasParent"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#ConsensusSpace -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#ConsensusSpace -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#ConsensusSpace">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#ConsensusSpace">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasScenario"/>
+                <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasScenario"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
+                <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Scenario"/>
             </owl:Restriction>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Space"/>
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Space"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#DocumentObject -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#DocumentObject -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#DocumentObject">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#DocumentObject">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasReference"/>
+                <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasReference"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+                <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject"/>
             </owl:Restriction>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractCityObject"/>
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractCityObject"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#PropositionSpace -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#PropositionSpace -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#PropositionSpace">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#PropositionSpace">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasScenario"/>
+                <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasScenario"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Scenario"/>
+                <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Scenario"/>
             </owl:Restriction>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Space"/>
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Space"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Scenario -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Scenario -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Scenario">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Scenario">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasVersion"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersion"/>
                         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasVersionTransition"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionTransition"/>
                         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionTransition"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasCreator"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasCreator"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Agent"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasTransactionTime"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransactionTime"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Time"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -429,63 +404,63 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Space -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Space -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Space">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Space">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasCreator"/>
+                <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasCreator"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+                <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Agent"/>
             </owl:Restriction>
         </owl:equivalentClass>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#TemporalPoint -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TemporalPoint -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#TemporalPoint">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
-        <owl:disjointWith rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TimeInterval"/>
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TemporalPoint">
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Time"/>
+        <owl:disjointWith rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TimeInterval"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Time -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Time -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Time"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#TimeInterval -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TimeInterval -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#TimeInterval">
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TimeInterval">
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Time"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Transaction -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Transaction -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Transaction">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Transaction">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasTransactionValue"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransactionValue"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TransactionValue"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TransactionValue"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasNewVersionableAbstractFeature"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasNewVersionableAbstractFeature"/>
                         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasOldVersionableAbstractFeature"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasOldVersionableAbstractFeature"/>
                         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -494,15 +469,15 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#TransactionValue -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TransactionValue -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#TransactionValue">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TransactionValue">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://liris.cnrs.fr/citymodel/workspace#Delete"/>
-                    <rdf:Description rdf:about="http://liris.cnrs.fr/citymodel/workspace#Insert"/>
-                    <rdf:Description rdf:about="http://liris.cnrs.fr/citymodel/workspace#Replace"/>
+                    <rdf:Description rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Delete"/>
+                    <rdf:Description rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Insert"/>
+                    <rdf:Description rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Replace"/>
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -510,14 +485,14 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#TransitionType -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TransitionType -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#TransitionType">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TransitionType">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://liris.cnrs.fr/citymodel/workspace#Influence"/>
-                    <rdf:Description rdf:about="http://liris.cnrs.fr/citymodel/workspace#Regular"/>
+                    <rdf:Description rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Influence"/>
+                    <rdf:Description rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Regular"/>
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -525,97 +500,97 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Version -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Version">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasEvidence"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasEvidence"/>
                         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#DocumentObject"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#DocumentObject"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasVersionableAbstractFeature"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionableAbstractFeature"/>
                         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasCreator"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasCreator"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Agent"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasVersionType"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasVersionType"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionType"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionType"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasTag"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTag"/>
                         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
                         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#VersionTransition -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#VersionTransition">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionTransition">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasEvidence"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasEvidence"/>
                         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#DocumentObject"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#DocumentObject"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasTransaction"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransaction"/>
                         <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Transaction"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Transaction"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasCreator"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasCreator"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Agent"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasNewVersion"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasNewVersion"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasPreviousVersion"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasPreviousVersion"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Version"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Version"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasTransitionType"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransitionType"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionType"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionType"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature"/>
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#VersionType -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionType -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#VersionType">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionType">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://liris.cnrs.fr/citymodel/workspace#Existing"/>
-                    <rdf:Description rdf:about="http://liris.cnrs.fr/citymodel/workspace#Imagined"/>
+                    <rdf:Description rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Existing"/>
+                    <rdf:Description rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Imagined"/>
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -623,55 +598,55 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#VersionableAbstractFeature">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#VersionableAbstractFeature">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasExistenceTime"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasExistenceTime"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Time"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasTransactionTime"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransactionTime"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#TimeInterval"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#TimeInterval"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://liris.cnrs.fr/citymodel/workspace#AbstractFeature"/>
+        <rdfs:subClassOf rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#AbstractFeature"/>
     </owl:Class>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Workspace -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Workspace -->
 
-    <owl:Class rdf:about="http://liris.cnrs.fr/citymodel/workspace#Workspace">
+    <owl:Class rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Workspace">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasConsensusSpace"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasConsensusSpace"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#ConsensusSpace"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#ConsensusSpace"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasCreator"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasCreator"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Agent"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Agent"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasPropositionSpace"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasPropositionSpace"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#PropositionSpace"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#PropositionSpace"/>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://liris.cnrs.fr/citymodel/workspace#hasTransactionTime"/>
+                        <owl:onProperty rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#hasTransactionTime"/>
                         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                        <owl:onClass rdf:resource="http://liris.cnrs.fr/citymodel/workspace#Time"/>
+                        <owl:onClass rdf:resource="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Time"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -691,45 +666,45 @@
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Delete -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Delete -->
 
-    <owl:NamedIndividual rdf:about="http://liris.cnrs.fr/citymodel/workspace#Delete"/>
+    <owl:NamedIndividual rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Delete"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Existing -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Existing -->
 
-    <owl:NamedIndividual rdf:about="http://liris.cnrs.fr/citymodel/workspace#Existing"/>
+    <owl:NamedIndividual rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Existing"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Imagined -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Imagined -->
 
-    <owl:NamedIndividual rdf:about="http://liris.cnrs.fr/citymodel/workspace#Imagined"/>
+    <owl:NamedIndividual rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Imagined"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Influence -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Influence -->
 
-    <owl:NamedIndividual rdf:about="http://liris.cnrs.fr/citymodel/workspace#Influence"/>
+    <owl:NamedIndividual rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Influence"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Insert -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Insert -->
 
-    <owl:NamedIndividual rdf:about="http://liris.cnrs.fr/citymodel/workspace#Insert"/>
+    <owl:NamedIndividual rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Insert"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Regular -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Regular -->
 
-    <owl:NamedIndividual rdf:about="http://liris.cnrs.fr/citymodel/workspace#Regular"/>
+    <owl:NamedIndividual rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Regular"/>
     
 
 
-    <!-- http://liris.cnrs.fr/citymodel/workspace#Replace -->
+    <!-- file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Replace -->
 
-    <owl:NamedIndividual rdf:about="http://liris.cnrs.fr/citymodel/workspace#Replace"/>
+    <owl:NamedIndividual rdf:about="file:/home/john/contributions/UrbanCo2Fab/ontology/citymodel/citymodel/workspace#Replace"/>
 </rdf:RDF>
 
 
