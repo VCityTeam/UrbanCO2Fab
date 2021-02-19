@@ -1,7 +1,7 @@
 from objects.abstractfeature import AbstractFeature
 from enum import Enum
 from exception.error import DataTypeError
-from validate import Validate
+from formats.json.validate import Validate
 
 class VersionType(Enum):
   EXISTING = 1

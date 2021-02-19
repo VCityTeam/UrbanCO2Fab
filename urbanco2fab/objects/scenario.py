@@ -1,5 +1,5 @@
 from enum import Enum
-from validate import Validate
+from formats.json.validate import Validate
 from exception.error import ScenarioError,DataTypeError
 from dateutil.parser import parse
 from objects.abstractfeature import AbstractFeature

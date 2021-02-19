@@ -29,6 +29,29 @@ class Validate:
         validate(instance=jsondata, schema=jschema)
 
   """
+
+   Parameters
+   ----------
+   schemafile: str
+     schema file 
+   filetovalidate: str
+     the JSON file to be validated 
+
+   Returns
+   -------
+     None
+
+   Raises
+   ------ 
+     None
+  """
+  def validatejsonstring(schemafile, jsonstring):
+    with open(schemafile, 'r') as jshandle:
+      jsondata = json.loads(jsonstring)
+      jschema =  json.load(jshandle)
+      validate(instance=jsondata, schema=jschema)
+
+  """
    Validate whether an instance belongs to the required class. 
    It takes as input a reference class and the instance to validate 
 

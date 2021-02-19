@@ -3,7 +3,7 @@ import sys
 sys.path.append("./")
 sys.path.append("../")
 
-from validate import Validate 
+from formats.json.validate import Validate 
 
 class ValidationTestSuite(unittest.TestCase):
   def test_basic_validation(self):
