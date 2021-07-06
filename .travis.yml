@@ -1,0 +1,28 @@
+os: linux
+dist: focal
+language: node_js
+node_js:
+  - 15
+
+branches:
+  only:
+    - master
+
+env:
+  - FAILURE_THRESHOLD=10
+
+before_install:
+  - npm --version
+
+install:
+  - npm install --global remark-cli remark-validate-links
+
+jobs:
+  include:
+    - script:
+        - remark -u validate-links .
+        - export warnings=`remark -u validate-links . 2>&1 | grep warning | grep "Link to unknown" | wc -l` &&
+          if [ $warnings -gt $FAILURE_THRESHOLD ]; then
+            exit 1;
+          fi
+      name: "Checking markdown links."
